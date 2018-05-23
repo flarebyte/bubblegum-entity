@@ -1,20 +1,23 @@
-module AttributeTests exposing (..)
+module AttributeTests exposing (suite)
 
 {-| Unit tests for testing the Bubblegum.Entity.Attribute
-    
--}
-import Test exposing (..)
 
+    generated
+
+-}
+
+import Test exposing (..)
+import TestData exposing(..)
+import Bubblegum.Entity.Attribute as Attribute
 
 suite : Test
 suite =
     describe "The Attribute module"
-        [ describe "Widget.view"
+        [ describe "setId"
             [
-
-                fuzz fuzzyContentId "Correct settings for The unique id of the content" <|
-                \value -> viewWidgetWithState (withStateContentId value)
-                    |> findComponent selectorsContentId
+               fuzz fuzzySetId "setId should work with valid parameters" <|
+                \value -> Attribute.setId pSetId.a pSetId.b
+                    |> Expect.equal expectedSetId
 
              ]
         ]
