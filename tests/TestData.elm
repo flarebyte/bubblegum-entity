@@ -30,10 +30,6 @@ createString size  =
     else
         String.left size ipsum
 
-fuzzySetId : Fuzzer Int
-fuzzySetId = intRange 1 10000  
-
-
 type alias AB a b= {
     a: a
     , b: b
@@ -46,6 +42,19 @@ ab a b = {
  }
 
 
-pSetId: AB (Maybe String) Attribute.Model
-pSetId =
-    ab (Just "") (attr "" "")
+defaultAttributeModel: Attribute.Model
+defaultAttributeModel =
+    attr "key:default" "default value"
+
+-- SetId
+fuzzySetId : Fuzzer String
+fuzzySetId = string 
+
+
+validSetId: String -> AB (Maybe String) Attribute.Model
+validSetId value =
+    ab (Just value) defaultAttributeModel
+
+expectedValidSetId: Attribute.Model
+expectedValidSetId =
+   defaultAttributeModel
