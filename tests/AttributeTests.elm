@@ -18,7 +18,7 @@ suite =
                fuzz fuzzySetId "setId should work with valid parameters" <|
                 \value ->
                     Attribute.setId (validSetId value |> .a) (validSetId value |> .b)
-                    |> Expect.equal expectedValidSetId
+                    |> summarizeSetId|> Expect.equal expectedValidSetId
 
              ]
         ]
