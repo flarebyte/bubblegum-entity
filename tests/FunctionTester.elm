@@ -38,6 +38,14 @@ justOrErr: String -> Maybe a ->  String
 justOrErr err maybe =
     Maybe.map setOk maybe |> Maybe.withDefault err
 
+nothingOrErr: String -> Maybe a ->  String
+nothingOrErr err maybe =
+   case maybe of
+        Nothing ->
+            ok
+        Just a ->
+            err
+
 nonEmptyStringOrErr: String -> String -> String
 nonEmptyStringOrErr err str =
     if String.isEmpty str then

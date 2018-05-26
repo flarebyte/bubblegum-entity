@@ -1,4 +1,4 @@
-module TestData exposing (..)
+module AttributeTestData exposing (..)
 
 {-| Unit tests for testing the Bubblegum.Entity.Attribute
 
@@ -20,13 +20,6 @@ attr key value =
     , facets = []
     , values = [value]
     }  
-
-createString: Int -> String
-createString size  =
-    if size > 500 then
-        String.repeat size "A"
-    else
-        String.left size ipsum
 
 defaultAttributeModel: Attribute.Model
 defaultAttributeModel =
@@ -51,3 +44,11 @@ summarizeSetId model =
         , nonEmptyStringOrErr "key is missing" model.key
         , atLeastOneStringOrErr "values should not be empty" model.values
     ]
+
+summarizeSetIdWithIdNothing: Attribute.Model -> List String
+summarizeSetIdWithIdNothing model =
+    [
+        nothingOrErr "id should be nothing" model.id
+        , nonEmptyStringOrErr "key is missing" model.key
+        , atLeastOneStringOrErr "values should not be empty" model.values
+    ]    
