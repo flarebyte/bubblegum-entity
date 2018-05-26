@@ -5,9 +5,6 @@ module AttributeTestData exposing (..)
     generated
 
 -}
-import Test exposing (..)
-import Bubblegum.Entity.SettingsEntity as SettingsEntity
-import Bubblegum.Entity.StateEntity as StateEntity
 import Bubblegum.Entity.Attribute as Attribute
 import FunctionTester exposing(..)
 import Fuzz exposing (Fuzzer, int, list, string, intRange, constant)
@@ -26,13 +23,20 @@ defaultAttributeModel =
     attr "key:default" "default value"
 
 -- SetId
-fuzzySetId : Fuzzer String
-fuzzySetId = string 
+fuzzyV1SetId : Fuzzer String
+fuzzyV1SetId = string 
+
+fuzzyV2SetId : Fuzzer (List String)
+fuzzyV2SetId = list string
 
 
-validSetId: String -> AB (Maybe String) Attribute.Model
-validSetId value =
-    ab (Just value) defaultAttributeModel
+validP1SetId: String -> Maybe String
+validP1SetId value =
+    Just value
+
+validP2SetId: List String -> Attribute.Model
+validP2SetId list =
+    { defaultAttributeModel | values = "something" :: list}
 
 expectedValidSetId: List String
 expectedValidSetId = ok3

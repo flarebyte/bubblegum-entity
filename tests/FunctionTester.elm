@@ -14,17 +14,6 @@ createString size  =
     else
         String.left size ipsum
 
-type alias AB a b= {
-    a: a
-    , b: b
- }
-
-ab: a -> b -> AB a b
-ab a b = {
-    a = a
-    , b = b
- }
-
 ok = "OK"
 ok1= [ok]
 ok2= [ok, ok]
