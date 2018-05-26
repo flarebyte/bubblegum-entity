@@ -2,7 +2,7 @@ module AttributeTests exposing (suite)
 
 {-| Unit tests for testing the Bubblegum.Entity.Attribute
 
-    generated
+    **generated** in scripts/*.py
 
 -}
 
@@ -13,7 +13,8 @@ import Expect exposing(equal)
 suite : Test
 suite =
     describe "The Attribute module"
-        [ describe "setId"
+        [ 
+            describe "setId"
             [
                fuzz2 fuzzyV1SetId fuzzyV2SetId "setId should return a valid Model for a valid id" <|
                 \v1 v2 ->

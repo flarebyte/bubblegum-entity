@@ -10,13 +10,17 @@ def checkMethodAspect(line):
 def getMethodNames(lines):
    return [parseMethodSignature(lines, line) for line in lines if checkMethodAspect(line)]
 
+def stripStringList(list):
+    return [i.strip() for i in list]   
+
 def parseMethodSignature(lines, line):
     methodName, signature = line.split(":", 2)
-    signParams = signature.split("->")
+    signParams = stripStringList(signature.split("->"))
     paramTypes = signParams[:-1]
-    paramNames = findParameterNames(lines, methodName)
+    paramNames = stripStringList(findParameterNames(lines, methodName))
     params = zip(paramNames, paramTypes)
-    return {'name': methodName, 'params': params, 'returned': paramTypes[-1]}
+    print params
+    return {'name': methodName.strip(), 'params': params, 'returned': paramTypes[-1].strip()}
 
 def matchMethodName(line, methodName):
     return line.startswith(methodName) and line.endswith("=")
