@@ -8,7 +8,12 @@ from method_template import *
 from method_meta import *
 from parse_elm import *  
 
-def formatMethodTemplate(template, row, moduleName, state, okIf):
+defaultMeta = { 
+            'states': [""],
+            'ok': 0
+        }
+
+def formatMethodTemplate(template, row, moduleName, state = "z", meta = defaultMeta):
         m = {}
         m["name"] = row["name"]
         m["moduleName"] = moduleName
@@ -16,7 +21,7 @@ def formatMethodTemplate(template, row, moduleName, state, okIf):
         m["returned"] = row["returned"]
         m["state"] = state
         m["stateU"] = camelCaseUpper(state)
-        m["ok"] = "ok{}".format(okIf)
+        m["ok"] = "ok{okNumber}".format(okNumber = meta["ok"])
         for ii, param in enumerate(row["params"]):
             paramName = "paramName{ii}".format(ii=ii)
             paramType = "paramType{ii}".format(ii=ii)

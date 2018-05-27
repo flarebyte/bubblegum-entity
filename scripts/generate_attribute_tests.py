@@ -9,6 +9,7 @@ from method_meta import *
 from generate_method import *
 from parse_elm import *  
 
+
 def createTests():
     moduleName = "Attribute"
     file = open("../tests/AttributeTests.elm", "w")
@@ -23,12 +24,15 @@ def createTests():
         okIf = meta[methodName]["ok"]
         shouldUpdateTest = True
         if shouldUpdateTest:
-            print(formatMethodTemplate(unitTestDataHeader2, method, moduleName, "z", 0))
+            print(formatMethodTemplate(unitTestDataHeader2, method, moduleName))
+        file.write(formatMethodTemplate(unitTestHeader2, method, moduleName))    
         for state in meta[methodName]["states"]:
-            content.append(formatMethodTemplate(unitTestValid2, method, moduleName, state, okIf))
+            content.append(formatMethodTemplate(unitTestValid2, method, moduleName, state, meta[methodName]))
             if shouldUpdateTest:
-                print(formatMethodTemplate(unitTestDataState2, method, moduleName, state, okIf))
+                print(formatMethodTemplate(unitTestDataState2, method, moduleName, state, meta[methodName]))
         file.write("            ,".join(content))
+        file.write("\n            ]")
+    file.write("\n        ]")
     file.close()    
 
 
