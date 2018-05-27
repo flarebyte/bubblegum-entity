@@ -3,21 +3,29 @@
 import sys
 import csv
 from string import Template
-from generator_helper import camelCase, camelCaseUpper, quoteArray, readCsv
+from generator_helper import firstUpper, camelCaseUpper, quoteArray, readCsv
 from attribute_template import *
 from attribute_meta import *
 from parse_elm import *  
 
 ui_keys_csv = "validation.csv"
 
-def formatMethodTemplate(template, row):
-        return Template(template).substitute(
-            name=row["name"],
-            nameU=camelCaseUpper(row["name"]),
-            returned=row["returned"],
-            params= ["alpha", "beta"]#row["params"][0][0],
-            )
-   
+def formatMethodTemplate(template, row, state, okIf):
+        m = {}
+        m["name"] = row["name"]
+        m["nameU"] = firstUpper(row["name"])
+        m["returned"] = row["returned"]
+        m["state"] = state
+        m["stateU"] = camelCaseUpper(state)
+        m["ok"] = okIf
+        for ii, param in enumerate(row["params"]):
+            paramName = "paramName{ii}".format(ii=ii)
+            paramType = "paramType{ii}".format(ii=ii)
+            m[paramName] = param[0]
+            m[paramType] = param[1]
+        print m
+        return Template(template).substitute(m)
+
 def formatMethodHeader(name):
         return Template(headerTestFile).substitute(
             moduleName=name
@@ -30,9 +38,14 @@ def createTests():
     elmLines = readElmFileAsLines('../src/Bubblegum/Entity/Attribute.elm')
     methodNames = getMethodNames(elmLines)
     for method in methodNames:
-        if method["name"] not in testableFunctions:
+        methodName = method["name"]
+        if methodName not in testableFunctions:
             continue
-        file.write(formatMethodTemplate(unitTestValid2P1, method))
+        content = []
+        okIf = metaOk[methodName]   
+        for state in metaStates[methodName]:
+            content.append(formatMethodTemplate(unitTestValid2, method, state, okIf))
+        file.write("            ,".join(content))
     file.close()    
 
 

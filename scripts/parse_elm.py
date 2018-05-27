@@ -19,7 +19,6 @@ def parseMethodSignature(lines, line):
     paramTypes = signParams[:-1]
     paramNames = stripStringList(findParameterNames(lines, methodName))
     params = zip(paramNames, paramTypes)
-    print params
     return {'name': methodName.strip(), 'params': params, 'returned': paramTypes[-1].strip()}
 
 def matchMethodName(line, methodName):

@@ -13,6 +13,10 @@ def camelCaseUpper(st):
     camel = camelCase(st.strip())
     return camel[0].upper() + camel[1:]
 
+def firstUpper(st):
+    camel = st.strip()
+    return camel[0].upper() + camel[1:]
+
 def quoteArray(values):
     return ",".join(['"'+x+'"' for x in values])
 
