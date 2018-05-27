@@ -33,3 +33,27 @@ def formatMethodHeader(name):
         return Template(headerTestFile).substitute(
             moduleName=name
             )
+
+def createTests(packageName, moduleName):
+    file = open("../tests/{moduleName}Tests.elm".format(moduleName = moduleName), "w")
+    file.write(formatMethodHeader(moduleName))
+    elmLines = readElmFileAsLines("../src/{packageName}/{moduleName}.elm".format(packageName=packageName, moduleName=moduleName))
+    methodNames = getMethodNames(elmLines)
+    for method in methodNames:
+        methodName = method["name"]
+        if methodName not in testableFunctions:
+            continue
+        content = []
+        okIf = meta[methodName]["ok"]
+        shouldUpdateTest = True
+        if shouldUpdateTest:
+            print(formatMethodTemplate(unitTestDataHeader2, method, moduleName))
+        file.write(formatMethodTemplate(unitTestHeader2, method, moduleName))    
+        for state in meta[methodName]["states"]:
+            content.append(formatMethodTemplate(unitTestValid2, method, moduleName, state, meta[methodName]))
+            if shouldUpdateTest:
+                print(formatMethodTemplate(unitTestDataState2, method, moduleName, state, meta[methodName]))
+        file.write("            ,".join(content))
+        file.write("\n            ]")
+    file.write("\n        ]")
+    file.close()    
