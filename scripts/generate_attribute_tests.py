@@ -17,7 +17,7 @@ def formatMethodTemplate(template, row, state, okIf):
         m["returned"] = row["returned"]
         m["state"] = state
         m["stateU"] = camelCaseUpper(state)
-        m["ok"] = okIf
+        m["ok"] = "ok{}".format(okIf)
         for ii, param in enumerate(row["params"]):
             paramName = "paramName{ii}".format(ii=ii)
             paramType = "paramType{ii}".format(ii=ii)
@@ -42,8 +42,8 @@ def createTests():
         if methodName not in testableFunctions:
             continue
         content = []
-        okIf = metaOk[methodName]   
-        for state in metaStates[methodName]:
+        okIf = meta[methodName]["ok"]
+        for state in meta[methodName]["states"]:
             content.append(formatMethodTemplate(unitTestValid2, method, state, okIf))
         file.write("            ,".join(content))
     file.close()    

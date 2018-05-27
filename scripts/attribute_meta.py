@@ -2,11 +2,12 @@
 
 testableFunctions = ["findAttributeByKey"]
 
-metaStates = {
-    'findAttributeByKey': ["just model", "nothing"]
+def setMeta(ok, states):
+    return { 
+            'states': states,
+            'ok': ok
+        }
 
-    }
-
-metaOk = {
-    'findAttributeByKey': "ok2"
+meta = {
+    'findAttributeByKey': setMeta(3, ["just model", "nothing"])
     }

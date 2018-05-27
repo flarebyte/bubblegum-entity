@@ -17,32 +17,32 @@ suite =
 
             describe "findAttributeByKey expecting just model"
             [
-               fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return just model for a valid key" <|
+               fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return just model when testing key" <|
                 \v1 v2 ->
-                    Attribute.findAttributeByKey (validP1FindAttributeByKeyForJustModel v1) (validP2FindAttributeByKeyForJustModel v2)
+                    Attribute.findAttributeByKey (underTestP1FindAttributeByKeyForJustModel v1) (validP2FindAttributeByKeyForJustModel v2)
                     |> summarizeFindAttributeByKeyForJustModel
-                    |> Expect.equal ok2
+                    |> Expect.equal ok3
                
-               , fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return just model for a valid attributes" <|
+               , fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return just model when testing attributes" <|
                 \v1 v2 ->
-                    Attribute.findAttributeByKey (validP1FindAttributeByKeyForJustModel v1) (validP2FindAttributeByKeyForJustModel v2)
+                    Attribute.findAttributeByKey (validP1FindAttributeByKeyForJustModel v1) (underTestP2FindAttributeByKeyForJustModel v2)
                     |> summarizeFindAttributeByKeyForJustModel
-                    |> Expect.equal ok2
+                    |> Expect.equal ok3
             ]
 
             ,
             describe "findAttributeByKey expecting nothing"
             [
-               fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return nothing for a valid key" <|
+               fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return nothing when testing key" <|
                 \v1 v2 ->
-                    Attribute.findAttributeByKey (validP1FindAttributeByKeyForNothing v1) (validP2FindAttributeByKeyForNothing v2)
+                    Attribute.findAttributeByKey (underTestP1FindAttributeByKeyForNothing v1) (validP2FindAttributeByKeyForNothing v2)
                     |> summarizeFindAttributeByKeyForNothing
-                    |> Expect.equal ok2
+                    |> Expect.equal ok3
                
-               , fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return nothing for a valid attributes" <|
+               , fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return nothing when testing attributes" <|
                 \v1 v2 ->
-                    Attribute.findAttributeByKey (validP1FindAttributeByKeyForNothing v1) (validP2FindAttributeByKeyForNothing v2)
+                    Attribute.findAttributeByKey (validP1FindAttributeByKeyForNothing v1) (underTestP2FindAttributeByKeyForNothing v2)
                     |> summarizeFindAttributeByKeyForNothing
-                    |> Expect.equal ok2
+                    |> Expect.equal ok3
             ]
 
