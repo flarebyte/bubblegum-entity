@@ -5,7 +5,8 @@ module AttributeTestData exposing (..)
     generated
 
 -}
-import Bubblegum.Entity.Attribute as Attribute
+import Bubblegum.Entity.Attribute as Attribute exposing(Model)
+
 import FunctionTester exposing(..)
 import Fuzz exposing (Fuzzer, int, list, string, intRange, constant)
 
@@ -18,41 +19,64 @@ attr key value =
     , values = [value]
     }  
 
+attr2: String -> Attribute.Model
+attr2 str =
+    attr str str
+
 defaultAttributeModel: Attribute.Model
 defaultAttributeModel =
     attr "key:default" "default value"
 
--- SetId
-fuzzyV1SetId : Fuzzer String
-fuzzyV1SetId = string 
+-- findAttributeByKey
+fuzzyV1FindAttributeByKey : Fuzzer String
+fuzzyV1FindAttributeByKey = string
 
-fuzzyV2SetId : Fuzzer (List String)
-fuzzyV2SetId = list string
+fuzzyV2FindAttributeByKey : Fuzzer (List String)
+fuzzyV2FindAttributeByKey = list string
 
+validP1FindAttributeByKeyForJustModel: String -> String
+validP1FindAttributeByKeyForJustModel value =
+    "key:default"
 
-validP1SetId: String -> Maybe String
-validP1SetId value =
-    Just value
+validP2FindAttributeByKeyForJustModel: List String -> List Model
+validP2FindAttributeByKeyForJustModel list =
+    defaultAttributeModel :: List.map attr2 list
 
-validP2SetId: List String -> Attribute.Model
-validP2SetId list =
-    { defaultAttributeModel | values = "something" :: list}
+underTestP1FindAttributeByKeyForJustModel: String -> String
+underTestP1FindAttributeByKeyForJustModel value =
+    "key:default"
 
-expectedValidSetId: List String
-expectedValidSetId = ok3
+underTestP2FindAttributeByKeyForJustModel: List String -> List Model
+underTestP2FindAttributeByKeyForJustModel list =
+    defaultAttributeModel :: List.map attr2 list
 
-summarizeSetId: Attribute.Model -> List String
-summarizeSetId model =
+summarizeFindAttributeByKeyForJustModel: List Model -> List String
+summarizeFindAttributeByKeyForJustModel result =
     [
-        justOrErr "id is missing" model.id
-        , nonEmptyStringOrErr "key is missing" model.key
-        , atLeastOneStringOrErr "values should not be empty" model.values
+        justOrErr/nonEmptyStringOrErr/atLeastOneStringOrErr "attr is missing" result.attr
     ]
 
-summarizeSetIdWithIdNothing: Attribute.Model -> List String
-summarizeSetIdWithIdNothing model =
+
+
+validP1FindAttributeByKeyForNothing: String -> String
+validP1FindAttributeByKeyForNothing value =
+    value
+
+validP2FindAttributeByKeyForNothing: String -> List Model
+validP2FindAttributeByKeyForNothing value =
+    value
+
+underTestP1FindAttributeByKeyForNothing: String -> String
+underTestP1FindAttributeByKeyForNothing value =
+    value
+
+underTestP2FindAttributeByKeyForNothing: String -> List Model
+underTestP2FindAttributeByKeyForNothing value =
+    value
+
+
+summarizeFindAttributeByKeyForNothing: List Model -> List String
+summarizeFindAttributeByKeyForNothing result =
     [
-        nothingOrErr "id should be nothing" model.id
-        , nonEmptyStringOrErr "key is missing" model.key
-        , atLeastOneStringOrErr "values should not be empty" model.values
-    ]    
+        justOrErr/nonEmptyStringOrErr/atLeastOneStringOrErr "attr is missing" result.attr
+    ]

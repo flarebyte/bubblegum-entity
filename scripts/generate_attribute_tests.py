@@ -4,36 +4,13 @@ import sys
 import csv
 from string import Template
 from generator_helper import firstUpper, camelCaseUpper, quoteArray, readCsv
-from attribute_template import *
-from attribute_meta import *
+from method_template import *
+from method_meta import *
+from generate_method import *
 from parse_elm import *  
 
-ui_keys_csv = "validation.csv"
-
-def formatMethodTemplate(template, row, state, okIf):
-        m = {}
-        m["name"] = row["name"]
-        m["nameU"] = firstUpper(row["name"])
-        m["returned"] = row["returned"]
-        m["state"] = state
-        m["stateU"] = camelCaseUpper(state)
-        m["ok"] = "ok{}".format(okIf)
-        for ii, param in enumerate(row["params"]):
-            paramName = "paramName{ii}".format(ii=ii)
-            paramType = "paramType{ii}".format(ii=ii)
-            m[paramName] = param[0]
-            m[paramType] = param[1]
-        print m
-        return Template(template).substitute(m)
-
-def formatMethodHeader(name):
-        return Template(headerTestFile).substitute(
-            moduleName=name
-            )
-   
-
 def createTests():
-    file = open("../tests/AttributeTests2.elm", "w")
+    file = open("../tests/AttributeTests.elm", "w")
     file.write(formatMethodHeader("Attribute"))
     elmLines = readElmFileAsLines('../src/Bubblegum/Entity/Attribute.elm')
     methodNames = getMethodNames(elmLines)
@@ -43,8 +20,13 @@ def createTests():
             continue
         content = []
         okIf = meta[methodName]["ok"]
+        shouldUpdateTest = True
+        if shouldUpdateTest:
+            print(formatMethodTemplate(unitTestDataHeader2, method, "z", 0))
         for state in meta[methodName]["states"]:
             content.append(formatMethodTemplate(unitTestValid2, method, state, okIf))
+            if shouldUpdateTest:
+                print(formatMethodTemplate(unitTestDataState2, method, state, okIf))
         file.write("            ,".join(content))
     file.close()    
 

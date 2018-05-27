@@ -37,7 +37,7 @@ unitTestValid2 = """
 
 """
 
-unitTestDataValid2 = """
+unitTestDataHeader2 = """
 -- ${name}
 fuzzyV1${nameU} : Fuzzer String
 fuzzyV1${nameU} = string 
@@ -45,7 +45,9 @@ fuzzyV1${nameU} = string
 fuzzyV2${nameU} : Fuzzer String
 fuzzyV2${nameU} = string 
 
+"""
 
+unitTestDataState2 = """
 validP1${nameU}For${stateU}: String -> ${paramType0}
 validP1${nameU}For${stateU} value =
     value
