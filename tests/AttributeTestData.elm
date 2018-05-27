@@ -6,6 +6,7 @@ module AttributeTestData exposing (..)
 
 -}
 import Bubblegum.Entity.Attribute as Attribute exposing(Model)
+import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 
 import FunctionTester exposing(..)
 import Fuzz exposing (Fuzzer, int, list, string, intRange, constant)
@@ -27,6 +28,16 @@ defaultAttributeModel: Attribute.Model
 defaultAttributeModel =
     attr "key:default" "default value"
 
+
+otherOutcome : Outcome String -> String
+otherOutcome outcome =
+    case outcome of
+        Valid v ->
+            v
+        Warning m->
+            "Warning " ++ m
+        None->
+            "None "
 
 -- findAttributeByKey
 fuzzyV1FindAttributeByKey : Fuzzer String -- should produce String
@@ -105,4 +116,41 @@ summarizeFindAttributeFirstValueByKeyForNothing result =
         , ok
     ]
 
-  
+  -- findOutcomeByKey
+fuzzyV1FindOutcomeByKey : Fuzzer String -- should produce String
+fuzzyV1FindOutcomeByKey = constant "key:default"
+
+fuzzyV2FindOutcomeByKey : Fuzzer (List String) -- should produce  List Model
+fuzzyV2FindOutcomeByKey = list string
+
+
+validP1FindOutcomeByKeyForValidOutcome: String -> String
+validP1FindOutcomeByKeyForValidOutcome value =
+    value
+
+validP2FindOutcomeByKeyForValidOutcome: List String -> List Model
+validP2FindOutcomeByKeyForValidOutcome list =
+    List.map attr2 list ++ [defaultAttributeModel]
+
+summarizeFindOutcomeByKeyForValidOutcome: Outcome (List String) -> List String
+summarizeFindOutcomeByKeyForValidOutcome result =
+    [
+        if Outcome.isValid result then ok else "unexpected oucome"
+        , Outcome.map (\r -> if r == ["default value"] then ok else "value does not match") result |> otherOutcome
+    ]
+
+
+validP1FindOutcomeByKeyForNoneOutcome: String -> String
+validP1FindOutcomeByKeyForNoneOutcome value =
+    value
+
+validP2FindOutcomeByKeyForNoneOutcome: List String -> List Model
+validP2FindOutcomeByKeyForNoneOutcome list =
+    List.map attr2 list
+
+summarizeFindOutcomeByKeyForNoneOutcome: Outcome (List String) -> List String
+summarizeFindOutcomeByKeyForNoneOutcome result =
+    [
+        if Outcome.isNone result then ok else "unexpected oucome"
+        , ok
+    ]

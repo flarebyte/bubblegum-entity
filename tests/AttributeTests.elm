@@ -50,5 +50,22 @@ suite =
                     |> summarizeFindAttributeFirstValueByKeyForNothing
                     |> Expect.equal ok2
 
+            ]            , 
+            describe "findOutcomeByKey"
+            [
+
+               fuzz2 fuzzyV1FindOutcomeByKey fuzzyV2FindOutcomeByKey "findOutcomeByKey should return valid outcome when testing key" <|
+                \v1 v2 ->
+                    Attribute.findOutcomeByKey (validP1FindOutcomeByKeyForValidOutcome v1) (validP2FindOutcomeByKeyForValidOutcome v2)
+                    |> summarizeFindOutcomeByKeyForValidOutcome
+                    |> Expect.equal ok2
+
+            ,
+               fuzz2 fuzzyV1FindOutcomeByKey fuzzyV2FindOutcomeByKey "findOutcomeByKey should return none outcome when testing key" <|
+                \v1 v2 ->
+                    Attribute.findOutcomeByKey (validP1FindOutcomeByKeyForNoneOutcome v1) (validP2FindOutcomeByKeyForNoneOutcome v2)
+                    |> summarizeFindOutcomeByKeyForNoneOutcome
+                    |> Expect.equal ok2
+
             ]
         ]

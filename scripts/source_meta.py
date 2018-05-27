@@ -8,5 +8,6 @@ def setMeta(ok, states):
 
 metaAttribute = {
     'findAttributeByKey': setMeta(2, ["just model", "nothing"]),
-    'findAttributeFirstValueByKey': setMeta(2, ["just string", "nothing"])
+    'findAttributeFirstValueByKey': setMeta(2, ["just string", "nothing"]),
+    'findOutcomeByKey': setMeta(2, ["valid outcome", "none outcome"])
     }
