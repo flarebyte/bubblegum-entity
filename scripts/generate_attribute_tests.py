@@ -10,8 +10,9 @@ from generate_method import *
 from parse_elm import *  
 
 def createTests():
+    moduleName = "Attribute"
     file = open("../tests/AttributeTests.elm", "w")
-    file.write(formatMethodHeader("Attribute"))
+    file.write(formatMethodHeader(moduleName))
     elmLines = readElmFileAsLines('../src/Bubblegum/Entity/Attribute.elm')
     methodNames = getMethodNames(elmLines)
     for method in methodNames:
@@ -22,11 +23,11 @@ def createTests():
         okIf = meta[methodName]["ok"]
         shouldUpdateTest = True
         if shouldUpdateTest:
-            print(formatMethodTemplate(unitTestDataHeader2, method, "z", 0))
+            print(formatMethodTemplate(unitTestDataHeader2, method, moduleName, "z", 0))
         for state in meta[methodName]["states"]:
-            content.append(formatMethodTemplate(unitTestValid2, method, state, okIf))
+            content.append(formatMethodTemplate(unitTestValid2, method, moduleName, state, okIf))
             if shouldUpdateTest:
-                print(formatMethodTemplate(unitTestDataState2, method, state, okIf))
+                print(formatMethodTemplate(unitTestDataState2, method, moduleName, state, okIf))
         file.write("            ,".join(content))
     file.close()    
 

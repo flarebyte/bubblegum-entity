@@ -19,22 +19,16 @@ suite =
 
 """ 
 
-unitTestValid2 = """
-            describe "${name} expecting ${state}"
+unitTestHeader2 = """
+            describe "${name}"
             [
+"""
+unitTestValid2 = """
                fuzz2 fuzzyV1${nameU} fuzzyV2${nameU} "${name} should return ${state} when testing ${paramName0}" <|
                 \\v1 v2 ->
-                    Attribute.${name} (underTestP1${nameU}For${stateU} v1) (validP2${nameU}For${stateU} v2)
+                    ${moduleName}.${name} (underTestP1${nameU}For${stateU} v1) (validP2${nameU}For${stateU} v2)
                     |> summarize${nameU}For${stateU}
                     |> Expect.equal ${ok}
-               
-               , fuzz2 fuzzyV1${nameU} fuzzyV2${nameU} "${name} should return ${state} when testing ${paramName1}" <|
-                \\v1 v2 ->
-                    Attribute.${name} (validP1${nameU}For${stateU} v1) (underTestP2${nameU}For${stateU} v2)
-                    |> summarize${nameU}For${stateU}
-                    |> Expect.equal ${ok}
-            ]
-
 """
 
 unitTestDataHeader2 = """

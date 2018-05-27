@@ -8,9 +8,10 @@ from method_template import *
 from method_meta import *
 from parse_elm import *  
 
-def formatMethodTemplate(template, row, state, okIf):
+def formatMethodTemplate(template, row, moduleName, state, okIf):
         m = {}
         m["name"] = row["name"]
+        m["moduleName"] = moduleName
         m["nameU"] = firstUpper(row["name"])
         m["returned"] = row["returned"]
         m["state"] = state
