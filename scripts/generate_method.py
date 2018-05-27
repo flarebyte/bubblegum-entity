@@ -3,9 +3,8 @@
 import sys
 import csv
 from string import Template
-from generator_helper import firstUpper, camelCaseUpper, quoteArray, readCsv
+from generator_helper import firstUpper, camelCaseUpper, quoteArray, readCsv, readFileAsString
 from method_template import *
-from method_meta import *
 from parse_elm import *  
 
 defaultMeta = { 
@@ -36,18 +35,19 @@ def formatMethodHeader(packageName, moduleName):
             packageNameDot = packageName.replace('/','.')
             )
 
-def createTests(packageName, moduleName):
+def createTests(packageName, moduleName, meta):
     file = open("../tests/{moduleName}Tests.elm".format(moduleName = moduleName), "w")
     file.write(formatMethodHeader(packageName, moduleName))
     elmLines = readElmFileAsLines("../src/{packageName}/{moduleName}.elm".format(packageName=packageName, moduleName=moduleName))
+    existingTestDataContent = readFileAsString("../tests/{moduleName}TestData.elm".format(moduleName = moduleName))
     methodNames = getMethodNames(elmLines)
+    testableFunctions = meta.keys()
     for method in methodNames:
         methodName = method["name"]
         if methodName not in testableFunctions:
             continue
         content = []
-        okIf = meta[methodName]["ok"]
-        shouldUpdateTest = False
+        shouldUpdateTest = not ("-- {methodName}".format(methodName=methodName)) in existingTestDataContent
         if shouldUpdateTest:
             print(formatMethodTemplate(unitTestDataHeader2, method, moduleName))
         file.write(formatMethodTemplate(unitTestHeader2, method, moduleName))    

@@ -28,3 +28,6 @@ def readCsv(filename):
             results.append(row)
     return results
 
+def readFileAsString(filename):
+    with open(filename, 'r') as myfile:
+        return myfile.read().replace('\n', '')
