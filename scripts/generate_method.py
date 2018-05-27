@@ -42,7 +42,9 @@ def createTests(packageName, moduleName, meta):
     existingTestDataContent = readFileAsString("../tests/{moduleName}TestData.elm".format(moduleName = moduleName))
     methodNames = getMethodNames(elmLines)
     testableFunctions = meta.keys()
+    wholeContent = []
     for method in methodNames:
+        methodContent = ""
         methodName = method["name"]
         if methodName not in testableFunctions:
             continue
@@ -50,12 +52,14 @@ def createTests(packageName, moduleName, meta):
         shouldUpdateTest = not ("-- {methodName}".format(methodName=methodName)) in existingTestDataContent
         if shouldUpdateTest:
             print(formatMethodTemplate(unitTestDataHeader2, method, moduleName))
-        file.write(formatMethodTemplate(unitTestHeader2, method, moduleName))    
+        methodContent += formatMethodTemplate(unitTestHeader2, method, moduleName)  
         for state in meta[methodName]["states"]:
             content.append(formatMethodTemplate(unitTestValid2, method, moduleName, state, meta[methodName]))
             if shouldUpdateTest:
                 print(formatMethodTemplate(unitTestDataState2, method, moduleName, state, meta[methodName]))
-        file.write("            ,".join(content))
-        file.write("\n            ]")
+        methodContent += ("\n            ,".join(content))
+        methodContent += ("\n            ]")
+        wholeContent.append(methodContent)
+    file.write("            , ".join(wholeContent))
     file.write("\n        ]")
     file.close()    

@@ -52,3 +52,7 @@ atLeastOneStringOrErr err list =
 expectNoResult : Maybe a -> String
 expectNoResult result = 
     nothingOrErr "should not get any result" result
+
+expectResult : Maybe a -> String
+expectResult result = 
+    justOrErr "result is missing" result    

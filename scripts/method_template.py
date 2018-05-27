@@ -57,4 +57,3 @@ summarize${nameU}For${stateU} result =
         justOrErr/nonEmptyStringOrErr/atLeastOneStringOrErr "attr is missing" result.attr
     ]
 """
-

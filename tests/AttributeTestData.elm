@@ -27,6 +27,7 @@ defaultAttributeModel: Attribute.Model
 defaultAttributeModel =
     attr "key:default" "default value"
 
+
 -- findAttributeByKey
 fuzzyV1FindAttributeByKey : Fuzzer String -- should produce String
 fuzzyV1FindAttributeByKey = constant "key:default"
@@ -46,10 +47,9 @@ validP2FindAttributeByKeyForJustModel list =
 summarizeFindAttributeByKeyForJustModel: Maybe Model -> List String
 summarizeFindAttributeByKeyForJustModel result =
     [
-        justOrErr "result is missing" result
+        expectResult result
         , Maybe.map (\r -> if r.key == "key:default" then ok else "key does not match") result |> Maybe.withDefault "ko"
     ]
-
 
 validP1FindAttributeByKeyForNothing: String -> String
 validP1FindAttributeByKeyForNothing value =
@@ -65,3 +65,44 @@ summarizeFindAttributeByKeyForNothing result =
         expectNoResult result
        , ok
    ]
+
+ -- findAttributeFirstValueByKey
+fuzzyV1FindAttributeFirstValueByKey : Fuzzer String -- should produce String
+fuzzyV1FindAttributeFirstValueByKey = constant "key:default"
+
+fuzzyV2FindAttributeFirstValueByKey : Fuzzer (List String) -- should produce  List Model
+fuzzyV2FindAttributeFirstValueByKey = list string
+
+
+validP1FindAttributeFirstValueByKeyForJustString: String -> String
+validP1FindAttributeFirstValueByKeyForJustString value =
+    value
+
+validP2FindAttributeFirstValueByKeyForJustString: List String -> List Model
+validP2FindAttributeFirstValueByKeyForJustString list =
+    List.map attr2 list ++ [defaultAttributeModel]
+
+summarizeFindAttributeFirstValueByKeyForJustString: Maybe String -> List String
+summarizeFindAttributeFirstValueByKeyForJustString result =
+    [
+        expectResult result
+        , Maybe.map (\r -> if r == "default value" then ok else "value does not match") result |> Maybe.withDefault "ko"
+    ]
+
+
+validP1FindAttributeFirstValueByKeyForNothing: String -> String
+validP1FindAttributeFirstValueByKeyForNothing value =
+    value
+
+validP2FindAttributeFirstValueByKeyForNothing: List String -> List Model
+validP2FindAttributeFirstValueByKeyForNothing list =
+    List.map attr2 list
+
+summarizeFindAttributeFirstValueByKeyForNothing: Maybe String -> List String
+summarizeFindAttributeFirstValueByKeyForNothing result =
+    [
+        expectNoResult result
+        , ok
+    ]
+
+  
