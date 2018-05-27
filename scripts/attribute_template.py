@@ -20,7 +20,7 @@ suite =
 """ 
 
 unitTestValid2P1 = """
-               fuzz2 fuzzyV1${nameU} fuzzyV2${nameU} "${name} should return a valid ${returned} for a valid ${params}" <|
+               fuzz2 fuzzyV1${nameU} fuzzyV2${nameU} "${name} should return a valid ${returned} for a valid ${params[0]}" <|
                 \v1 v2 ->
                     Attribute.${name} (validP1${nameU} v1) (validP2${nameU} v2)
                     |> summarize${nameU}
