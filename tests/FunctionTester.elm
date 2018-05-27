@@ -48,3 +48,7 @@ atLeastOneStringOrErr err list =
         err
     else
         List.head list |> Maybe.withDefault "" |> nonEmptyStringOrErr err
+
+expectNoResult : Maybe a -> String
+expectNoResult result = 
+    nothingOrErr "should not get any result" result

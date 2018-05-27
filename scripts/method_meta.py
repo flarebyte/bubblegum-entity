@@ -9,5 +9,5 @@ def setMeta(ok, states):
         }
 
 meta = {
-    'findAttributeByKey': setMeta(3, ["just model", "nothing"])
+    'findAttributeByKey': setMeta(2, ["just model", "nothing"])
     }

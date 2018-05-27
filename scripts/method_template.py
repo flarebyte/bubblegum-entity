@@ -1,8 +1,7 @@
 #!/usr/bin/python
 
 
-headerTestFile = """
-module ${moduleName}Tests exposing (suite)
+headerTestFile = """module ${moduleName}Tests exposing (suite)
 
 {-| Unit tests for testing the Bubblegum.Entity.${moduleName}
 
@@ -10,6 +9,10 @@ module ${moduleName}Tests exposing (suite)
 
 -}
 import Test exposing (..)
+import Expect as Expect
+import FunctionTester exposing (ok,ok1,ok2,ok3)
+import ${moduleName}TestData exposing (..)
+import ${packageNameDot}.${moduleName} as ${moduleName}
 
 
 suite : Test
@@ -32,10 +35,10 @@ unitTestValid2 = """
 
 unitTestDataHeader2 = """
 -- ${name}
-fuzzyV1${nameU} : Fuzzer String
+fuzzyV1${nameU} : Fuzzer String -- should produce ${paramType0}
 fuzzyV1${nameU} = string 
 
-fuzzyV2${nameU} : Fuzzer String
+fuzzyV2${nameU} : Fuzzer String -- should produce  ${paramType1}
 fuzzyV2${nameU} = string 
 """
 

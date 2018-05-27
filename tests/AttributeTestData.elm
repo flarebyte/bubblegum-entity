@@ -28,55 +28,40 @@ defaultAttributeModel =
     attr "key:default" "default value"
 
 -- findAttributeByKey
-fuzzyV1FindAttributeByKey : Fuzzer String
-fuzzyV1FindAttributeByKey = string
+fuzzyV1FindAttributeByKey : Fuzzer String -- should produce String
+fuzzyV1FindAttributeByKey = constant "key:default"
 
-fuzzyV2FindAttributeByKey : Fuzzer (List String)
+fuzzyV2FindAttributeByKey : Fuzzer (List String) -- should produce  List Model
 fuzzyV2FindAttributeByKey = list string
+
 
 validP1FindAttributeByKeyForJustModel: String -> String
 validP1FindAttributeByKeyForJustModel value =
-    "key:default"
+   value
 
 validP2FindAttributeByKeyForJustModel: List String -> List Model
 validP2FindAttributeByKeyForJustModel list =
-    defaultAttributeModel :: List.map attr2 list
+    List.map attr2 list ++ [defaultAttributeModel]
 
-underTestP1FindAttributeByKeyForJustModel: String -> String
-underTestP1FindAttributeByKeyForJustModel value =
-    "key:default"
-
-underTestP2FindAttributeByKeyForJustModel: List String -> List Model
-underTestP2FindAttributeByKeyForJustModel list =
-    defaultAttributeModel :: List.map attr2 list
-
-summarizeFindAttributeByKeyForJustModel: List Model -> List String
+summarizeFindAttributeByKeyForJustModel: Maybe Model -> List String
 summarizeFindAttributeByKeyForJustModel result =
     [
-        justOrErr/nonEmptyStringOrErr/atLeastOneStringOrErr "attr is missing" result.attr
+        justOrErr "result is missing" result
+        , Maybe.map (\r -> if r.key == "key:default" then ok else "key does not match") result |> Maybe.withDefault "ko"
     ]
-
 
 
 validP1FindAttributeByKeyForNothing: String -> String
 validP1FindAttributeByKeyForNothing value =
-    value
+    "key:unknown"
 
-validP2FindAttributeByKeyForNothing: String -> List Model
-validP2FindAttributeByKeyForNothing value =
-    value
+validP2FindAttributeByKeyForNothing: List String -> List Model
+validP2FindAttributeByKeyForNothing list =
+    List.map attr2 list
 
-underTestP1FindAttributeByKeyForNothing: String -> String
-underTestP1FindAttributeByKeyForNothing value =
-    value
-
-underTestP2FindAttributeByKeyForNothing: String -> List Model
-underTestP2FindAttributeByKeyForNothing value =
-    value
-
-
-summarizeFindAttributeByKeyForNothing: List Model -> List String
+summarizeFindAttributeByKeyForNothing: Maybe Model -> List String
 summarizeFindAttributeByKeyForNothing result =
     [
-        justOrErr/nonEmptyStringOrErr/atLeastOneStringOrErr "attr is missing" result.attr
-    ]
+        expectNoResult result
+       , ok
+   ]

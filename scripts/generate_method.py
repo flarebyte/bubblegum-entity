@@ -29,14 +29,16 @@ def formatMethodTemplate(template, row, moduleName, state = "z", meta = defaultM
             m[paramType] = param[1]
         return Template(template).substitute(m)
 
-def formatMethodHeader(name):
+def formatMethodHeader(packageName, moduleName):
         return Template(headerTestFile).substitute(
-            moduleName=name
+            moduleName = moduleName,
+            packageName = packageName,
+            packageNameDot = packageName.replace('/','.')
             )
 
 def createTests(packageName, moduleName):
     file = open("../tests/{moduleName}Tests.elm".format(moduleName = moduleName), "w")
-    file.write(formatMethodHeader(moduleName))
+    file.write(formatMethodHeader(packageName, moduleName))
     elmLines = readElmFileAsLines("../src/{packageName}/{moduleName}.elm".format(packageName=packageName, moduleName=moduleName))
     methodNames = getMethodNames(elmLines)
     for method in methodNames:
@@ -45,7 +47,7 @@ def createTests(packageName, moduleName):
             continue
         content = []
         okIf = meta[methodName]["ok"]
-        shouldUpdateTest = True
+        shouldUpdateTest = False
         if shouldUpdateTest:
             print(formatMethodTemplate(unitTestDataHeader2, method, moduleName))
         file.write(formatMethodTemplate(unitTestHeader2, method, moduleName))    
