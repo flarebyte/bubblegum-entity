@@ -81,5 +81,29 @@ suite =
                     |> summarizeMap2ForWarning
                     |> Expect.equal ok2
 
+            ]            , 
+            describe "check"
+            [
+
+               fuzz3 fuzzyV1Check fuzzyV2Check fuzzyV3Check "check should return valid" <|
+                \v1 v2 v3->
+                    Outcome.check (validP1CheckForValid v1) (validP2CheckForValid v2) (validP3CheckForValid v3)
+                    |> summarizeCheckForValid
+                    |> Expect.equal ok2
+
+            ,
+               fuzz3 fuzzyV1Check fuzzyV2Check fuzzyV3Check "check should return none" <|
+                \v1 v2 v3->
+                    Outcome.check (validP1CheckForNone v1) (validP2CheckForNone v2) (validP3CheckForNone v3)
+                    |> summarizeCheckForNone
+                    |> Expect.equal ok2
+
+            ,
+               fuzz3 fuzzyV1Check fuzzyV2Check fuzzyV3Check "check should return warning" <|
+                \v1 v2 v3->
+                    Outcome.check (validP1CheckForWarning v1) (validP2CheckForWarning v2) (validP3CheckForWarning v3)
+                    |> summarizeCheckForWarning
+                    |> Expect.equal ok2
+
             ]
         ]

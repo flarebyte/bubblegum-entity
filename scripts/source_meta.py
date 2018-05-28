@@ -18,8 +18,8 @@ metaAttribute = {
 metaOutcome = {
     'withDefault': setMeta(2, ["valid", "none"]),
     'map': setMeta(2, ["valid", "none", "warning"]),
-    'map2': setMeta(2, ["valid", "none", "warning"])
-    # 'check': setMeta(2, ["valid", "none", "warning"]),
+    'map2': setMeta(2, ["valid", "none", "warning"]),
+    'check': setMeta(2, ["valid", "none", "warning"])
     # 'checkOrNone': setMeta(2, ["valid", "none", "warning"]),
     # 'trueMapToConstant': setMeta(2, ["valid", "none", "warning"]),
     # 'or': setMeta(2, ["valid", "none", "warning"]),

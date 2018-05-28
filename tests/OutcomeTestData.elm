@@ -42,6 +42,11 @@ expectValidOutcomeRegex term outcome =
         Warning s ->
             "should not be warning " ++ s
 
+
+isNotEmpty: String -> Bool
+isNotEmpty value =
+    String.isEmpty value |> not
+
 -- withDefault
 fuzzyV1WithDefault : Fuzzer String -- should produce a
 fuzzyV1WithDefault = string
@@ -204,6 +209,76 @@ validP3Map2ForWarning value =
 
 summarizeMap2ForWarning: Outcome String -> List String
 summarizeMap2ForWarning result =
+    [
+        expectWarning result
+        , ok
+    ]
+
+-- check
+fuzzyV1Check : Fuzzer String -- should produce (a -> Bool)
+fuzzyV1Check = constant ""
+
+fuzzyV2Check : Fuzzer String -- should produce String
+fuzzyV2Check = string
+
+fuzzyV3Check : Fuzzer String -- should produce Outcome a
+fuzzyV3Check = string
+
+
+validP1CheckForValid: String -> (String -> Bool)
+validP1CheckForValid value =
+   isNotEmpty
+
+validP2CheckForValid: String -> String
+validP2CheckForValid value =
+    value
+
+validP3CheckForValid: String -> Outcome String
+validP3CheckForValid value =
+    Valid ("A" ++ value)
+
+summarizeCheckForValid: Outcome String -> List String
+summarizeCheckForValid result =
+    [
+         expectValid result
+        , expectValidOutcomeRegex "[A-Za-z]+" result
+    ]
+
+
+validP1CheckForNone: String -> (String -> Bool)
+validP1CheckForNone value =
+    isNotEmpty
+
+validP2CheckForNone: String -> String
+validP2CheckForNone value =
+    value
+
+validP3CheckForNone: String -> Outcome String
+validP3CheckForNone value =
+    None
+
+summarizeCheckForNone: Outcome a -> List String
+summarizeCheckForNone result =
+    [
+        expectNone result
+        , ok
+    ]
+
+
+validP1CheckForWarning: String -> (String -> Bool)
+validP1CheckForWarning value =
+    isNotEmpty
+
+validP2CheckForWarning: String -> String
+validP2CheckForWarning value =
+    value
+
+validP3CheckForWarning: String -> Outcome String
+validP3CheckForWarning value =
+    Warning value
+
+summarizeCheckForWarning: Outcome a -> List String
+summarizeCheckForWarning result =
     [
         expectWarning result
         , ok
