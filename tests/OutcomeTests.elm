@@ -136,5 +136,22 @@ suite =
                     |> summarizeCheckOrNoneForWarning
                     |> Expect.equal ok2
 
+            ]            , 
+            describe "trueMapToConstant"
+            [
+
+               fuzz2 fuzzyV1TrueMapToConstant fuzzyV2TrueMapToConstant "trueMapToConstant should return true" <|
+                \v1 v2 ->
+                    Outcome.trueMapToConstant (validP1TrueMapToConstantForTrue v1) (validP2TrueMapToConstantForTrue v2)
+                    |> summarizeTrueMapToConstantForTrue
+                    |> Expect.equal ok2
+
+            ,
+               fuzz2 fuzzyV1TrueMapToConstant fuzzyV2TrueMapToConstant "trueMapToConstant should return false" <|
+                \v1 v2 ->
+                    Outcome.trueMapToConstant (validP1TrueMapToConstantForFalse v1) (validP2TrueMapToConstantForFalse v2)
+                    |> summarizeTrueMapToConstantForFalse
+                    |> Expect.equal ok2
+
             ]
         ]

@@ -366,3 +366,42 @@ summarizeCheckOrNoneForWarning result =
         expectWarning result
         , expectWarningOutcomeRegex "warn" result
     ]
+
+-- trueMapToConstant
+fuzzyV1TrueMapToConstant : Fuzzer String -- should produce a
+fuzzyV1TrueMapToConstant = string
+
+fuzzyV2TrueMapToConstant : Fuzzer Bool -- should produce Outcome Bool
+fuzzyV2TrueMapToConstant = constant True
+
+
+validP1TrueMapToConstantForTrue: String -> String -- about const
+validP1TrueMapToConstantForTrue value =
+    "constant" ++ value
+
+validP2TrueMapToConstantForTrue: Bool -> Outcome Bool -- about outcome
+validP2TrueMapToConstantForTrue value =
+    Valid True
+
+summarizeTrueMapToConstantForTrue: Outcome String -> List String
+summarizeTrueMapToConstantForTrue result =
+    [
+        expectValid result
+        , expectValidOutcomeRegex "constant" result
+    ]
+
+
+validP1TrueMapToConstantForFalse: String -> String -- about const
+validP1TrueMapToConstantForFalse value =
+    value
+
+validP2TrueMapToConstantForFalse: Bool -> Outcome Bool -- about outcome
+validP2TrueMapToConstantForFalse value =
+    Valid False
+
+summarizeTrueMapToConstantForFalse: Outcome String -> List String
+summarizeTrueMapToConstantForFalse result =
+    [
+        expectNone result
+        , ok
+    ]

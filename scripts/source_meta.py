@@ -20,8 +20,8 @@ metaOutcome = {
     'map': setMeta(2, ["valid", "none", "warning"]),
     'map2': setMeta(2, ["valid", "none", "warning"]),
     'check': setMeta(2, ["valid", "none", "warning", "check failed"]),
-    'checkOrNone': setMeta(2, ["valid", "check failed", "warning"])
-    # 'trueMapToConstant': setMeta(2, ["valid", "none", "warning"]),
+    'checkOrNone': setMeta(2, ["valid", "check failed", "warning"]),
+    'trueMapToConstant': setMeta(2, ["true", "false"])
     # 'or': setMeta(2, ["valid", "none", "warning"]),
     # 'fromMaybe': setMeta(2, ["valid", "none"]),
     # 'toMaybe': setMeta(2, ["just", "nothing"])
