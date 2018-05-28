@@ -57,5 +57,29 @@ suite =
                     |> summarizeMapForWarning
                     |> Expect.equal ok2
 
+            ]            , 
+            describe "map2"
+            [
+
+               fuzz3 fuzzyV1Map2 fuzzyV2Map2 fuzzyV3Map2 "map2 should return valid" <|
+                \v1 v2 v3->
+                    Outcome.map2 (validP1Map2ForValid v1) (validP2Map2ForValid v2) (validP3Map2ForValid v3)
+                    |> summarizeMap2ForValid
+                    |> Expect.equal ok2
+
+            ,
+               fuzz3 fuzzyV1Map2 fuzzyV2Map2 fuzzyV3Map2 "map2 should return none" <|
+                \v1 v2 v3->
+                    Outcome.map2 (validP1Map2ForNone v1) (validP2Map2ForNone v2) (validP3Map2ForNone v3)
+                    |> summarizeMap2ForNone
+                    |> Expect.equal ok2
+
+            ,
+               fuzz3 fuzzyV1Map2 fuzzyV2Map2 fuzzyV3Map2 "map2 should return warning" <|
+                \v1 v2 v3->
+                    Outcome.map2 (validP1Map2ForWarning v1) (validP2Map2ForWarning v2) (validP3Map2ForWarning v3)
+                    |> summarizeMap2ForWarning
+                    |> Expect.equal ok2
+
             ]
         ]
