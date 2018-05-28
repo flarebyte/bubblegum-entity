@@ -105,5 +105,12 @@ suite =
                     |> summarizeCheckForWarning
                     |> Expect.equal ok2
 
+            ,
+               fuzz3 fuzzyV1Check fuzzyV2Check fuzzyV3Check "check should return check failed" <|
+                \v1 v2 v3->
+                    Outcome.check (validP1CheckForCheckFailed v1) (validP2CheckForCheckFailed v2) (validP3CheckForCheckFailed v3)
+                    |> summarizeCheckForCheckFailed
+                    |> Expect.equal ok2
+
             ]
         ]

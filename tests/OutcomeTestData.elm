@@ -42,7 +42,16 @@ expectValidOutcomeRegex term outcome =
         Warning s ->
             "should not be warning " ++ s
 
-
+expectWarningOutcomeRegex: String -> Outcome String -> String
+expectWarningOutcomeRegex term outcome =
+    case outcome of
+        Valid s ->
+            "should not be valid " ++ s
+        None ->
+            "should not be none"
+        Warning s ->
+            if Regex.contains (regex term) s then ok else s ++ " does not match warning " ++ term
+            
 isNotEmpty: String -> Bool
 isNotEmpty value =
     String.isEmpty value |> not
@@ -282,4 +291,23 @@ summarizeCheckForWarning result =
     [
         expectWarning result
         , ok
+    ]
+
+validP1CheckForCheckFailed: String -> (String -> Bool)
+validP1CheckForCheckFailed value =
+    String.isEmpty
+
+validP2CheckForCheckFailed: String -> String
+validP2CheckForCheckFailed value =
+    "warn" ++ value
+
+validP3CheckForCheckFailed: String -> Outcome String
+validP3CheckForCheckFailed value =
+    Valid ("A" ++ value)
+
+summarizeCheckForCheckFailed: Outcome String -> List String
+summarizeCheckForCheckFailed result =
+    [
+        expectWarning result
+        , expectWarningOutcomeRegex "warn" result
     ]
