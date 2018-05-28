@@ -9,7 +9,7 @@ import Bubblegum.Entity.Attribute as Attribute exposing(Model)
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 
 import FunctionTester exposing(..)
-import Fuzz exposing (Fuzzer, int, list, string, intRange, constant)
+import Fuzz exposing (Fuzzer, int, list, string, intRange, constant, tuple)
 
 
 attr: String -> String -> Attribute.Model
@@ -22,7 +22,7 @@ attr key value =
 
 attr2: String -> Attribute.Model
 attr2 str =
-    attr str str
+    attr str ("value of " ++ str)
 
 defaultAttributeModel: Attribute.Model
 defaultAttributeModel =
@@ -191,5 +191,45 @@ summarizeDeleteAttributeByKeyForEmptyList: List Model -> List String
 summarizeDeleteAttributeByKeyForEmptyList result =
     [
         expectEmptyList result
+        , ok
+    ]
+
+-- findOutcomeByKeyTuple
+fuzzyV1FindOutcomeByKeyTuple : Fuzzer (String, String) -- should produce ( String, String )
+fuzzyV1FindOutcomeByKeyTuple = constant ("key:min", "key:max")
+
+fuzzyV2FindOutcomeByKeyTuple : Fuzzer (List String) -- should produce List Model
+fuzzyV2FindOutcomeByKeyTuple = list string
+
+
+validP1FindOutcomeByKeyTupleForValidOutcome: (String, String) -> ( String, String )
+validP1FindOutcomeByKeyTupleForValidOutcome value =
+    value
+
+validP2FindOutcomeByKeyTupleForValidOutcome: List String -> List Model
+validP2FindOutcomeByKeyTupleForValidOutcome list =
+    List.map attr2 list ++ [defaultAttributeModel, attr2 "key:min", attr2 "key:max"]
+
+summarizeFindOutcomeByKeyTupleForValidOutcome: Outcome ( List String, List String ) -> List String
+summarizeFindOutcomeByKeyTupleForValidOutcome result =
+    [
+        if Outcome.isValid result then ok else "unexpected oucome"
+        , Outcome.map (\r -> if r == (["value of key:min"], ["value of key:max"]) then ok else "value does not match") result |> otherOutcome
+    ]
+
+
+
+validP1FindOutcomeByKeyTupleForOutcomeWithFirstNone: (String, String) -> ( String, String )
+validP1FindOutcomeByKeyTupleForOutcomeWithFirstNone value =
+    value
+
+validP2FindOutcomeByKeyTupleForOutcomeWithFirstNone: List String -> List Model
+validP2FindOutcomeByKeyTupleForOutcomeWithFirstNone list =
+    List.map attr2 list ++ [defaultAttributeModel, attr2 "key:max"]
+
+summarizeFindOutcomeByKeyTupleForOutcomeWithFirstNone: Outcome ( List String, List String ) -> List String
+summarizeFindOutcomeByKeyTupleForOutcomeWithFirstNone result =
+    [
+        if Outcome.isNone result then ok else "unexpected oucome"
         , ok
     ]

@@ -84,5 +84,22 @@ suite =
                     |> summarizeFindOutcomeByKeyForNoneOutcome
                     |> Expect.equal ok2
 
+            ]            , 
+            describe "findOutcomeByKeyTuple"
+            [
+
+               fuzz2 fuzzyV1FindOutcomeByKeyTuple fuzzyV2FindOutcomeByKeyTuple "findOutcomeByKeyTuple should return valid outcome" <|
+                \v1 v2 ->
+                    Attribute.findOutcomeByKeyTuple (validP1FindOutcomeByKeyTupleForValidOutcome v1) (validP2FindOutcomeByKeyTupleForValidOutcome v2)
+                    |> summarizeFindOutcomeByKeyTupleForValidOutcome
+                    |> Expect.equal ok2
+
+            ,
+               fuzz2 fuzzyV1FindOutcomeByKeyTuple fuzzyV2FindOutcomeByKeyTuple "findOutcomeByKeyTuple should return outcome with first none" <|
+                \v1 v2 ->
+                    Attribute.findOutcomeByKeyTuple (validP1FindOutcomeByKeyTupleForOutcomeWithFirstNone v1) (validP2FindOutcomeByKeyTupleForOutcomeWithFirstNone v2)
+                    |> summarizeFindOutcomeByKeyTupleForOutcomeWithFirstNone
+                    |> Expect.equal ok2
+
             ]
         ]
