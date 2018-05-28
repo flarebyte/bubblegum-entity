@@ -41,6 +41,8 @@ unitTestValid3 = """
                     |> Expect.equal ${ok}
 """
 
+unitTestValid = ["", unitTestValid2, unitTestValid3]
+
 unitTestDataHeader2 = """
 -- ${name}
 fuzzyV1${nameU} : Fuzzer String -- should produce ${paramType0}
@@ -62,6 +64,7 @@ fuzzyV3${nameU} : Fuzzer String -- should produce ${paramType2}
 fuzzyV3${nameU} = string 
  
 """
+unitTestDataHeader=["", unitTestDataHeader2, unitTestDataHeader3]
 
 unitTestDataState2 = """
 validP1${nameU}For${stateU}: String -> ${paramType0}
@@ -99,3 +102,5 @@ summarize${nameU}For${stateU} result =
         , ok
     ]
 """
+
+unitTestDataState = ["", unitTestDataState2, unitTestDataState3]

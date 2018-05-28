@@ -48,15 +48,16 @@ def createTests(packageName, moduleName, meta):
         methodName = method["name"]
         if methodName not in testableFunctions:
             continue
+        numberOfParams = len(method["params"]) -1
         content = []
         shouldUpdateTest = not ("-- {methodName}".format(methodName=methodName)) in existingTestDataContent
         if shouldUpdateTest:
-            print(formatMethodTemplate(unitTestDataHeader2, method, moduleName))
+            print(formatMethodTemplate(unitTestDataHeader[numberOfParams], method, moduleName))
         methodContent += formatMethodTemplate(unitTestHeader, method, moduleName)  
         for state in meta[methodName]["states"]:
-            content.append(formatMethodTemplate(unitTestValid2, method, moduleName, state, meta[methodName]))
+            content.append(formatMethodTemplate(unitTestValid[numberOfParams], method, moduleName, state, meta[methodName]))
             if shouldUpdateTest:
-                print(formatMethodTemplate(unitTestDataState2, method, moduleName, state, meta[methodName]))
+                print(formatMethodTemplate(unitTestDataState[numberOfParams], method, moduleName, state, meta[methodName]))
         methodContent += ("\n            ,".join(content))
         methodContent += ("\n            ]")
         wholeContent.append(methodContent)
