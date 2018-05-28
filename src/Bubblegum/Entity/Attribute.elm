@@ -23,7 +23,7 @@ module Bubblegum.Entity.Attribute
 
 # Attribute
 
-@docs findAttributeByKey, findAttributeFirstValueByKey, replaceAttributeByKey
+@docs findAttributeByKey, findAttributeFirstValueByKey, replaceAttributeByKey, deleteAttributeByKey
 
 
 # Outcome

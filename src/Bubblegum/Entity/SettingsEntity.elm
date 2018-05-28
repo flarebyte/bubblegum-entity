@@ -15,11 +15,13 @@ type alias Model =
     { attributes : List Attribute.Model
     }
 
+
 {-| Assign attributes to an entity
 -}
 setAttributes : List Attribute.Model -> Model -> Model
 setAttributes attributes model =
     { model | attributes = attributes }
+
 
 {-| Assign attributes to an entity
 -}

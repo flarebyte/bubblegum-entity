@@ -6,7 +6,6 @@ module Bubblegum.Entity.StateEntity exposing (Model, asAttributesIn, setAttribut
 
 -}
 
-
 import Bubblegum.Entity.Attribute as Attribute
 
 
