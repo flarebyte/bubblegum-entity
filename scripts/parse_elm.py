@@ -13,9 +13,29 @@ def getMethodNames(lines):
 def stripStringList(list):
     return [i.strip() for i in list]   
 
+def replaceArrowWithinParenthesis(text):
+    r = ""
+    inParen = False
+    for letter in text:
+        if letter == "(":
+           inParen = True
+        if letter == ")": 
+           inParen = False
+        if inParen and letter == "-":
+            letter = ""
+        if inParen and letter == ">":
+            letter = "@"
+        r += letter
+    return r
+
+def parseParams(signature):
+    noArrow = replaceArrowWithinParenthesis(signature)
+    params = stripStringList(noArrow.split("->"))
+    return [a.replace('@','->') for a in params]
+
 def parseMethodSignature(lines, line):
     methodName, signature = line.split(":", 2)
-    signParams = stripStringList(signature.split("->"))
+    signParams = parseParams(signature)
     paramTypes = signParams[:-1]
     paramNames = stripStringList(findParameterNames(lines, methodName))
     params = zip(paramNames, paramTypes)
