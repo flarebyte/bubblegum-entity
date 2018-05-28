@@ -2,8 +2,6 @@ module AttributeTestData exposing (..)
 
 {-| Unit tests for testing the Bubblegum.Entity.Attribute
 
-    generated
-
 -}
 import Bubblegum.Entity.Attribute as Attribute exposing(Model)
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))

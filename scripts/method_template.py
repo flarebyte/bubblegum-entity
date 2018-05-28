@@ -25,6 +25,15 @@ unitTestHeader = """
             describe "${name}"
             [
 """
+
+unitTestValid1 = """
+               fuzz fuzzyV1${nameU} "${name} should return ${state}" <|
+                \\v1 ->
+                    ${moduleName}.${name} (validP1${nameU}For${stateU} v1)
+                    |> summarize${nameU}For${stateU}
+                    |> Expect.equal ${ok}
+"""
+
 unitTestValid2 = """
                fuzz2 fuzzyV1${nameU} fuzzyV2${nameU} "${name} should return ${state}" <|
                 \\v1 v2 ->
@@ -41,7 +50,13 @@ unitTestValid3 = """
                     |> Expect.equal ${ok}
 """
 
-unitTestValid = ["", unitTestValid2, unitTestValid3]
+unitTestValid = [unitTestValid1, unitTestValid2, unitTestValid3]
+
+unitTestDataHeader1 = """
+-- ${name}
+fuzzyV1${nameU} : Fuzzer String -- should produce ${paramType0}
+fuzzyV1${nameU} = string 
+"""
 
 unitTestDataHeader2 = """
 -- ${name}
@@ -64,7 +79,20 @@ fuzzyV3${nameU} : Fuzzer String -- should produce ${paramType2}
 fuzzyV3${nameU} = string 
  
 """
-unitTestDataHeader=["", unitTestDataHeader2, unitTestDataHeader3]
+unitTestDataHeader=[unitTestDataHeader1, unitTestDataHeader2, unitTestDataHeader3]
+
+unitTestDataState1 = """
+validP1${nameU}For${stateU}: String -> ${paramType0}
+validP1${nameU}For${stateU} value =
+    value
+    
+summarize${nameU}For${stateU}: ${returned} -> List String
+summarize${nameU}For${stateU} result =
+    [
+        justOrErr "attr is missing" result.attr
+        , ok
+    ]
+"""
 
 unitTestDataState2 = """
 validP1${nameU}For${stateU}: String -> ${paramType0}
@@ -78,7 +106,8 @@ validP2${nameU}For${stateU} value =
 summarize${nameU}For${stateU}: ${returned} -> List String
 summarize${nameU}For${stateU} result =
     [
-        justOrErr/nonEmptyStringOrErr/atLeastOneStringOrErr "attr is missing" result.attr
+        justOrErr "attr is missing" result.attr
+        , ok
     ]
 """
 
@@ -103,4 +132,4 @@ summarize${nameU}For${stateU} result =
     ]
 """
 
-unitTestDataState = ["", unitTestDataState2, unitTestDataState3]
+unitTestDataState = [unitTestDataState1, unitTestDataState2, unitTestDataState3]
