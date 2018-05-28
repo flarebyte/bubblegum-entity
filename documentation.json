@@ -1,31 +1,5 @@
 [
   {
-    "name": "Bubblegum.Entity.SettingsEntity",
-    "comment": " A settings entity represents some configuration that could be applied to a widget\n\n@docs Model, setAttributes, asAttributesIn\n\n",
-    "aliases": [
-      {
-        "name": "Model",
-        "comment": " The core representation of settings entity is mostly a list of attributes.\n",
-        "args": [],
-        "type": "{ attributes : List Bubblegum.Entity.Attribute.Model }"
-      }
-    ],
-    "types": [],
-    "values": [
-      {
-        "name": "asAttributesIn",
-        "comment": " Assign attributes to an entity\n",
-        "type": "Bubblegum.Entity.SettingsEntity.Model -> List Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.SettingsEntity.Model"
-      },
-      {
-        "name": "setAttributes",
-        "comment": " Assign attributes to an entity\n",
-        "type": "List Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.SettingsEntity.Model -> Bubblegum.Entity.SettingsEntity.Model"
-      }
-    ],
-    "generated-with-elm-version": "0.18.0"
-  },
-  {
     "name": "Bubblegum.Entity.StateEntity",
     "comment": " A state entity represents the state that could be applied to a widget\n\n@docs Model, setAttributes, asAttributesIn\n\n",
     "aliases": [
@@ -52,8 +26,53 @@
     "generated-with-elm-version": "0.18.0"
   },
   {
+    "name": "Bubblegum.Entity.SettingsEntity",
+    "comment": " A settings entity represents some configuration that could be applied to a widget\n\n@docs Model, setAttributes, asAttributesIn\n\n",
+    "aliases": [
+      {
+        "name": "Model",
+        "comment": " The core representation of settings entity is mostly a list of attributes.\n",
+        "args": [],
+        "type": "{ attributes : List Bubblegum.Entity.Attribute.Model }"
+      }
+    ],
+    "types": [],
+    "values": [
+      {
+        "name": "asAttributesIn",
+        "comment": " Assign attributes to an entity\n",
+        "type": "Bubblegum.Entity.SettingsEntity.Model -> List Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.SettingsEntity.Model"
+      },
+      {
+        "name": "setAttributes",
+        "comment": " Assign attributes to an entity\n",
+        "type": "List Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.SettingsEntity.Model -> Bubblegum.Entity.SettingsEntity.Model"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  },
+  {
+    "name": "Bubblegum.Entity.Transformation",
+    "comment": " List of functions that can applied to an Outcome\n\n@docs addStringPrefix, addStringSuffix\n\n",
+    "aliases": [],
+    "types": [],
+    "values": [
+      {
+        "name": "addStringPrefix",
+        "comment": " Apply a string prefix to an outcome\n",
+        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "addStringSuffix",
+        "comment": " Apply a string suffix to an outcome\n",
+        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  },
+  {
     "name": "Bubblegum.Entity.Validation",
-    "comment": " List of validations with implicit transformations that can be applied to an outcome\n\nFor most validations:\n\n  - None will propagate as None.\n  - A failure to validate the outcome will produce a Warning.\n\n\n## Simple conversions\n\n@docs asSingle, asTuple, asBool, asFloat, asInt, asFloatTuple, asIntTuple, asUnique\n\n\n## Range validations\n\n@docs asIntRange, asFloatRange, withinIntRange, withinFloatRange, withinIntRange, withinFloatRange\n\n\n## List validations\n\n@docs listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan\n\n\n## String validations\n\n@docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith\n\n\n## Other\n\n@docs withinListStringCharsRange, withinStringCharsRange\n\n",
+    "comment": " List of validations with implicit transformations that can be applied to an outcome\n\nFor most validations:\n\n  - None will propagate as None.\n  - Warning will propagate as Warning.\n  - A failure to validate the outcome will produce a Warning.\n\n\n## Simple conversions\n\n@docs asSingle, asTuple, asBool, asFloat, asInt, asFloatTuple, asIntTuple, asUnique\n\n\n## Range validations\n\n@docs asIntRange, asFloatRange, withinIntRange, withinFloatRange, withinIntRange, withinFloatRange\n\n\n## List validations\n\n@docs listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan\n\n\n## String validations\n\n@docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange\n\n",
     "aliases": [],
     "types": [],
     "values": [
@@ -191,25 +210,6 @@
         "name": "withinStringCharsRange",
         "comment": " Check that a string number of characters is within a range otherwise raise a warning\nValid \"abcd\" |> withinStringCharsRange (2, 7) -- Valid \"abcd\"\n",
         "type": "( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      }
-    ],
-    "generated-with-elm-version": "0.18.0"
-  },
-  {
-    "name": "Bubblegum.Entity.Transformation",
-    "comment": " List of functions that can applied to an Outcome\n\n@docs addStringPrefix, addStringSuffix\n\n",
-    "aliases": [],
-    "types": [],
-    "values": [
-      {
-        "name": "addStringPrefix",
-        "comment": " Apply a string prefix to an outcome\n",
-        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "addStringSuffix",
-        "comment": " Apply a string suffix to an outcome\n",
-        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
       }
     ],
     "generated-with-elm-version": "0.18.0"

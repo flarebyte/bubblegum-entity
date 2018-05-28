@@ -34,6 +34,7 @@ module Bubblegum.Entity.Validation
 For most validations:
 
   - None will propagate as None.
+  - Warning will propagate as Warning.
   - A failure to validate the outcome will produce a Warning.
 
 
@@ -54,12 +55,7 @@ For most validations:
 
 ## String validations
 
-@docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith
-
-
-## Other
-
-@docs withinListStringCharsRange, withinStringCharsRange
+@docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange
 
 -}
 
