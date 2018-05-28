@@ -405,3 +405,42 @@ summarizeTrueMapToConstantForFalse result =
         expectNone result
         , ok
     ]
+
+-- or
+fuzzyV1Or : Fuzzer String -- should produce Outcome a
+fuzzyV1Or = string
+
+fuzzyV2Or : Fuzzer String -- should produce Outcome a
+fuzzyV2Or = string
+
+
+validP1OrForFirst: String -> Outcome String -- about ma
+validP1OrForFirst value =
+    Valid ("first" ++ value)
+
+validP2OrForFirst: String -> Outcome String -- about mb
+validP2OrForFirst value =
+    None
+
+summarizeOrForFirst: Outcome String -> List String
+summarizeOrForFirst result =
+    [
+        expectValid result
+        , expectValidOutcomeRegex "first" result
+    ]
+
+
+validP1OrForSecond: String -> Outcome String -- about ma
+validP1OrForSecond value =
+    None
+
+validP2OrForSecond: String -> Outcome String -- about mb
+validP2OrForSecond value =
+    Valid ("second" ++ value)
+
+summarizeOrForSecond: Outcome String -> List String
+summarizeOrForSecond result =
+    [
+        expectValid result
+        , expectValidOutcomeRegex "second" result
+    ]

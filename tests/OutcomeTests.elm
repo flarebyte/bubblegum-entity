@@ -153,5 +153,22 @@ suite =
                     |> summarizeTrueMapToConstantForFalse
                     |> Expect.equal ok2
 
+            ]            , 
+            describe "or"
+            [
+
+               fuzz2 fuzzyV1Or fuzzyV2Or "or should return first" <|
+                \v1 v2 ->
+                    Outcome.or (validP1OrForFirst v1) (validP2OrForFirst v2)
+                    |> summarizeOrForFirst
+                    |> Expect.equal ok2
+
+            ,
+               fuzz2 fuzzyV1Or fuzzyV2Or "or should return second" <|
+                \v1 v2 ->
+                    Outcome.or (validP1OrForSecond v1) (validP2OrForSecond v2)
+                    |> summarizeOrForSecond
+                    |> Expect.equal ok2
+
             ]
         ]
