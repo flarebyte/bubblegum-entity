@@ -311,3 +311,58 @@ summarizeCheckForCheckFailed result =
         expectWarning result
         , expectWarningOutcomeRegex "warn" result
     ]
+
+-- checkOrNone
+fuzzyV1CheckOrNone : Fuzzer String -- should produce (a -> Bool)
+fuzzyV1CheckOrNone = string
+
+fuzzyV2CheckOrNone : Fuzzer String -- should produce Outcome a
+fuzzyV2CheckOrNone = string
+
+
+validP1CheckOrNoneForValid: String -> (String -> Bool) -- about checker
+validP1CheckOrNoneForValid value =
+    isNotEmpty
+
+validP2CheckOrNoneForValid: String -> Outcome String -- about ra
+validP2CheckOrNoneForValid value =
+    Valid ("A" ++ value)
+
+summarizeCheckOrNoneForValid: Outcome String -> List String
+summarizeCheckOrNoneForValid result =
+    [
+         expectValid result
+        , expectValidOutcomeRegex "[A-Za-z]+" result
+    ]
+
+
+validP1CheckOrNoneForCheckFailed: String -> (String -> Bool) -- about checker
+validP1CheckOrNoneForCheckFailed value =
+    String.isEmpty
+
+validP2CheckOrNoneForCheckFailed: String -> Outcome String -- about ra
+validP2CheckOrNoneForCheckFailed value =
+    Valid ("A" ++ value)
+
+summarizeCheckOrNoneForCheckFailed: Outcome String -> List String
+summarizeCheckOrNoneForCheckFailed result =
+    [
+        expectNone result
+        , ok
+    ]
+
+
+validP1CheckOrNoneForWarning: String -> (String -> Bool) -- about checker
+validP1CheckOrNoneForWarning value =
+    isNotEmpty
+
+validP2CheckOrNoneForWarning: String -> Outcome String -- about ra
+validP2CheckOrNoneForWarning value =
+    Warning ("warn" ++ value)
+
+summarizeCheckOrNoneForWarning: Outcome String -> List String
+summarizeCheckOrNoneForWarning result =
+    [
+        expectWarning result
+        , expectWarningOutcomeRegex "warn" result
+    ]

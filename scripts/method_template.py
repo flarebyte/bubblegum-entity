@@ -82,7 +82,7 @@ fuzzyV3${nameU} = string
 unitTestDataHeader=[unitTestDataHeader1, unitTestDataHeader2, unitTestDataHeader3]
 
 unitTestDataState1 = """
-validP1${nameU}For${stateU}: String -> ${paramType0}
+validP1${nameU}For${stateU}: String -> ${paramType0} -- about ${paramName0}
 validP1${nameU}For${stateU} value =
     value
     
@@ -95,11 +95,11 @@ summarize${nameU}For${stateU} result =
 """
 
 unitTestDataState2 = """
-validP1${nameU}For${stateU}: String -> ${paramType0}
+validP1${nameU}For${stateU}: String -> ${paramType0} -- about ${paramName0}
 validP1${nameU}For${stateU} value =
     value
 
-validP2${nameU}For${stateU}: String -> ${paramType1}
+validP2${nameU}For${stateU}: String -> ${paramType1} -- about ${paramName1}
 validP2${nameU}For${stateU} value =
     value
     
@@ -112,15 +112,15 @@ summarize${nameU}For${stateU} result =
 """
 
 unitTestDataState3 = """
-validP1${nameU}For${stateU}: String -> ${paramType0}
+validP1${nameU}For${stateU}: String -> ${paramType0} -- about ${paramName0}
 validP1${nameU}For${stateU} value =
     value
 
-validP2${nameU}For${stateU}: String -> ${paramType1}
+validP2${nameU}For${stateU}: String -> ${paramType1} -- about ${paramName1}
 validP2${nameU}For${stateU} value =
     value
 
-validP3${nameU}For${stateU}: String -> ${paramType2}
+validP3${nameU}For${stateU}: String -> ${paramType2} -- -- about ${paramName2}
 validP3${nameU}For${stateU} value =
     value
     

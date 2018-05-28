@@ -112,5 +112,29 @@ suite =
                     |> summarizeCheckForCheckFailed
                     |> Expect.equal ok2
 
+            ]            , 
+            describe "checkOrNone"
+            [
+
+               fuzz2 fuzzyV1CheckOrNone fuzzyV2CheckOrNone "checkOrNone should return valid" <|
+                \v1 v2 ->
+                    Outcome.checkOrNone (validP1CheckOrNoneForValid v1) (validP2CheckOrNoneForValid v2)
+                    |> summarizeCheckOrNoneForValid
+                    |> Expect.equal ok2
+
+            ,
+               fuzz2 fuzzyV1CheckOrNone fuzzyV2CheckOrNone "checkOrNone should return check failed" <|
+                \v1 v2 ->
+                    Outcome.checkOrNone (validP1CheckOrNoneForCheckFailed v1) (validP2CheckOrNoneForCheckFailed v2)
+                    |> summarizeCheckOrNoneForCheckFailed
+                    |> Expect.equal ok2
+
+            ,
+               fuzz2 fuzzyV1CheckOrNone fuzzyV2CheckOrNone "checkOrNone should return warning" <|
+                \v1 v2 ->
+                    Outcome.checkOrNone (validP1CheckOrNoneForWarning v1) (validP2CheckOrNoneForWarning v2)
+                    |> summarizeCheckOrNoneForWarning
+                    |> Expect.equal ok2
+
             ]
         ]
