@@ -154,3 +154,42 @@ summarizeFindOutcomeByKeyForNoneOutcome result =
         if Outcome.isNone result then ok else "unexpected oucome"
         , ok
     ]
+
+-- deleteAttributeByKey
+fuzzyV1DeleteAttributeByKey : Fuzzer String -- should produce String
+fuzzyV1DeleteAttributeByKey = constant "key:default"
+
+fuzzyV2DeleteAttributeByKey : Fuzzer (List String) -- should produce  List Model
+fuzzyV2DeleteAttributeByKey = list string
+
+
+validP1DeleteAttributeByKeyForList: String -> String
+validP1DeleteAttributeByKeyForList value =
+    value
+
+validP2DeleteAttributeByKeyForList: List String -> List Model
+validP2DeleteAttributeByKeyForList list =
+    List.map attr2 list ++ [defaultAttributeModel] ++ [attr "key:alpha" "alpha"]
+
+summarizeDeleteAttributeByKeyForList: List Model -> List String
+summarizeDeleteAttributeByKeyForList result =
+    [
+        expectNotEmptyList result
+        , List.map .key result |> withoutStringInListMatching "key:default"
+    ]
+
+
+validP1DeleteAttributeByKeyForEmptyList: String -> String
+validP1DeleteAttributeByKeyForEmptyList value =
+    value
+
+validP2DeleteAttributeByKeyForEmptyList: List String -> List Model
+validP2DeleteAttributeByKeyForEmptyList list =
+    [defaultAttributeModel]
+
+summarizeDeleteAttributeByKeyForEmptyList: List Model -> List String
+summarizeDeleteAttributeByKeyForEmptyList result =
+    [
+        expectEmptyList result
+        , ok
+    ]

@@ -75,6 +75,9 @@ findAttributeByKey key attributes =
             else
                 findAttributeByKey key rest
 
+deleteAttributeByKey : String -> List Model -> List Model
+deleteAttributeByKey key attributes =
+    List.filter (\attr -> attr.key /= key) attributes
 
 findAttributeFirstValueByKey : String -> List Model -> Maybe String
 findAttributeFirstValueByKey key attributes =
@@ -104,11 +107,6 @@ findOutcomeByKeyTuple tuple attributes =
             Maybe.map2 createTuple a b
     in
     Outcome.fromMaybe ab
-
-
-deleteAttributeByKey : String -> List Model -> List Model
-deleteAttributeByKey key attributes =
-    List.filter (\attr -> attr.key /= key) attributes
 
 
 replaceAttributeByKey : String -> List String -> List Model -> List Model

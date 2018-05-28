@@ -49,10 +49,29 @@ atLeastOneStringOrErr err list =
     else
         List.head list |> Maybe.withDefault "" |> nonEmptyStringOrErr err
 
+withStringInListMatching: String -> List String -> String
+withStringInListMatching search list =
+    if (List.member search list) then ok else "list should contain " ++ search
+
+
+withoutStringInListMatching: String -> List String -> String
+withoutStringInListMatching search list =
+    if (List.member search list) then "list should not contain " ++ search else ok
+
 expectNoResult : Maybe a -> String
 expectNoResult result = 
     nothingOrErr "should not get any result" result
 
 expectResult : Maybe a -> String
 expectResult result = 
-    justOrErr "result is missing" result    
+    justOrErr "result is missing" result
+
+expectEmptyList : List a -> String
+expectEmptyList list = 
+    if List.isEmpty list then ok else "list should be empty"
+
+expectNotEmptyList : List a -> String
+expectNotEmptyList list = 
+    if List.isEmpty list then "list should be not empty" else ok
+    
+        

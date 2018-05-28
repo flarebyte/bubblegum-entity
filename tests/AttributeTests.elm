@@ -20,31 +20,48 @@ suite =
             describe "findAttributeByKey"
             [
 
-               fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return just model when testing key" <|
+               fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return just model" <|
                 \v1 v2 ->
                     Attribute.findAttributeByKey (validP1FindAttributeByKeyForJustModel v1) (validP2FindAttributeByKeyForJustModel v2)
                     |> summarizeFindAttributeByKeyForJustModel
                     |> Expect.equal ok2
 
             ,
-               fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return nothing when testing key" <|
+               fuzz2 fuzzyV1FindAttributeByKey fuzzyV2FindAttributeByKey "findAttributeByKey should return nothing" <|
                 \v1 v2 ->
                     Attribute.findAttributeByKey (validP1FindAttributeByKeyForNothing v1) (validP2FindAttributeByKeyForNothing v2)
                     |> summarizeFindAttributeByKeyForNothing
                     |> Expect.equal ok2
 
             ]            , 
+            describe "deleteAttributeByKey"
+            [
+
+               fuzz2 fuzzyV1DeleteAttributeByKey fuzzyV2DeleteAttributeByKey "deleteAttributeByKey should return list" <|
+                \v1 v2 ->
+                    Attribute.deleteAttributeByKey (validP1DeleteAttributeByKeyForList v1) (validP2DeleteAttributeByKeyForList v2)
+                    |> summarizeDeleteAttributeByKeyForList
+                    |> Expect.equal ok2
+
+            ,
+               fuzz2 fuzzyV1DeleteAttributeByKey fuzzyV2DeleteAttributeByKey "deleteAttributeByKey should return empty list" <|
+                \v1 v2 ->
+                    Attribute.deleteAttributeByKey (validP1DeleteAttributeByKeyForEmptyList v1) (validP2DeleteAttributeByKeyForEmptyList v2)
+                    |> summarizeDeleteAttributeByKeyForEmptyList
+                    |> Expect.equal ok2
+
+            ]            , 
             describe "findAttributeFirstValueByKey"
             [
 
-               fuzz2 fuzzyV1FindAttributeFirstValueByKey fuzzyV2FindAttributeFirstValueByKey "findAttributeFirstValueByKey should return just string when testing key" <|
+               fuzz2 fuzzyV1FindAttributeFirstValueByKey fuzzyV2FindAttributeFirstValueByKey "findAttributeFirstValueByKey should return just string" <|
                 \v1 v2 ->
                     Attribute.findAttributeFirstValueByKey (validP1FindAttributeFirstValueByKeyForJustString v1) (validP2FindAttributeFirstValueByKeyForJustString v2)
                     |> summarizeFindAttributeFirstValueByKeyForJustString
                     |> Expect.equal ok2
 
             ,
-               fuzz2 fuzzyV1FindAttributeFirstValueByKey fuzzyV2FindAttributeFirstValueByKey "findAttributeFirstValueByKey should return nothing when testing key" <|
+               fuzz2 fuzzyV1FindAttributeFirstValueByKey fuzzyV2FindAttributeFirstValueByKey "findAttributeFirstValueByKey should return nothing" <|
                 \v1 v2 ->
                     Attribute.findAttributeFirstValueByKey (validP1FindAttributeFirstValueByKeyForNothing v1) (validP2FindAttributeFirstValueByKeyForNothing v2)
                     |> summarizeFindAttributeFirstValueByKeyForNothing
@@ -54,14 +71,14 @@ suite =
             describe "findOutcomeByKey"
             [
 
-               fuzz2 fuzzyV1FindOutcomeByKey fuzzyV2FindOutcomeByKey "findOutcomeByKey should return valid outcome when testing key" <|
+               fuzz2 fuzzyV1FindOutcomeByKey fuzzyV2FindOutcomeByKey "findOutcomeByKey should return valid outcome" <|
                 \v1 v2 ->
                     Attribute.findOutcomeByKey (validP1FindOutcomeByKeyForValidOutcome v1) (validP2FindOutcomeByKeyForValidOutcome v2)
                     |> summarizeFindOutcomeByKeyForValidOutcome
                     |> Expect.equal ok2
 
             ,
-               fuzz2 fuzzyV1FindOutcomeByKey fuzzyV2FindOutcomeByKey "findOutcomeByKey should return none outcome when testing key" <|
+               fuzz2 fuzzyV1FindOutcomeByKey fuzzyV2FindOutcomeByKey "findOutcomeByKey should return none outcome" <|
                 \v1 v2 ->
                     Attribute.findOutcomeByKey (validP1FindOutcomeByKeyForNoneOutcome v1) (validP2FindOutcomeByKeyForNoneOutcome v2)
                     |> summarizeFindOutcomeByKeyForNoneOutcome

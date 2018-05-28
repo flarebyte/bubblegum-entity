@@ -26,7 +26,7 @@ unitTestHeader2 = """
             [
 """
 unitTestValid2 = """
-               fuzz2 fuzzyV1${nameU} fuzzyV2${nameU} "${name} should return ${state} when testing ${paramName0}" <|
+               fuzz2 fuzzyV1${nameU} fuzzyV2${nameU} "${name} should return ${state}" <|
                 \\v1 v2 ->
                     ${moduleName}.${name} (validP1${nameU}For${stateU} v1) (validP2${nameU}For${stateU} v2)
                     |> summarize${nameU}For${stateU}
