@@ -101,5 +101,22 @@ suite =
                     |> summarizeFindOutcomeByKeyTupleForOutcomeWithFirstNone
                     |> Expect.equal ok2
 
+            ]            , 
+            describe "replaceAttributeByKey"
+            [
+
+               fuzz3 fuzzyV1ReplaceAttributeByKey fuzzyV2ReplaceAttributeByKey fuzzyV3ReplaceAttributeByKey "replaceAttributeByKey should return list" <|
+                \v1 v2 v3->
+                    Attribute.replaceAttributeByKey (validP1ReplaceAttributeByKeyForList v1) (validP2ReplaceAttributeByKeyForList v2) (validP3ReplaceAttributeByKeyForList v3)
+                    |> summarizeReplaceAttributeByKeyForList
+                    |> Expect.equal ok2
+
+            ,
+               fuzz3 fuzzyV1ReplaceAttributeByKey fuzzyV2ReplaceAttributeByKey fuzzyV3ReplaceAttributeByKey "replaceAttributeByKey should return empty list" <|
+                \v1 v2 v3->
+                    Attribute.replaceAttributeByKey (validP1ReplaceAttributeByKeyForEmptyList v1) (validP2ReplaceAttributeByKeyForEmptyList v2) (validP3ReplaceAttributeByKeyForEmptyList v3)
+                    |> summarizeReplaceAttributeByKeyForEmptyList
+                    |> Expect.equal ok2
+
             ]
         ]

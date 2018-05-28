@@ -233,3 +233,53 @@ summarizeFindOutcomeByKeyTupleForOutcomeWithFirstNone result =
         if Outcome.isNone result then ok else "unexpected oucome"
         , ok
     ]
+
+-- replaceAttributeByKey
+fuzzyV1ReplaceAttributeByKey : Fuzzer String -- should produce String
+fuzzyV1ReplaceAttributeByKey = constant "key:default"
+
+fuzzyV2ReplaceAttributeByKey : Fuzzer (List String) -- should produce List String
+fuzzyV2ReplaceAttributeByKey = constant ["alpha", "beta", "charlie"]
+
+fuzzyV3ReplaceAttributeByKey : Fuzzer (List String) -- should produce List Model
+fuzzyV3ReplaceAttributeByKey = list string
+
+
+
+validP1ReplaceAttributeByKeyForList: String -> String
+validP1ReplaceAttributeByKeyForList value =
+    value
+
+validP2ReplaceAttributeByKeyForList: List String -> List String
+validP2ReplaceAttributeByKeyForList value =
+    value
+
+validP3ReplaceAttributeByKeyForList: List String -> List Model
+validP3ReplaceAttributeByKeyForList list =
+    List.map attr2 list ++ [defaultAttributeModel]
+
+summarizeReplaceAttributeByKeyForList: List Model -> List String
+summarizeReplaceAttributeByKeyForList result =
+    [
+        expectNotEmptyList result
+        , List.filter (\r ->r.key == "key:default" && r.values == ["alpha", "beta", "charlie"]) result |> expectNotEmptyList
+    ]
+
+validP1ReplaceAttributeByKeyForEmptyList: String -> String
+validP1ReplaceAttributeByKeyForEmptyList value =
+    value
+
+validP2ReplaceAttributeByKeyForEmptyList: List String -> List String
+validP2ReplaceAttributeByKeyForEmptyList value =
+    value
+
+validP3ReplaceAttributeByKeyForEmptyList: List String -> List Model
+validP3ReplaceAttributeByKeyForEmptyList value =
+    []
+
+summarizeReplaceAttributeByKeyForEmptyList: List Model -> List String
+summarizeReplaceAttributeByKeyForEmptyList result =
+    [
+        expectNotEmptyList result
+        , List.filter (\r ->r.key == "key:default" && r.values == ["alpha", "beta", "charlie"]) result |> expectNotEmptyList
+    ]

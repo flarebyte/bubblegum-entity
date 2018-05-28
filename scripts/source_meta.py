@@ -11,5 +11,6 @@ metaAttribute = {
     'findAttributeFirstValueByKey': setMeta(2, ["just string", "nothing"]),
     'findOutcomeByKey': setMeta(2, ["valid outcome", "none outcome"]),
     'findOutcomeByKeyTuple': setMeta(2, ["valid outcome", "outcome with first none"]),
-    'deleteAttributeByKey': setMeta(2, ["list", "empty list"])
+    'deleteAttributeByKey': setMeta(2, ["list", "empty list"]),
+    'replaceAttributeByKey': setMeta(2, ["list", "empty list"])
     }
