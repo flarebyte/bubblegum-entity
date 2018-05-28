@@ -52,7 +52,7 @@ def createTests(packageName, moduleName, meta):
         shouldUpdateTest = not ("-- {methodName}".format(methodName=methodName)) in existingTestDataContent
         if shouldUpdateTest:
             print(formatMethodTemplate(unitTestDataHeader2, method, moduleName))
-        methodContent += formatMethodTemplate(unitTestHeader2, method, moduleName)  
+        methodContent += formatMethodTemplate(unitTestHeader, method, moduleName)  
         for state in meta[methodName]["states"]:
             content.append(formatMethodTemplate(unitTestValid2, method, moduleName, state, meta[methodName]))
             if shouldUpdateTest:
