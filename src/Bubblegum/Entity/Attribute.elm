@@ -13,7 +13,7 @@ module Bubblegum.Entity.Attribute
         , setValues
         )
 
-{-| Setting key
+{-| An attribute represents a small piece of information such as a [Semantic triple](https://en.wikipedia.org/wiki/Semantic_triple).
 
 
 # Model setters
@@ -21,9 +21,13 @@ module Bubblegum.Entity.Attribute
 @docs Model, setId, setKey, setValues, setFacets
 
 
-# Attributes
+# Attribute
 
 @docs findAttributeByKey, findAttributeFirstValueByKey, replaceAttributeByKey
+
+# Outcome
+
+@docs findOutcomeByKey, findOutcomeByKeyTuple
 
 -}
 
@@ -39,6 +43,11 @@ import Tuple exposing (first, second)
   - values: a list of string values
   - facets: an optional list of tags to mark the data (ex: [min])
 
+  When representing a RDF triple:
+
+  - subject: should be represented by id
+  - predicate: should be represented by key
+  - object: should be represented by values
 -}
 type alias Model =
     { id : Maybe String
