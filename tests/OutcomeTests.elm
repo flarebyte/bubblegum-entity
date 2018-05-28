@@ -170,5 +170,39 @@ suite =
                     |> summarizeOrForSecond
                     |> Expect.equal ok2
 
+            ]            , 
+            describe "fromMaybe"
+            [
+
+               fuzz fuzzyV1FromMaybe "fromMaybe should return valid" <|
+                \v1 ->
+                    Outcome.fromMaybe (validP1FromMaybeForValid v1)
+                    |> summarizeFromMaybeForValid
+                    |> Expect.equal ok2
+
+            ,
+               fuzz fuzzyV1FromMaybe "fromMaybe should return none" <|
+                \v1 ->
+                    Outcome.fromMaybe (validP1FromMaybeForNone v1)
+                    |> summarizeFromMaybeForNone
+                    |> Expect.equal ok2
+
+            ]            , 
+            describe "toMaybe"
+            [
+
+               fuzz fuzzyV1ToMaybe "toMaybe should return just" <|
+                \v1 ->
+                    Outcome.toMaybe (validP1ToMaybeForJust v1)
+                    |> summarizeToMaybeForJust
+                    |> Expect.equal ok1
+
+            ,
+               fuzz fuzzyV1ToMaybe "toMaybe should return nothing" <|
+                \v1 ->
+                    Outcome.toMaybe (validP1ToMaybeForNothing v1)
+                    |> summarizeToMaybeForNothing
+                    |> Expect.equal ok1
+
             ]
         ]

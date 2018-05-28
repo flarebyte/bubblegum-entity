@@ -25,6 +25,7 @@ module Bubblegum.Entity.Attribute
 
 @docs findAttributeByKey, findAttributeFirstValueByKey, replaceAttributeByKey
 
+
 # Outcome
 
 @docs findOutcomeByKey, findOutcomeByKeyTuple
@@ -43,11 +44,12 @@ import Tuple exposing (first, second)
   - values: a list of string values
   - facets: an optional list of tags to mark the data (ex: [min])
 
-  When representing a RDF triple:
+When representing a RDF triple:
 
   - subject: should be represented by id
   - predicate: should be represented by key
   - object: should be represented by values
+
 -}
 type alias Model =
     { id : Maybe String

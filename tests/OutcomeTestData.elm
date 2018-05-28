@@ -444,3 +444,56 @@ summarizeOrForSecond result =
         expectValid result
         , expectValidOutcomeRegex "second" result
     ]
+
+-- fromMaybe
+fuzzyV1FromMaybe : Fuzzer String -- should produce Maybe a
+fuzzyV1FromMaybe = string
+
+
+validP1FromMaybeForValid: String -> Maybe String -- about maybe
+validP1FromMaybeForValid value =
+    Just ("good" ++ value)
+
+summarizeFromMaybeForValid: Outcome String -> List String
+summarizeFromMaybeForValid result =
+    [
+        expectValid result
+        , expectValidOutcomeRegex "good" result
+    ]
+
+
+validP1FromMaybeForNone: String -> Maybe String -- about maybe
+validP1FromMaybeForNone value =
+    Nothing
+
+summarizeFromMaybeForNone: Outcome String -> List String
+summarizeFromMaybeForNone result =
+    [
+        expectNone result
+        , ok
+    ]
+
+-- toMaybe
+fuzzyV1ToMaybe : Fuzzer String -- should produce Outcome a
+fuzzyV1ToMaybe = string
+
+
+validP1ToMaybeForJust: String -> Outcome String -- about outcome
+validP1ToMaybeForJust value =
+    Valid value
+
+summarizeToMaybeForJust: Maybe String -> List String
+summarizeToMaybeForJust result =
+    [
+        justOrErr "valid string missing" result
+    ]
+
+validP1ToMaybeForNothing: String -> Outcome String -- about outcome
+validP1ToMaybeForNothing value =
+    None
+
+summarizeToMaybeForNothing: Maybe String -> List String
+summarizeToMaybeForNothing result =
+    [
+        nothingOrErr "should be nothing" result
+    ]
