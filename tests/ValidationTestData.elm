@@ -306,3 +306,75 @@ summarizeMatchCompactUriForInvalid result =
     [
         expectWarning result
     ]
+
+-- stringStartsWith
+fuzzyV1StringStartsWith : Fuzzer Int -- should produce String
+fuzzyV1StringStartsWith = intRange 3 5
+
+fuzzyV2StringStartsWith : Fuzzer String -- should produce Outcome String
+fuzzyV2StringStartsWith = string
+
+
+validP1StringStartsWithForValid: Int -> String -- about prefix
+validP1StringStartsWithForValid value =
+    String.repeat value "AB"
+
+validP2StringStartsWithForValid: String -> Outcome String -- about outcome
+validP2StringStartsWithForValid value =
+    Valid (String.repeat 7 "AB" ++ value)
+
+summarizeStringStartsWithForValid: Outcome String -> List String
+summarizeStringStartsWithForValid result =
+    [
+        expectValid result
+    ]
+
+validP1StringStartsWithForInvalid: Int -> String -- about prefix
+validP1StringStartsWithForInvalid value =
+    String.repeat value "AB"
+
+validP2StringStartsWithForInvalid: String -> Outcome String -- about outcome
+validP2StringStartsWithForInvalid value =
+    Valid value
+
+summarizeStringStartsWithForInvalid: Outcome String -> List String
+summarizeStringStartsWithForInvalid result =
+    [
+        expectWarning result
+    ]
+
+-- withinStringCharsRange
+fuzzyV1WithinStringCharsRange : Fuzzer Int -- should produce ( Int, Int )
+fuzzyV1WithinStringCharsRange = intRange 50 100
+
+fuzzyV2WithinStringCharsRange : Fuzzer Int -- should produce Outcome String
+fuzzyV2WithinStringCharsRange = intRange 20 40
+
+
+validP1WithinStringCharsRangeForValid: Int -> ( Int, Int ) -- about range
+validP1WithinStringCharsRangeForValid value =
+    (value, value + 200)
+
+validP2WithinStringCharsRangeForValid: Int -> Outcome String -- about outcome
+validP2WithinStringCharsRangeForValid value =
+    String.repeat (value + 100) "A" |> Valid
+
+summarizeWithinStringCharsRangeForValid: Outcome String -> List String
+summarizeWithinStringCharsRangeForValid result =
+    [
+       expectValid result
+    ]
+
+validP1WithinStringCharsRangeForInvalid: Int -> ( Int, Int ) -- about range
+validP1WithinStringCharsRangeForInvalid value =
+    (value, value + 200)
+
+validP2WithinStringCharsRangeForInvalid: Int -> Outcome String -- about outcome
+validP2WithinStringCharsRangeForInvalid value =
+    String.repeat (value) "A" |> Valid
+
+summarizeWithinStringCharsRangeForInvalid: Outcome String -> List String
+summarizeWithinStringCharsRangeForInvalid result =
+    [
+        expectWarning result
+    ]

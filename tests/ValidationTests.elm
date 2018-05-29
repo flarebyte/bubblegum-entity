@@ -68,6 +68,23 @@ suite =
                     |> Expect.equal ok1
 
             ]            , 
+            describe "stringStartsWith"
+            [
+
+               fuzz2 fuzzyV1StringStartsWith fuzzyV2StringStartsWith "stringStartsWith should return valid" <|
+                \v1 v2 ->
+                    Validation.stringStartsWith (validP1StringStartsWithForValid v1) (validP2StringStartsWithForValid v2)
+                    |> summarizeStringStartsWithForValid
+                    |> Expect.equal ok1
+
+            ,
+               fuzz2 fuzzyV1StringStartsWith fuzzyV2StringStartsWith "stringStartsWith should return invalid" <|
+                \v1 v2 ->
+                    Validation.stringStartsWith (validP1StringStartsWithForInvalid v1) (validP2StringStartsWithForInvalid v2)
+                    |> summarizeStringStartsWithForInvalid
+                    |> Expect.equal ok1
+
+            ]            , 
             describe "matchAbsoluteUrl"
             [
 
@@ -167,6 +184,23 @@ suite =
                 \v1 v2 ->
                     Validation.withinFloatRange (validP1WithinFloatRangeForOutsideRange v1) (validP2WithinFloatRangeForOutsideRange v2)
                     |> summarizeWithinFloatRangeForOutsideRange
+                    |> Expect.equal ok1
+
+            ]            , 
+            describe "withinStringCharsRange"
+            [
+
+               fuzz2 fuzzyV1WithinStringCharsRange fuzzyV2WithinStringCharsRange "withinStringCharsRange should return valid" <|
+                \v1 v2 ->
+                    Validation.withinStringCharsRange (validP1WithinStringCharsRangeForValid v1) (validP2WithinStringCharsRangeForValid v2)
+                    |> summarizeWithinStringCharsRangeForValid
+                    |> Expect.equal ok1
+
+            ,
+               fuzz2 fuzzyV1WithinStringCharsRange fuzzyV2WithinStringCharsRange "withinStringCharsRange should return invalid" <|
+                \v1 v2 ->
+                    Validation.withinStringCharsRange (validP1WithinStringCharsRangeForInvalid v1) (validP2WithinStringCharsRangeForInvalid v2)
+                    |> summarizeWithinStringCharsRangeForInvalid
                     |> Expect.equal ok1
 
             ]

@@ -36,9 +36,8 @@ metaValidation = {
     'listStrictlyMoreThan': setMeta(1, ["valid", "invalid"]),
     'matchAbsoluteUrl': setMeta(1, ["valid", "invalid"]),
     'matchEnum': setMeta(1, ["valid", "invalid"]),
-    'matchCompactUri': setMeta(1, ["valid", "invalid"])
-    # 'matchEnum': setMeta(1, ["valid", "invalid"]),
-    # 'stringStartsWith': setMeta(1, ["valid", "invalid"]),
-    # 'withinListStringCharsRange': setMeta(1, ["valid", "invalid"]),
-    # 'withinStringCharsRange': setMeta(1, ["valid", "invalid"])
+    'matchCompactUri': setMeta(1, ["valid", "invalid"]),
+    'stringStartsWith': setMeta(1, ["valid", "invalid"]),
+    'withinStringCharsRange': setMeta(1, ["valid", "invalid"])
+    # 'withinListStringCharsRange': setMeta(1, ["valid", "invalid"])
     }
