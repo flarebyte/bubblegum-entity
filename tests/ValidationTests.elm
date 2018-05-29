@@ -17,6 +17,23 @@ suite =
     describe "The Validation module"
         [ 
 
+            describe "listStrictlyMoreThan"
+            [
+
+               fuzz2 fuzzyV1ListStrictlyMoreThan fuzzyV2ListStrictlyMoreThan "listStrictlyMoreThan should return valid" <|
+                \v1 v2 ->
+                    Validation.listStrictlyMoreThan (validP1ListStrictlyMoreThanForValid v1) (validP2ListStrictlyMoreThanForValid v2)
+                    |> summarizeListStrictlyMoreThanForValid
+                    |> Expect.equal ok1
+
+            ,
+               fuzz2 fuzzyV1ListStrictlyMoreThan fuzzyV2ListStrictlyMoreThan "listStrictlyMoreThan should return invalid" <|
+                \v1 v2 ->
+                    Validation.listStrictlyMoreThan (validP1ListStrictlyMoreThanForInvalid v1) (validP2ListStrictlyMoreThanForInvalid v2)
+                    |> summarizeListStrictlyMoreThanForInvalid
+                    |> Expect.equal ok1
+
+            ]            , 
             describe "listStrictlyLessThan"
             [
 
@@ -31,6 +48,57 @@ suite =
                 \v1 v2 ->
                     Validation.listStrictlyLessThan (validP1ListStrictlyLessThanForInvalid v1) (validP2ListStrictlyLessThanForInvalid v2)
                     |> summarizeListStrictlyLessThanForInvalid
+                    |> Expect.equal ok1
+
+            ]            , 
+            describe "matchEnum"
+            [
+
+               fuzz2 fuzzyV1MatchEnum fuzzyV2MatchEnum "matchEnum should return valid" <|
+                \v1 v2 ->
+                    Validation.matchEnum (validP1MatchEnumForValid v1) (validP2MatchEnumForValid v2)
+                    |> summarizeMatchEnumForValid
+                    |> Expect.equal ok1
+
+            ,
+               fuzz2 fuzzyV1MatchEnum fuzzyV2MatchEnum "matchEnum should return invalid" <|
+                \v1 v2 ->
+                    Validation.matchEnum (validP1MatchEnumForInvalid v1) (validP2MatchEnumForInvalid v2)
+                    |> summarizeMatchEnumForInvalid
+                    |> Expect.equal ok1
+
+            ]            , 
+            describe "matchAbsoluteUrl"
+            [
+
+               fuzz fuzzyV1MatchAbsoluteUrl "matchAbsoluteUrl should return valid" <|
+                \v1 ->
+                    Validation.matchAbsoluteUrl (validP1MatchAbsoluteUrlForValid v1)
+                    |> summarizeMatchAbsoluteUrlForValid
+                    |> Expect.equal ok1
+
+            ,
+               fuzz fuzzyV1MatchAbsoluteUrl "matchAbsoluteUrl should return invalid" <|
+                \v1 ->
+                    Validation.matchAbsoluteUrl (validP1MatchAbsoluteUrlForInvalid v1)
+                    |> summarizeMatchAbsoluteUrlForInvalid
+                    |> Expect.equal ok1
+
+            ]            , 
+            describe "matchCompactUri"
+            [
+
+               fuzz fuzzyV1MatchCompactUri "matchCompactUri should return valid" <|
+                \v1 ->
+                    Validation.matchCompactUri (validP1MatchCompactUriForValid v1)
+                    |> summarizeMatchCompactUriForValid
+                    |> Expect.equal ok1
+
+            ,
+               fuzz fuzzyV1MatchCompactUri "matchCompactUri should return invalid" <|
+                \v1 ->
+                    Validation.matchCompactUri (validP1MatchCompactUriForInvalid v1)
+                    |> summarizeMatchCompactUriForInvalid
                     |> Expect.equal ok1
 
             ]            , 

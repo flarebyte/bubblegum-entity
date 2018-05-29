@@ -3,7 +3,7 @@ module ValidationTestData exposing (..)
 {-| Unit tests for testing the Bubblegum.Entity.Validation
 
 -}
-import Fuzz exposing (Fuzzer, int, list, string, float, intRange, floatRange, constant, tuple)
+import Fuzz exposing (Fuzzer, int, list, string, float, intRange, floatRange, constant, tuple, oneOf)
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
 import Bubblegum.Entity.Outcome as Validation exposing (..)
 import OutcomeTestHelper exposing(..)
@@ -165,6 +165,144 @@ validP2ListStrictlyLessThanForInvalid value =
 
 summarizeListStrictlyLessThanForInvalid: Outcome (List String) -> List String
 summarizeListStrictlyLessThanForInvalid result =
+    [
+        expectWarning result
+    ]
+
+-- listStrictlyMoreThan
+fuzzyV1ListStrictlyMoreThan : Fuzzer Int -- should produce Int
+fuzzyV1ListStrictlyMoreThan = intRange 1 5
+
+fuzzyV2ListStrictlyMoreThan : Fuzzer Int -- should produce Outcome (List String)
+fuzzyV2ListStrictlyMoreThan = intRange 10 50
+
+
+validP1ListStrictlyMoreThanForValid: Int -> Int -- about size
+validP1ListStrictlyMoreThanForValid value =
+    value
+
+validP2ListStrictlyMoreThanForValid: Int -> Outcome (List String) -- about outcome
+validP2ListStrictlyMoreThanForValid value =
+    String.repeat value "a," |> String.split "," |> Valid
+
+summarizeListStrictlyMoreThanForValid: Outcome (List String) -> List String
+summarizeListStrictlyMoreThanForValid result =
+    [
+        expectValid result
+    ]
+
+validP1ListStrictlyMoreThanForInvalid: Int -> Int -- about size
+validP1ListStrictlyMoreThanForInvalid value =
+    value + 10
+
+validP2ListStrictlyMoreThanForInvalid: Int -> Outcome (List String) -- about outcome
+validP2ListStrictlyMoreThanForInvalid value =
+    String.repeat 2 "a," |> String.split "," |> Valid
+
+summarizeListStrictlyMoreThanForInvalid: Outcome (List String) -> List String
+summarizeListStrictlyMoreThanForInvalid result =
+    [
+        expectWarning result
+    ]
+
+-- matchAbsoluteUrl
+fuzzyV1MatchAbsoluteUrl : Fuzzer Int -- should produce Outcome String
+fuzzyV1MatchAbsoluteUrl = intRange 1 30
+
+
+validP1MatchAbsoluteUrlForValid: Int -> Outcome String -- about outcome
+validP1MatchAbsoluteUrlForValid value =
+   "http://a" ++ (String.repeat value "/b") |> Valid
+
+summarizeMatchAbsoluteUrlForValid: Outcome String -> List String
+summarizeMatchAbsoluteUrlForValid result =
+    [
+        expectValid result
+    ]
+
+validP1MatchAbsoluteUrlForInvalid: Int -> Outcome String -- about outcome
+validP1MatchAbsoluteUrlForInvalid value =
+    "ssh://" ++ (String.repeat value "/b") |> Valid
+
+summarizeMatchAbsoluteUrlForInvalid: Outcome String -> List String
+summarizeMatchAbsoluteUrlForInvalid result =
+    [
+        expectWarning result
+    ]
+
+-- matchEnum
+fuzzyV1MatchEnum : Fuzzer (List String) -- should produce List String
+fuzzyV1MatchEnum = oneOf [
+    constant ["alpha","bravo","charlie", "delta", "echo", "fox", "golf", "hotel", "i"]
+    , constant ["alpha","bravo","charlie", "delta", "echo", "fox", "india"]
+    , constant ["alpha","bravo","charlie", "delta", "echo", "fox", "zulu"]
+    ]
+
+fuzzyV2MatchEnum : Fuzzer String -- should produce Outcome String
+fuzzyV2MatchEnum = oneOf [
+        constant "alpha"
+        , constant "bravo"
+        , constant "charlie" 
+    ]
+
+
+validP1MatchEnumForValid: List String -> List String -- about enum
+validP1MatchEnumForValid value =
+    value
+
+validP2MatchEnumForValid: String -> Outcome String -- about outcome
+validP2MatchEnumForValid value =
+    Valid value
+
+summarizeMatchEnumForValid: Outcome String -> List String
+summarizeMatchEnumForValid result =
+    [
+        expectValid result
+    ]
+
+
+validP1MatchEnumForInvalid: List String -> List String -- about enum
+validP1MatchEnumForInvalid value =
+    value
+
+validP2MatchEnumForInvalid: String -> Outcome String -- about outcome
+validP2MatchEnumForInvalid value =
+    Valid "oscar"
+
+summarizeMatchEnumForInvalid: Outcome String -> List String
+summarizeMatchEnumForInvalid result =
+    [
+        expectWarning result
+    ]
+
+-- matchCompactUri
+fuzzyV1MatchCompactUri : Fuzzer String -- should produce Outcome String
+fuzzyV1MatchCompactUri = oneOf [
+        constant "uri:a"
+        , constant "uri:a/b"
+        , constant "uri:a/b123.com"
+        , constant "uri:req?a=b"
+        , constant "uri:12-56"
+    ]
+
+
+validP1MatchCompactUriForValid: String -> Outcome String -- about outcome
+validP1MatchCompactUriForValid value =
+    Valid value
+
+summarizeMatchCompactUriForValid: Outcome String -> List String
+summarizeMatchCompactUriForValid result =
+    [
+        expectValid result
+    ]
+
+
+validP1MatchCompactUriForInvalid: String -> Outcome String -- about outcome
+validP1MatchCompactUriForInvalid value =
+    Valid ("1234567890123456789" ++ value)
+
+summarizeMatchCompactUriForInvalid: Outcome String -> List String
+summarizeMatchCompactUriForInvalid result =
     [
         expectWarning result
     ]
