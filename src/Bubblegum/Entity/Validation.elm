@@ -38,22 +38,22 @@ For most validations:
   - A failure to validate the outcome will produce a Warning.
 
 
-## Simple conversions
+## Simple conversion
 
-@docs asSingle, asTuple, asBool, asFloat, asInt, asFloatTuple, asIntTuple, asUnique
-
-
-## Range validations
-
-@docs asIntRange, asFloatRange, withinIntRange, withinFloatRange, withinIntRange, withinFloatRange
+@docs asSingle, asTuple, asBool, asFloat, asInt, asIntTuple, asFloatTuple, asUnique
 
 
-## List validations
+## Range validation
+
+@docs asIntRange, asFloatRange, withinIntRange, withinFloatRange
+
+
+## List validation
 
 @docs listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan
 
 
-## String validations
+## String validation
 
 @docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange
 

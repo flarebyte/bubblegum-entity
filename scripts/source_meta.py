@@ -26,3 +26,19 @@ metaOutcome = {
     'fromMaybe': setMeta(2, ["valid", "none"]),
     'toMaybe': setMeta(1, ["just", "nothing"])
     }
+
+metaValidation = {
+    'asIntRange': setMeta(1, ["valid", "invalid"]),
+    'asFloatRange': setMeta(1, ["valid", "invalid"]),
+    'withinIntRange': setMeta(1, ["inside range", "outside range"]),
+    'withinFloatRange': setMeta(1, ["inside range", "outside range"]),
+    'listStrictlyLessThan': setMeta(1, ["valid", "invalid"])
+    # 'listStrictlyMoreThan': setMeta(1, ["valid", "invalid"]),
+    # 'matchAbsoluteUrl': setMeta(1, ["valid", "invalid"]),
+    # 'matchEnum': setMeta(1, ["valid", "invalid"]),
+    # 'matchCompactUri': setMeta(1, ["valid", "invalid"]),
+    # 'matchEnum': setMeta(1, ["valid", "invalid"]),
+    # 'stringStartsWith': setMeta(1, ["valid", "invalid"]),
+    # 'withinListStringCharsRange': setMeta(1, ["valid", "invalid"]),
+    # 'withinStringCharsRange': setMeta(1, ["valid", "invalid"])
+    }

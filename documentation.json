@@ -53,7 +53,7 @@
   },
   {
     "name": "Bubblegum.Entity.Validation",
-    "comment": " List of validations with implicit transformations that can be applied to an outcome\n\nFor most validations:\n\n  - None will propagate as None.\n  - Warning will propagate as Warning.\n  - A failure to validate the outcome will produce a Warning.\n\n\n## Simple conversions\n\n@docs asSingle, asTuple, asBool, asFloat, asInt, asFloatTuple, asIntTuple, asUnique\n\n\n## Range validations\n\n@docs asIntRange, asFloatRange, withinIntRange, withinFloatRange, withinIntRange, withinFloatRange\n\n\n## List validations\n\n@docs listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan\n\n\n## String validations\n\n@docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange\n\n",
+    "comment": " List of validations with implicit transformations that can be applied to an outcome\n\nFor most validations:\n\n  - None will propagate as None.\n  - Warning will propagate as Warning.\n  - A failure to validate the outcome will produce a Warning.\n\n\n## Simple conversion\n\n@docs asSingle, asTuple, asBool, asFloat, asInt, asIntTuple, asFloatTuple, asUnique\n\n\n## Range validation\n\n@docs asIntRange, asFloatRange, withinIntRange, withinFloatRange\n\n\n## List validation\n\n@docs listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan\n\n\n## String validation\n\n@docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange\n\n",
     "aliases": [],
     "types": [],
     "values": [
