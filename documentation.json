@@ -52,6 +52,150 @@
     "generated-with-elm-version": "0.18.0"
   },
   {
+    "name": "Bubblegum.Entity.Validation",
+    "comment": " List of validations with implicit transformations that can be applied to an outcome\n\nFor most validations:\n\n  - None will propagate as None.\n  - Warning will propagate as Warning.\n  - A failure to validate the outcome will produce a Warning.\n\n\n## Simple conversions\n\n@docs asSingle, asTuple, asBool, asFloat, asInt, asFloatTuple, asIntTuple, asUnique\n\n\n## Range validations\n\n@docs asIntRange, asFloatRange, withinIntRange, withinFloatRange, withinIntRange, withinFloatRange\n\n\n## List validations\n\n@docs listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan\n\n\n## String validations\n\n@docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange\n\n",
+    "aliases": [],
+    "types": [],
+    "values": [
+      {
+        "name": "asBool",
+        "comment": " Convert a String to a Float otherwise raise a warning\n\n    Valid \"true\" |> asBool -- Valid True\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome Bool"
+      },
+      {
+        "name": "asFloat",
+        "comment": " Convert a String to a Float otherwise raise a warning\n\n    Valid \"12.3\" |> asFloat -- Valid 12.3\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome Float"
+      },
+      {
+        "name": "asFloatRange",
+        "comment": " Check that first value is strictly less than the second otherwise raise a warning\n\n    Valid (3.5, 5.5) |> asFloatRange -- Valid (3.5, 5.5)\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome ( Float, Float ) -> Bubblegum.Entity.Outcome.Outcome ( Float, Float )"
+      },
+      {
+        "name": "asFloatTuple",
+        "comment": " Convert a tuple of String to a tuple of Float otherwise raise a warning\n\n    Valid (\"3.5\", \"5.5\") |> asFloatTuple -- Valid (3.5, 5.5)\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome ( String, String ) -> Bubblegum.Entity.Outcome.Outcome ( Float, Float )"
+      },
+      {
+        "name": "asInt",
+        "comment": " Convert a String to an Int otherwise raise a warning\n\n    Valid \"12\" |> asInt -- Valid 12\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome Int"
+      },
+      {
+        "name": "asIntRange",
+        "comment": " Check that first value is strictly less than the second otherwise raise a warning\n\n    Valid (3, 5) |> asIntRange -- Valid (3, 5)\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome ( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome ( Int, Int )"
+      },
+      {
+        "name": "asIntTuple",
+        "comment": " Convert a tuple of String to a tuple of Int otherwise raise a warning\n\n    Valid (\"3\", \"5\") |> asIntTuple -- Valid (3, 5)\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome ( String, String ) -> Bubblegum.Entity.Outcome.Outcome ( Int, Int )"
+      },
+      {
+        "name": "asSingle",
+        "comment": " Convert a list with only one string to a single string.\n\n    Valid [\"alpha\"] |> asSingle -- Valid \"alpha\"\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "asTuple",
+        "comment": " Convert a tuple of singleton list to a tuple of String\n\n    Valid ([\"min\"], [\"max\"]) |> asTuple -- Valid (\"min\", \"max\")\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome ( List String, List String ) -> Bubblegum.Entity.Outcome.Outcome ( String, String )"
+      },
+      {
+        "name": "asUnique",
+        "comment": " Enforce that the list to be unique\n\n    Valid [\"alpha\", \"beta\", \"alpha\"] |> asUnique -- Valid [\"alpha\", \"beta\"]\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
+      },
+      {
+        "name": "listEqual",
+        "comment": " Ensure that the list equal a given size otherwise raise a warning\n\n    Valid [\"alpha\", \"beta\"] |> listEqual 2 -- Valid [\"alpha\", \"beta\"]\n\n",
+        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
+      },
+      {
+        "name": "listLessThan",
+        "comment": " Ensure that the list equal or less than a given size otherwise raise a warning\n\n    Valid [\"alpha\", \"beta\"] |> listLessThan 2 -- Valid [\"alpha\", \"beta\"]\n\n",
+        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
+      },
+      {
+        "name": "listMoreThan",
+        "comment": " Ensure that the list equal or more than a given size otherwise raise a warning\n\n    Valid [\"alpha\", \"beta\"] |> listMoreThan 2 -- Valid [\"alpha\", \"beta\"]\n\n",
+        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
+      },
+      {
+        "name": "listStrictlyLessThan",
+        "comment": " Ensure that the list is strictly less than a given size otherwise raise a warning\n\n    Valid [\"alpha\", \"beta\"] |> listStrictlyLessThan 3 -- Valid [\"alpha\", \"beta\"]\n\n",
+        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
+      },
+      {
+        "name": "listStrictlyMoreThan",
+        "comment": " Ensure that the list is strictly more than a given size otherwise raise a warning\n\n    Valid [\"alpha\", \"beta\"] |> listStrictlyMoreThan 1 -- Valid [\"alpha\", \"beta\"]\n\n",
+        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
+      },
+      {
+        "name": "matchAbsoluteUrl",
+        "comment": " Check whether a string matches an absolute URL otherwise raise a warning\n\n    Valid \"http://bbc.co.uk\" |> matchAbsoluteUrl -- Valid \"http://bbc.co.uk\"\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "matchCompactUri",
+        "comment": " Check whether a string matches an absolute URL otherwise raise a warning.\n\n    The prefix should not exceed 15 characters.\n\n    Valid \"uri:a/b001/c\" |> matchCompactUri -- Valid \"uri:a/b001/c\"\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "matchEnum",
+        "comment": " Check that a string belong to an enumeration otherwise raise a warning\n\n    Valid [\"alpha\"] |> matchEnum [\"beta\", \"alpha\"] -- Valid [\"alpha\"]\n\n",
+        "type": "List String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "matchNormalizedString",
+        "comment": " Check that a string is a [normalized string](https://www.w3.org/TR/xmlschema11-2/#normalizedString)\n\n    Valid \"some string\" |> matchNormalizedString -- Valid \"some string\"\n\n",
+        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "matchRegex",
+        "comment": " Check whether a string matches a regular expression otherwise raise a warning\n\n    Valid \"abc\" |> matchRegex \"[a-z]+\" -- Valid \"abc\"\n\n",
+        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "stringContains",
+        "comment": " Check that a string contains a term otherwise raise a warning\n\n    Valid [\"blue red green\"] |> stringContains \"red\" -- Valid [\"blue red green\"]\n\n",
+        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "stringEndsWith",
+        "comment": " Check that a string ends with a suffix otherwise raise a warning\n\n    Valid [\"image.jpg\"] |> stringEndsWith \".jpg\" -- Valid [\"image.jpg\"]\n\n",
+        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "stringStartsWith",
+        "comment": " Check that a string starts with a prefix otherwise raise a warning\n\n    Valid [\"ui:label\"] |> stringStartsWith \"ui:\" -- Valid [\"ui:label\"]\n\n",
+        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "withinFloatRange",
+        "comment": " Check a tuple of Float is within the range of a given range otherwise raise a warning\n\n    Valid (3.5, 5.2) |> withinFloatRange (2.1, 7.2) -- Valid (3.5, 5.2)\n\n",
+        "type": "( Float, Float ) -> Bubblegum.Entity.Outcome.Outcome ( Float, Float ) -> Bubblegum.Entity.Outcome.Outcome ( Float, Float )"
+      },
+      {
+        "name": "withinIntRange",
+        "comment": " Check a tuple of Int is within the range of a given range otherwise raise a warning\n\n    Valid (3, 5) |> withinIntRange (2, 7) -- Valid (3, 5)\n\n",
+        "type": "( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome ( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome ( Int, Int )"
+      },
+      {
+        "name": "withinListStringCharsRange",
+        "comment": " Check that all the strings' number of characters are within a range otherwise raise a warning\n\n    Valid [\"abc\", \"abcd\"] |> withinListStringCharsRange (2, 7) -- Valid \"abcd\"\n\n",
+        "type": "( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
+      },
+      {
+        "name": "withinStringCharsRange",
+        "comment": " Check that a string number of characters is within a range otherwise raise a warning\n\n    Valid \"abcd\" |> withinStringCharsRange (2, 7) -- Valid \"abcd\"\n\n",
+        "type": "( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  },
+  {
     "name": "Bubblegum.Entity.Transformation",
     "comment": " List of functions that can applied to an Outcome\n\n@docs addStringPrefix, addStringSuffix\n\n",
     "aliases": [],
@@ -66,150 +210,6 @@
         "name": "addStringSuffix",
         "comment": " Apply a string suffix to an outcome\n",
         "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      }
-    ],
-    "generated-with-elm-version": "0.18.0"
-  },
-  {
-    "name": "Bubblegum.Entity.Validation",
-    "comment": " List of validations with implicit transformations that can be applied to an outcome\n\nFor most validations:\n\n  - None will propagate as None.\n  - Warning will propagate as Warning.\n  - A failure to validate the outcome will produce a Warning.\n\n\n## Simple conversions\n\n@docs asSingle, asTuple, asBool, asFloat, asInt, asFloatTuple, asIntTuple, asUnique\n\n\n## Range validations\n\n@docs asIntRange, asFloatRange, withinIntRange, withinFloatRange, withinIntRange, withinFloatRange\n\n\n## List validations\n\n@docs listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan\n\n\n## String validations\n\n@docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange\n\n",
-    "aliases": [],
-    "types": [],
-    "values": [
-      {
-        "name": "asBool",
-        "comment": " Convert a String to a Float otherwise raise a warning\nValid \"true\" |> asBool -- Valid True\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome Bool"
-      },
-      {
-        "name": "asFloat",
-        "comment": " Convert a String to a Float otherwise raise a warning\nValid \"12.3\" |> asFloat -- Valid 12.3\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome Float"
-      },
-      {
-        "name": "asFloatRange",
-        "comment": " Check that first value is strictly less than the second otherwise raise a warning\nValid (3.5, 5.5) |> asFloatRange -- Valid (3.5, 5.5)\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome ( Float, Float ) -> Bubblegum.Entity.Outcome.Outcome ( Float, Float )"
-      },
-      {
-        "name": "asFloatTuple",
-        "comment": " Convert a tuple of String to a tuple of Float otherwise raise a warning\nValid (\"3.5\", \"5.5\") |> asFloatTuple -- Valid (3.5, 5.5)\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome ( String, String ) -> Bubblegum.Entity.Outcome.Outcome ( Float, Float )"
-      },
-      {
-        "name": "asInt",
-        "comment": " Convert a String to an Int otherwise raise a warning\nValid \"12\" |> asInt -- Valid 12\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome Int"
-      },
-      {
-        "name": "asIntRange",
-        "comment": " Check that first value is strictly less than the second otherwise raise a warning\nValid (3, 5) |> asIntRange -- Valid (3, 5)\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome ( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome ( Int, Int )"
-      },
-      {
-        "name": "asIntTuple",
-        "comment": " Convert a tuple of String to a tuple of Int otherwise raise a warning\nValid (\"3\", \"5\") |> asIntTuple -- Valid (3, 5)\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome ( String, String ) -> Bubblegum.Entity.Outcome.Outcome ( Int, Int )"
-      },
-      {
-        "name": "asSingle",
-        "comment": " Convert a list with only one string to a single string.\nValid [\"alpha\"] |> asSingle -- Valid \"alpha\"\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "asTuple",
-        "comment": " Convert a tuple of singleton list to a tuple of String\nValid ([\"min\"], [\"max\"]) |> asTuple -- Valid (\"min\", \"max\")\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome ( List String, List String ) -> Bubblegum.Entity.Outcome.Outcome ( String, String )"
-      },
-      {
-        "name": "asUnique",
-        "comment": " Enforce that the list to be unique\nValid [\"alpha\", \"beta\", \"alpha\"] |> asUnique -- Valid [\"alpha\", \"beta\"]\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
-      },
-      {
-        "name": "listEqual",
-        "comment": " Ensure that the list equal a given size otherwise raise a warning\nValid [\"alpha\", \"beta\"] |> listEqual 2 -- Valid [\"alpha\", \"beta\"]\n",
-        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
-      },
-      {
-        "name": "listLessThan",
-        "comment": " Ensure that the list equal or less than a given size otherwise raise a warning\nValid [\"alpha\", \"beta\"] |> listLessThan 2 -- Valid [\"alpha\", \"beta\"]\n",
-        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
-      },
-      {
-        "name": "listMoreThan",
-        "comment": " Ensure that the list equal or more than a given size otherwise raise a warning\nValid [\"alpha\", \"beta\"] |> listMoreThan 2 -- Valid [\"alpha\", \"beta\"]\n",
-        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
-      },
-      {
-        "name": "listStrictlyLessThan",
-        "comment": " Ensure that the list is strictly less than a given size otherwise raise a warning\nValid [\"alpha\", \"beta\"] |> listStrictlyLessThan 3 -- Valid [\"alpha\", \"beta\"]\n",
-        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
-      },
-      {
-        "name": "listStrictlyMoreThan",
-        "comment": " Ensure that the list is strictly more than a given size otherwise raise a warning\nValid [\"alpha\", \"beta\"] |> listStrictlyMoreThan 1 -- Valid [\"alpha\", \"beta\"]\n",
-        "type": "Int -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
-      },
-      {
-        "name": "matchAbsoluteUrl",
-        "comment": " Check whether a string matches an absolute URL otherwise raise a warning\nValid \"<http://bbc.co.uk\"> |> matchAbsoluteUrl -- Valid \"<http://bbc.co.uk\">\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "matchCompactUri",
-        "comment": " Check whether a string matches an absolute URL otherwise raise a warning\nValid \"uri:a/b001/c\" |> matchCompactUri -- Valid \"uri:a/b001/c\"\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "matchEnum",
-        "comment": " Check that a string belong to an enumeration otherwise raise a warning\nValid [\"alpha\"] |> matchEnum [\"beta\", \"alpha\"] -- Valid [\"alpha\"]\n",
-        "type": "List String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "matchNormalizedString",
-        "comment": " Check that a string is a [normalized string](https://www.w3.org/TR/xmlschema11-2/#normalizedString)\nValid \"some string\" |> matchNormalizedString -- Valid \"some string\"\n",
-        "type": "Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "matchRegex",
-        "comment": " Check whether a string matches a regular expression otherwise raise a warning\nValid \"abc\" |> matchRegex \"[a-z]+\" -- Valid \"abc\"\n",
-        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "stringContains",
-        "comment": " Check that a string contains a term otherwise raise a warning\nValid [\"blue red green\"] |> stringContains \"red\" -- Valid [\"blue red green\"]\n",
-        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "stringEndsWith",
-        "comment": " Check that a string ends with a suffix otherwise raise a warning\nValid [\"image.jpg\"] |> stringEndsWith \".jpg\" -- Valid [\"image.jpg\"]\n",
-        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "stringStartsWith",
-        "comment": " Check that a string starts with a prefix otherwise raise a warning\nValid [\"ui:label\"] |> stringStartsWith \"ui:\" -- Valid [\"ui:label\"]\n",
-        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "withinFloatRange",
-        "comment": " Check a tuple of Float is within the range of a given range otherwise raise a warning\nValid (3.5, 5.2) |> withinFloatRange (2.1, 7.2) -- Valid (3.5, 5.2)\n",
-        "type": "( Float, Float ) -> Bubblegum.Entity.Outcome.Outcome ( Float, Float ) -> Bubblegum.Entity.Outcome.Outcome ( Float, Float )"
-      },
-      {
-        "name": "withinIntRange",
-        "comment": " Check a tuple of Int is within the range of a given range otherwise raise a warning\nValid (3, 5) |> withinIntRange (2, 7) -- Valid (3, 5)\n",
-        "type": "( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome ( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome ( Int, Int )"
-      },
-      {
-        "name": "withinListStringCharsRange",
-        "comment": " Check that all the strings' number of characters are within a range otherwise raise a warning\nValid [\"abc\", \"abcd\"] |> withinListStringCharsRange (2, 7) -- Valid \"abcd\"\n",
-        "type": "( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome (List String) -> Bubblegum.Entity.Outcome.Outcome (List String)"
-      },
-      {
-        "name": "withinStringCharsRange",
-        "comment": " Check that a string number of characters is within a range otherwise raise a warning\nValid \"abcd\" |> withinStringCharsRange (2, 7) -- Valid \"abcd\"\n",
-        "type": "( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
       }
     ],
     "generated-with-elm-version": "0.18.0"

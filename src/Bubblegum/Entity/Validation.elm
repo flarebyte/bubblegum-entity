@@ -67,7 +67,9 @@ import Tuple exposing (first, second)
 
 
 {-| Convert a list with only one string to a single string.
-Valid ["alpha"] |> asSingle -- Valid "alpha"
+
+    Valid ["alpha"] |> asSingle -- Valid "alpha"
+
 -}
 asSingle : Outcome (List String) -> Outcome String
 asSingle outcome =
@@ -75,7 +77,9 @@ asSingle outcome =
 
 
 {-| Convert a tuple of singleton list to a tuple of String
-Valid (["min"], ["max"]) |> asTuple -- Valid ("min", "max")
+
+    Valid (["min"], ["max"]) |> asTuple -- Valid ("min", "max")
+
 -}
 asTuple : Outcome ( List String, List String ) -> Outcome ( String, String )
 asTuple outcome =
@@ -83,7 +87,9 @@ asTuple outcome =
 
 
 {-| Ensure that the list equal a given size otherwise raise a warning
-Valid ["alpha", "beta"] |> listEqual 2 -- Valid ["alpha", "beta"]
+
+    Valid ["alpha", "beta"] |> listEqual 2 -- Valid ["alpha", "beta"]
+
 -}
 listEqual : Int -> Outcome (List String) -> Outcome (List String)
 listEqual size outcome =
@@ -91,7 +97,9 @@ listEqual size outcome =
 
 
 {-| Ensure that the list equal or more than a given size otherwise raise a warning
-Valid ["alpha", "beta"] |> listMoreThan 2 -- Valid ["alpha", "beta"]
+
+    Valid ["alpha", "beta"] |> listMoreThan 2 -- Valid ["alpha", "beta"]
+
 -}
 listMoreThan : Int -> Outcome (List String) -> Outcome (List String)
 listMoreThan size outcome =
@@ -99,7 +107,9 @@ listMoreThan size outcome =
 
 
 {-| Ensure that the list is strictly more than a given size otherwise raise a warning
-Valid ["alpha", "beta"] |> listStrictlyMoreThan 1 -- Valid ["alpha", "beta"]
+
+    Valid ["alpha", "beta"] |> listStrictlyMoreThan 1 -- Valid ["alpha", "beta"]
+
 -}
 listStrictlyMoreThan : Int -> Outcome (List String) -> Outcome (List String)
 listStrictlyMoreThan size outcome =
@@ -107,7 +117,9 @@ listStrictlyMoreThan size outcome =
 
 
 {-| Ensure that the list equal or less than a given size otherwise raise a warning
-Valid ["alpha", "beta"] |> listLessThan 2 -- Valid ["alpha", "beta"]
+
+    Valid ["alpha", "beta"] |> listLessThan 2 -- Valid ["alpha", "beta"]
+
 -}
 listLessThan : Int -> Outcome (List String) -> Outcome (List String)
 listLessThan size outcome =
@@ -115,7 +127,9 @@ listLessThan size outcome =
 
 
 {-| Ensure that the list is strictly less than a given size otherwise raise a warning
-Valid ["alpha", "beta"] |> listStrictlyLessThan 3 -- Valid ["alpha", "beta"]
+
+    Valid ["alpha", "beta"] |> listStrictlyLessThan 3 -- Valid ["alpha", "beta"]
+
 -}
 listStrictlyLessThan : Int -> Outcome (List String) -> Outcome (List String)
 listStrictlyLessThan size outcome =
@@ -123,7 +137,9 @@ listStrictlyLessThan size outcome =
 
 
 {-| Enforce that the list to be unique
-Valid ["alpha", "beta", "alpha"] |> asUnique -- Valid ["alpha", "beta"]
+
+    Valid ["alpha", "beta", "alpha"] |> asUnique -- Valid ["alpha", "beta"]
+
 -}
 asUnique : Outcome (List String) -> Outcome (List String)
 asUnique outcome =
@@ -131,7 +147,9 @@ asUnique outcome =
 
 
 {-| Convert a String to an Int otherwise raise a warning
-Valid "12" |> asInt -- Valid 12
+
+    Valid "12" |> asInt -- Valid 12
+
 -}
 asInt : Outcome String -> Outcome Int
 asInt outcome =
@@ -139,7 +157,9 @@ asInt outcome =
 
 
 {-| Convert a String to a Float otherwise raise a warning
-Valid "12.3" |> asFloat -- Valid 12.3
+
+    Valid "12.3" |> asFloat -- Valid 12.3
+
 -}
 asFloat : Outcome String -> Outcome Float
 asFloat outcome =
@@ -147,7 +167,9 @@ asFloat outcome =
 
 
 {-| Convert a String to a Float otherwise raise a warning
-Valid "true" |> asBool -- Valid True
+
+    Valid "true" |> asBool -- Valid True
+
 -}
 asBool : Outcome String -> Outcome Bool
 asBool outcome =
@@ -155,7 +177,9 @@ asBool outcome =
 
 
 {-| Check that an int is equal or more than a given value otherwise raise a warning
-Valid 12 |> intMoreThan 12 -- Valid 12
+
+    Valid 12 |> intMoreThan 12 -- Valid 12
+
 -}
 intMoreThan : Int -> Outcome Int -> Outcome Int
 intMoreThan limit outcome =
@@ -163,7 +187,9 @@ intMoreThan limit outcome =
 
 
 {-| Check that an int is equal or more than a given value otherwise raise a warning
-Valid 12 |> intStrictlyMoreThan 5 -- Valid 12
+
+    Valid 12 |> intStrictlyMoreThan 5 -- Valid 12
+
 -}
 intStrictlyMoreThan : Int -> Outcome Int -> Outcome Int
 intStrictlyMoreThan limit outcome =
@@ -171,7 +197,9 @@ intStrictlyMoreThan limit outcome =
 
 
 {-| Check that an int is equal or less than a given value otherwise raise a warning
-Valid 12 |> intLessThan 12 -- Valid 12
+
+    Valid 12 |> intLessThan 12 -- Valid 12
+
 -}
 intLessThan : Int -> Outcome Int -> Outcome Int
 intLessThan limit outcome =
@@ -179,7 +207,9 @@ intLessThan limit outcome =
 
 
 {-| Check that an int is strictly less than a given value otherwise raise a warning
-Valid 12 |> intStrictlyLessThan 20 -- Valid 12
+
+    Valid 12 |> intStrictlyLessThan 20 -- Valid 12
+
 -}
 intStrictlyLessThan : Int -> Outcome Int -> Outcome Int
 intStrictlyLessThan limit outcome =
@@ -187,7 +217,9 @@ intStrictlyLessThan limit outcome =
 
 
 {-| Check that an int is equal or more than a given value otherwise raise a warning
-Valid 12.4 |> floatMoreThan 5.0 -- Valid 12.4
+
+    Valid 12.4 |> floatMoreThan 5.0 -- Valid 12.4
+
 -}
 floatMoreThan : Float -> Outcome Float -> Outcome Float
 floatMoreThan limit outcome =
@@ -195,7 +227,9 @@ floatMoreThan limit outcome =
 
 
 {-| Check that an int is strictly more than a given value otherwise raise a warning
-Valid 12.4 |> floatStrictlyMoreThan 5.3 -- Valid 12.4
+
+    Valid 12.4 |> floatStrictlyMoreThan 5.3 -- Valid 12.4
+
 -}
 floatStrictlyMoreThan : Float -> Outcome Float -> Outcome Float
 floatStrictlyMoreThan limit outcome =
@@ -203,7 +237,9 @@ floatStrictlyMoreThan limit outcome =
 
 
 {-| Check that an int is equal or less than a given value otherwise raise a warning
-Valid 12.4 |> floatLessThan 12.4 -- Valid 12.4
+
+    Valid 12.4 |> floatLessThan 12.4 -- Valid 12.4
+
 -}
 floatLessThan : Float -> Outcome Float -> Outcome Float
 floatLessThan limit outcome =
@@ -211,7 +247,9 @@ floatLessThan limit outcome =
 
 
 {-| Check that an int is strictly less than a given value otherwise raise a warning
-Valid 12.4 |> floatStrictlyLessThan 20 -- Valid 12.4
+
+    Valid 12.4 |> floatStrictlyLessThan 20 -- Valid 12.4
+
 -}
 floatStrictlyLessThan : Float -> Outcome Float -> Outcome Float
 floatStrictlyLessThan limit outcome =
@@ -219,7 +257,9 @@ floatStrictlyLessThan limit outcome =
 
 
 {-| Check that a string belong to an enumeration otherwise raise a warning
-Valid ["alpha"] |> matchEnum ["beta", "alpha"] -- Valid ["alpha"]
+
+    Valid ["alpha"] |> matchEnum ["beta", "alpha"] -- Valid ["alpha"]
+
 -}
 matchEnum : List String -> Outcome String -> Outcome String
 matchEnum enum outcome =
@@ -227,7 +267,9 @@ matchEnum enum outcome =
 
 
 {-| Check that a string starts with a prefix otherwise raise a warning
-Valid ["ui:label"] |> stringStartsWith "ui:" -- Valid ["ui:label"]
+
+    Valid ["ui:label"] |> stringStartsWith "ui:" -- Valid ["ui:label"]
+
 -}
 stringStartsWith : String -> Outcome String -> Outcome String
 stringStartsWith prefix outcome =
@@ -235,7 +277,9 @@ stringStartsWith prefix outcome =
 
 
 {-| Check that a string ends with a suffix otherwise raise a warning
-Valid ["image.jpg"] |> stringEndsWith ".jpg" -- Valid ["image.jpg"]
+
+    Valid ["image.jpg"] |> stringEndsWith ".jpg" -- Valid ["image.jpg"]
+
 -}
 stringEndsWith : String -> Outcome String -> Outcome String
 stringEndsWith suffix outcome =
@@ -243,7 +287,9 @@ stringEndsWith suffix outcome =
 
 
 {-| Check that a string contains a term otherwise raise a warning
-Valid ["blue red green"] |> stringContains "red" -- Valid ["blue red green"]
+
+    Valid ["blue red green"] |> stringContains "red" -- Valid ["blue red green"]
+
 -}
 stringContains : String -> Outcome String -> Outcome String
 stringContains str outcome =
@@ -251,7 +297,9 @@ stringContains str outcome =
 
 
 {-| Check that a string is a [normalized string](https://www.w3.org/TR/xmlschema11-2/#normalizedString)
-Valid "some string" |> matchNormalizedString -- Valid "some string"
+
+    Valid "some string" |> matchNormalizedString -- Valid "some string"
+
 -}
 matchNormalizedString : Outcome String -> Outcome String
 matchNormalizedString outcome =
@@ -259,7 +307,9 @@ matchNormalizedString outcome =
 
 
 {-| Check whether a string matches a regular expression otherwise raise a warning
-Valid "abc" |> matchRegex "[a-z]+" -- Valid "abc"
+
+    Valid "abc" |> matchRegex "[a-z]+" -- Valid "abc"
+
 -}
 matchRegex : String -> Outcome String -> Outcome String
 matchRegex regExp outcome =
@@ -276,7 +326,9 @@ matchRegex regExp outcome =
 
 
 {-| Check whether a string matches an absolute URL otherwise raise a warning
-Valid "<http://bbc.co.uk"> |> matchAbsoluteUrl -- Valid "<http://bbc.co.uk">
+
+    Valid "http://bbc.co.uk" |> matchAbsoluteUrl -- Valid "http://bbc.co.uk"
+
 -}
 matchAbsoluteUrl : Outcome String -> Outcome String
 matchAbsoluteUrl outcome =
@@ -287,12 +339,12 @@ matchAbsoluteUrl outcome =
     matchNormalizedString outcome |> Outcome.check (\v -> Regex.contains re v) "unsatisfied-constraint:absolute-url"
 
 
+{-| Check whether a string matches an absolute URL otherwise raise a warning.
 
--- prefix should not exceed 15 chars
+    The prefix should not exceed 15 characters.
 
+    Valid "uri:a/b001/c" |> matchCompactUri -- Valid "uri:a/b001/c"
 
-{-| Check whether a string matches an absolute URL otherwise raise a warning
-Valid "uri:a/b001/c" |> matchCompactUri -- Valid "uri:a/b001/c"
 -}
 matchCompactUri : Outcome String -> Outcome String
 matchCompactUri outcome =
@@ -304,7 +356,9 @@ matchCompactUri outcome =
 
 
 {-| Convert a tuple of String to a tuple of Int otherwise raise a warning
-Valid ("3", "5") |> asIntTuple -- Valid (3, 5)
+
+    Valid ("3", "5") |> asIntTuple -- Valid (3, 5)
+
 -}
 asIntTuple : Outcome ( String, String ) -> Outcome ( Int, Int )
 asIntTuple outcome =
@@ -313,7 +367,9 @@ asIntTuple outcome =
 
 
 {-| Convert a tuple of String to a tuple of Float otherwise raise a warning
-Valid ("3.5", "5.5") |> asFloatTuple -- Valid (3.5, 5.5)
+
+    Valid ("3.5", "5.5") |> asFloatTuple -- Valid (3.5, 5.5)
+
 -}
 asFloatTuple : Outcome ( String, String ) -> Outcome ( Float, Float )
 asFloatTuple outcome =
@@ -322,7 +378,9 @@ asFloatTuple outcome =
 
 
 {-| Check that first value is strictly less than the second otherwise raise a warning
-Valid (3, 5) |> asIntRange -- Valid (3, 5)
+
+    Valid (3, 5) |> asIntRange -- Valid (3, 5)
+
 -}
 asIntRange : Outcome ( Int, Int ) -> Outcome ( Int, Int )
 asIntRange outcome =
@@ -330,7 +388,9 @@ asIntRange outcome =
 
 
 {-| Check that first value is strictly less than the second otherwise raise a warning
-Valid (3.5, 5.5) |> asFloatRange -- Valid (3.5, 5.5)
+
+    Valid (3.5, 5.5) |> asFloatRange -- Valid (3.5, 5.5)
+
 -}
 asFloatRange : Outcome ( Float, Float ) -> Outcome ( Float, Float )
 asFloatRange outcome =
@@ -338,7 +398,9 @@ asFloatRange outcome =
 
 
 {-| Check a tuple of Int is within the range of a given range otherwise raise a warning
-Valid (3, 5) |> withinIntRange (2, 7) -- Valid (3, 5)
+
+    Valid (3, 5) |> withinIntRange (2, 7) -- Valid (3, 5)
+
 -}
 withinIntRange : ( Int, Int ) -> Outcome ( Int, Int ) -> Outcome ( Int, Int )
 withinIntRange range outcome =
@@ -346,7 +408,9 @@ withinIntRange range outcome =
 
 
 {-| Check a tuple of Float is within the range of a given range otherwise raise a warning
-Valid (3.5, 5.2) |> withinFloatRange (2.1, 7.2) -- Valid (3.5, 5.2)
+
+    Valid (3.5, 5.2) |> withinFloatRange (2.1, 7.2) -- Valid (3.5, 5.2)
+
 -}
 withinFloatRange : ( Float, Float ) -> Outcome ( Float, Float ) -> Outcome ( Float, Float )
 withinFloatRange range outcome =
@@ -354,7 +418,9 @@ withinFloatRange range outcome =
 
 
 {-| Check that a string number of characters is within a range otherwise raise a warning
-Valid "abcd" |> withinStringCharsRange (2, 7) -- Valid "abcd"
+
+    Valid "abcd" |> withinStringCharsRange (2, 7) -- Valid "abcd"
+
 -}
 withinStringCharsRange : ( Int, Int ) -> Outcome String -> Outcome String
 withinStringCharsRange range outcome =
@@ -362,7 +428,9 @@ withinStringCharsRange range outcome =
 
 
 {-| Check that all the strings' number of characters are within a range otherwise raise a warning
-Valid ["abc", "abcd"] |> withinListStringCharsRange (2, 7) -- Valid "abcd"
+
+    Valid ["abc", "abcd"] |> withinListStringCharsRange (2, 7) -- Valid "abcd"
+
 -}
 withinListStringCharsRange : ( Int, Int ) -> Outcome (List String) -> Outcome (List String)
 withinListStringCharsRange range outcome =
