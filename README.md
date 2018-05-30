@@ -2,6 +2,8 @@
 
 > Access to settings and states for widgets of the Bubblegum UI toolkit
 
+[![Build Status](https://semaphoreci.com/api/v1/olih/bubblegum-entity/branches/master/badge.svg)](https://semaphoreci.com/olih/bubblegum-entity)
+
 ## Installing Elm packages
 
 There is no dependency.
