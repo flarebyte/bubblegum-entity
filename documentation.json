@@ -52,6 +52,91 @@
     "generated-with-elm-version": "0.18.0"
   },
   {
+    "name": "Bubblegum.Entity.Attribute",
+    "comment": " An attribute represents a small piece of information such as a [Semantic triple](https://en.wikipedia.org/wiki/Semantic_triple).\n\n\n# Model setters\n\n@docs Model, setId, setKey, setValues, setFacets\n\n\n# Attribute\n\n@docs findAttributeByKey, findAttributeFirstValueByKey, replaceAttributeByKey, deleteAttributeByKey\n\n\n# Outcome\n\n@docs findOutcomeByKey, findOutcomeByKeyTuple\n\n",
+    "aliases": [
+      {
+        "name": "Model",
+        "comment": " The core representation of an attribute with:\n\n  - id: a possible id to represent the attribute (ex: id:1234)\n  - key: the key of the attribute (ex: ui:label)\n  - values: a list of string values\n  - facets: an optional list of tags to mark the data (ex: [min])\n\nWhen representing a RDF triple:\n\n  - subject: should be represented by id\n  - predicate: should be represented by key\n  - object: should be represented by values\n\n",
+        "args": [],
+        "type": "{ id : Maybe.Maybe String , key : String , values : List String , facets : List String }"
+      }
+    ],
+    "types": [],
+    "values": [
+      {
+        "name": "deleteAttributeByKey",
+        "comment": " Delete an attribute by key\n\n    deleteAttributeByKey \"ui:label\" models -- []\n\n",
+        "type": "String -> List Bubblegum.Entity.Attribute.Model -> List Bubblegum.Entity.Attribute.Model"
+      },
+      {
+        "name": "findAttributeByKey",
+        "comment": " Find an attribute by key\n\n    findAttributeByKey \"ui:label\" models -- Just label\n\n",
+        "type": "String -> List Bubblegum.Entity.Attribute.Model -> Maybe.Maybe Bubblegum.Entity.Attribute.Model"
+      },
+      {
+        "name": "findAttributeFirstValueByKey",
+        "comment": " Find an attribute by key and then get the first value if any\n\n    findAttributeFirstValueByKey \"ui:label\" models -- Just \"some label\"\n\n",
+        "type": "String -> List Bubblegum.Entity.Attribute.Model -> Maybe.Maybe String"
+      },
+      {
+        "name": "findOutcomeByKey",
+        "comment": " Find an outcome searching by key\n\n    findOutcomeByKey \"ui:label\" models -- Valid [\"some label\"]\n\n",
+        "type": "String -> List Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Outcome.Outcome (List String)"
+      },
+      {
+        "name": "findOutcomeByKeyTuple",
+        "comment": " Find an outcome searching by a couple of keys\n\n    findOutcomeByKeyTuple (\"ui:min\", \"ui:max\") models -- Valid ([\"1\"], [\"10\"])\n\n",
+        "type": "( String, String ) -> List Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Outcome.Outcome ( List String, List String )"
+      },
+      {
+        "name": "replaceAttributeByKey",
+        "comment": " Replace or create an attribute by key\n\n     replaceAttributeByKey \"ui:label\" [\"new label\"] models -- models\n\n",
+        "type": "String -> List String -> List Bubblegum.Entity.Attribute.Model -> List Bubblegum.Entity.Attribute.Model"
+      },
+      {
+        "name": "setFacets",
+        "comment": " Set an optional list of tags to mark the data\n\n    setFacets [\"min\", \"inclusive\"] model\n\n",
+        "type": "List String -> Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Attribute.Model"
+      },
+      {
+        "name": "setId",
+        "comment": " Set a possible id to represent the attribute\n\n     setId (Just \"id:1234\") model\n\n",
+        "type": "Maybe.Maybe String -> Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Attribute.Model"
+      },
+      {
+        "name": "setKey",
+        "comment": " Set the key of the attribute\n\n    setKey \"ui:label\" model\n\n",
+        "type": "String -> Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Attribute.Model"
+      },
+      {
+        "name": "setValues",
+        "comment": " Set a list of string values\n\n    setValues [\"some label\"] model\n\n",
+        "type": "List String -> Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Attribute.Model"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  },
+  {
+    "name": "Bubblegum.Entity.Transformation",
+    "comment": " List of functions that can applied to an Outcome\n\n@docs addStringPrefix, addStringSuffix\n\n",
+    "aliases": [],
+    "types": [],
+    "values": [
+      {
+        "name": "addStringPrefix",
+        "comment": " Apply a string prefix to an outcome\n",
+        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      },
+      {
+        "name": "addStringSuffix",
+        "comment": " Apply a string suffix to an outcome\n",
+        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
+      }
+    ],
+    "generated-with-elm-version": "0.18.0"
+  },
+  {
     "name": "Bubblegum.Entity.Validation",
     "comment": " List of validations with implicit transformations that can be applied to an outcome\n\nFor most validations:\n\n  - None will propagate as None.\n  - Warning will propagate as Warning.\n  - A failure to validate the outcome will produce a Warning.\n\n\n## Simple conversion\n\n@docs asSingle, asTuple, asBool, asFloat, asInt, asIntTuple, asFloatTuple, asUnique\n\n\n## Range validation\n\n@docs asIntRange, asFloatRange, withinIntRange, withinFloatRange\n\n\n## List validation\n\n@docs listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan\n\n\n## String validation\n\n@docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange\n\n",
     "aliases": [],
@@ -191,91 +276,6 @@
         "name": "withinStringCharsRange",
         "comment": " Check that a string number of characters is within a range otherwise raise a warning\n\n    Valid \"abcd\" |> withinStringCharsRange (2, 7) -- Valid \"abcd\"\n\n",
         "type": "( Int, Int ) -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      }
-    ],
-    "generated-with-elm-version": "0.18.0"
-  },
-  {
-    "name": "Bubblegum.Entity.Transformation",
-    "comment": " List of functions that can applied to an Outcome\n\n@docs addStringPrefix, addStringSuffix\n\n",
-    "aliases": [],
-    "types": [],
-    "values": [
-      {
-        "name": "addStringPrefix",
-        "comment": " Apply a string prefix to an outcome\n",
-        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      },
-      {
-        "name": "addStringSuffix",
-        "comment": " Apply a string suffix to an outcome\n",
-        "type": "String -> Bubblegum.Entity.Outcome.Outcome String -> Bubblegum.Entity.Outcome.Outcome String"
-      }
-    ],
-    "generated-with-elm-version": "0.18.0"
-  },
-  {
-    "name": "Bubblegum.Entity.Attribute",
-    "comment": " An attribute represents a small piece of information such as a [Semantic triple](https://en.wikipedia.org/wiki/Semantic_triple).\n\n\n# Model setters\n\n@docs Model, setId, setKey, setValues, setFacets\n\n\n# Attribute\n\n@docs findAttributeByKey, findAttributeFirstValueByKey, replaceAttributeByKey, deleteAttributeByKey\n\n\n# Outcome\n\n@docs findOutcomeByKey, findOutcomeByKeyTuple\n\n",
-    "aliases": [
-      {
-        "name": "Model",
-        "comment": " The core representation of an attribute with:\n\n  - id: a possible id to represent the attribute (ex: id:1234)\n  - key: the key of the attribute (ex: ui:label)\n  - values: a list of string values\n  - facets: an optional list of tags to mark the data (ex: [min])\n\nWhen representing a RDF triple:\n\n  - subject: should be represented by id\n  - predicate: should be represented by key\n  - object: should be represented by values\n\n",
-        "args": [],
-        "type": "{ id : Maybe.Maybe String , key : String , values : List String , facets : List String }"
-      }
-    ],
-    "types": [],
-    "values": [
-      {
-        "name": "deleteAttributeByKey",
-        "comment": " Delete an attribute by key\n\n    deleteAttributeByKey \"ui:label\" models -- []\n\n",
-        "type": "String -> List Bubblegum.Entity.Attribute.Model -> List Bubblegum.Entity.Attribute.Model"
-      },
-      {
-        "name": "findAttributeByKey",
-        "comment": " Find an attribute by key\n\n    findAttributeByKey \"ui:label\" models -- Just label\n\n",
-        "type": "String -> List Bubblegum.Entity.Attribute.Model -> Maybe.Maybe Bubblegum.Entity.Attribute.Model"
-      },
-      {
-        "name": "findAttributeFirstValueByKey",
-        "comment": " Find an attribute by key and then get the first value if any\n\n    findAttributeFirstValueByKey \"ui:label\" models -- Just \"some label\"\n\n",
-        "type": "String -> List Bubblegum.Entity.Attribute.Model -> Maybe.Maybe String"
-      },
-      {
-        "name": "findOutcomeByKey",
-        "comment": " Find an outcome searching by key\n\n    findOutcomeByKey \"ui:label\" models -- Valid [\"some label\"]\n\n",
-        "type": "String -> List Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Outcome.Outcome (List String)"
-      },
-      {
-        "name": "findOutcomeByKeyTuple",
-        "comment": " Find an outcome searching by a couple of keys\n\n    findOutcomeByKeyTuple (\"ui:min\", \"ui:max\") models -- Valid ([\"1\"], [\"10\"])\n\n",
-        "type": "( String, String ) -> List Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Outcome.Outcome ( List String, List String )"
-      },
-      {
-        "name": "replaceAttributeByKey",
-        "comment": " Replace or create an attribute by key\n\n     replaceAttributeByKey \"ui:label\" [\"new label\"] models -- models\n\n",
-        "type": "String -> List String -> List Bubblegum.Entity.Attribute.Model -> List Bubblegum.Entity.Attribute.Model"
-      },
-      {
-        "name": "setFacets",
-        "comment": " Set an optional list of tags to mark the data\n\n    setFacets [\"min\", \"inclusive\"] model\n\n",
-        "type": "List String -> Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Attribute.Model"
-      },
-      {
-        "name": "setId",
-        "comment": " Set a possible id to represent the attribute\n\n     setId (Just \"id:1234\") model\n\n",
-        "type": "Maybe.Maybe String -> Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Attribute.Model"
-      },
-      {
-        "name": "setKey",
-        "comment": " Set the key of the attribute\n\n    setKey \"ui:label\" model\n\n",
-        "type": "String -> Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Attribute.Model"
-      },
-      {
-        "name": "setValues",
-        "comment": " Set a list of string values\n\n    setValues [\"some label\"] model\n\n",
-        "type": "List String -> Bubblegum.Entity.Attribute.Model -> Bubblegum.Entity.Attribute.Model"
       }
     ],
     "generated-with-elm-version": "0.18.0"

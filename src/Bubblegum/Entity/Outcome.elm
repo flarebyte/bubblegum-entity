@@ -1,6 +1,6 @@
 module Bubblegum.Entity.Outcome exposing (..)
 
-{-| An outcome is a type which borrow concepts from both Elm Maybe and Result
+{-| An outcome is a type which borrows concepts from both Elm Maybe and Result
 
 
 # Basics
