@@ -25,7 +25,10 @@ doc:
 	elm-make --docs=documentation.json
 
 generate:
-	cd scripts && python generate_validation.py
+	cd scripts && python -B generate_tests.py
+
+parse:
+	python scripts/parse_elm.py
 
 diff:
 	elm-package diff

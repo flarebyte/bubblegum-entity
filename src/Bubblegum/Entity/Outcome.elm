@@ -1,12 +1,27 @@
 module Bubblegum.Entity.Outcome exposing (..)
 
-{-| Setting key
+{-| An outcome is a type which borrows concepts from both Elm Maybe and Result
 
-@docs Model
+
+# Basics
+
+@docs Outcome, withDefault, map, map2, or, fromMaybe, toMaybe
+
+
+# Checking
+
+@docs check, checkOrNone, trueMapToConstant, isValid, isNone, isWarning
 
 -}
 
 
+{-| Representation of an outcome which can be:
+
+  - Valid: a valid value, similar to Just of Maybe.
+  - None: no value, similar to Nothing of Maybe.
+  - Warning: a warning message, similar to Err of Result.
+
+-}
 type Outcome value
     = Valid value
     | None
@@ -75,7 +90,12 @@ map2 func ra rb =
             Warning msg
 
 
-{-| -}
+{-| Check that a valid outcome verifies the criteria otherwise raise a warning
+
+    check String.isEmpty "should not be empty string" (Valid "some text" ) -- Valid "some text"
+    check String.isEmpty "should not be empty string" (Valid "" ) -- Warning "should not be empty string"
+
+-}
 check : (a -> Bool) -> String -> Outcome a -> Outcome a
 check checker warnMsg ra =
     case ra of
@@ -92,7 +112,12 @@ check checker warnMsg ra =
                 Warning warnMsg
 
 
-{-| -}
+{-| Check that a valid outcome verifies the criteria otherwise return none
+
+    checkOrNone String.isEmpty (Valid "some text" ) -- Valid "some text"
+    checkOrNone String.isEmpty (Valid "" ) -- None
+
+-}
 checkOrNone : (a -> Bool) -> Outcome a -> Outcome a
 checkOrNone checker ra =
     case ra of
@@ -109,6 +134,12 @@ checkOrNone checker ra =
                 None
 
 
+{-| An outcome with a true value will produce a constant outcome
+
+    trueMapToConstant ["alpha"] (Valid True ) -- Valid ["alpha"]
+    trueMapToConstant ["alpha"] (Valid False ) -- None
+
+-}
 trueMapToConstant : a -> Outcome Bool -> Outcome a
 trueMapToConstant const outcome =
     case outcome of
@@ -126,6 +157,9 @@ trueMapToConstant const outcome =
 
 
 {-| Like the boolean '||' this will return the first value that is positive ('Valid').
+
+    or (None) (Valid "str") -- Valid "str"
+
 -}
 or : Outcome a -> Outcome a -> Outcome a
 or ma mb =
@@ -140,6 +174,12 @@ or ma mb =
             Warning msg
 
 
+{-| Convert a maybe to an outcome
+
+    fromMaybe (Just "str") -- Valid "str"
+    fromMaybe Nothing -- None
+
+-}
 fromMaybe : Maybe a -> Outcome a
 fromMaybe maybe =
     case maybe of
@@ -150,6 +190,12 @@ fromMaybe maybe =
             None
 
 
+{-| Convert an outcome to a maybe
+
+    toMaybe (Valid "str") -- Just "str"
+    toMaybe None -- Nothing
+
+-}
 toMaybe : Outcome a -> Maybe a
 toMaybe outcome =
     case outcome of
@@ -163,6 +209,8 @@ toMaybe outcome =
             Just value
 
 
+{-| Return true if the outcome is valid
+-}
 isValid : Outcome a -> Bool
 isValid outcome =
     case outcome of
@@ -173,6 +221,8 @@ isValid outcome =
             False
 
 
+{-| Return true if the outcome is none
+-}
 isNone : Outcome a -> Bool
 isNone outcome =
     case outcome of
@@ -183,6 +233,8 @@ isNone outcome =
             False
 
 
+{-| Return true if the outcome is none
+-}
 isWarning : Outcome a -> Bool
 isWarning outcome =
     case outcome of

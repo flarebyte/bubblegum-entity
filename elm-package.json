@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "Access to settings and states for widgets of the Bubblegum UI toolkit.",
-    "repository": "https://github.com/flarebyte/bubblegum-entity",
+    "repository": "https://github.com/flarebyte/bubblegum-entity.git",
     "license": "BSD3",
     "source-directories": [
         "src"
