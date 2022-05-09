@@ -7,3 +7,4 @@ repl-temp-*
 .vscode
 
 .DS_Store
+*.log

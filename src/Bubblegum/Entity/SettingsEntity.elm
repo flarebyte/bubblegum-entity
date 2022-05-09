@@ -1,4 +1,4 @@
-module Bubblegum.Entity.SettingsEntity exposing (Model, asAttributesIn, setAttributes)
+module Bubblegum.Entity.SettingsEntity exposing (Model, setAttributes, asAttributesIn)
 
 {-| A settings entity represents some configuration that could be applied to a widget
 
@@ -27,4 +27,4 @@ setAttributes attributes model =
 -}
 asAttributesIn : Model -> List Attribute.Model -> Model
 asAttributesIn =
-    flip setAttributes
+    \b a -> setAttributes a b

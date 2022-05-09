@@ -1,11 +1,9 @@
 {
-    "version": "1.0.0",
+    "type": "package",
+    "name": "flarebyte/bubblegum-entity",
     "summary": "Access to settings and states for widgets of the Bubblegum UI toolkit.",
-    "repository": "https://github.com/flarebyte/bubblegum-entity.git",
-    "license": "BSD3",
-    "source-directories": [
-        "src"
-    ],
+    "license": "BSD-3-Clause",
+    "version": "1.0.0",
     "exposed-modules": [
         "Bubblegum.Entity.Attribute",
         "Bubblegum.Entity.Outcome",
@@ -13,10 +11,11 @@
         "Bubblegum.Entity.StateEntity",
         "Bubblegum.Entity.Transformation",
         "Bubblegum.Entity.Validation"
-
     ],
+    "elm-version": "0.19.0 <= v < 0.20.0",
     "dependencies": {
-        "elm-lang/core": "5.1.1 <= v < 6.0.0"
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "elm/regex": "1.0.0 <= v < 2.0.0"
     },
-    "elm-version": "0.18.0 <= v < 0.19.0"
+    "test-dependencies": {}
 }

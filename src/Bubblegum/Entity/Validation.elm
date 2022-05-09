@@ -1,33 +1,9 @@
-module Bubblegum.Entity.Validation
-    exposing
-        ( asBool
-        , asFloat
-        , asFloatRange
-        , asFloatTuple
-        , asInt
-        , asIntRange
-        , asIntTuple
-        , asSingle
-        , asTuple
-        , asUnique
-        , listEqual
-        , listLessThan
-        , listMoreThan
-        , listStrictlyLessThan
-        , listStrictlyMoreThan
-        , matchAbsoluteUrl
-        , matchCompactUri
-        , matchEnum
-        , matchNormalizedString
-        , matchRegex
-        , stringContains
-        , stringEndsWith
-        , stringStartsWith
-        , withinFloatRange
-        , withinIntRange
-        , withinListStringCharsRange
-        , withinStringCharsRange
-        )
+module Bubblegum.Entity.Validation exposing
+    ( asSingle, asTuple, asBool, asFloat, asInt, asIntTuple, asFloatTuple, asUnique
+    , asIntRange, asFloatRange, withinIntRange, withinFloatRange
+    , listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan
+    , matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange
+    )
 
 {-| List of validations with implicit transformations that can be applied to an outcome
 
@@ -68,7 +44,7 @@ import Tuple exposing (first, second)
 
 {-| Convert a list with only one string to a single string.
 
-    Valid ["alpha"] |> asSingle -- Valid "alpha"
+    Valid [ "alpha" ] |> asSingle -- Valid "alpha"
 
 -}
 asSingle : Outcome (List String) -> Outcome String
@@ -78,7 +54,7 @@ asSingle outcome =
 
 {-| Convert a tuple of singleton list to a tuple of String
 
-    Valid (["min"], ["max"]) |> asTuple -- Valid ("min", "max")
+    Valid ( [ "min" ], [ "max" ] ) |> asTuple -- Valid ("min", "max")
 
 -}
 asTuple : Outcome ( List String, List String ) -> Outcome ( String, String )
@@ -88,7 +64,7 @@ asTuple outcome =
 
 {-| Ensure that the list equal a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listEqual 2 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listEqual 2 -- Valid ["alpha", "beta"]
 
 -}
 listEqual : Int -> Outcome (List String) -> Outcome (List String)
@@ -98,7 +74,7 @@ listEqual size outcome =
 
 {-| Ensure that the list equal or more than a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listMoreThan 2 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listMoreThan 2 -- Valid ["alpha", "beta"]
 
 -}
 listMoreThan : Int -> Outcome (List String) -> Outcome (List String)
@@ -108,7 +84,7 @@ listMoreThan size outcome =
 
 {-| Ensure that the list is strictly more than a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listStrictlyMoreThan 1 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listStrictlyMoreThan 1 -- Valid ["alpha", "beta"]
 
 -}
 listStrictlyMoreThan : Int -> Outcome (List String) -> Outcome (List String)
@@ -118,7 +94,7 @@ listStrictlyMoreThan size outcome =
 
 {-| Ensure that the list equal or less than a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listLessThan 2 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listLessThan 2 -- Valid ["alpha", "beta"]
 
 -}
 listLessThan : Int -> Outcome (List String) -> Outcome (List String)
@@ -128,7 +104,7 @@ listLessThan size outcome =
 
 {-| Ensure that the list is strictly less than a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listStrictlyLessThan 3 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listStrictlyLessThan 3 -- Valid ["alpha", "beta"]
 
 -}
 listStrictlyLessThan : Int -> Outcome (List String) -> Outcome (List String)
@@ -138,7 +114,7 @@ listStrictlyLessThan size outcome =
 
 {-| Enforce that the list to be unique
 
-    Valid ["alpha", "beta", "alpha"] |> asUnique -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta", "alpha" ] |> asUnique -- Valid ["alpha", "beta"]
 
 -}
 asUnique : Outcome (List String) -> Outcome (List String)
@@ -258,7 +234,7 @@ floatStrictlyLessThan limit outcome =
 
 {-| Check that a string belong to an enumeration otherwise raise a warning
 
-    Valid ["alpha"] |> matchEnum ["beta", "alpha"] -- Valid ["alpha"]
+    Valid [ "alpha" ] |> matchEnum [ "beta", "alpha" ] -- Valid ["alpha"]
 
 -}
 matchEnum : List String -> Outcome String -> Outcome String
@@ -268,7 +244,7 @@ matchEnum enum outcome =
 
 {-| Check that a string starts with a prefix otherwise raise a warning
 
-    Valid ["ui:label"] |> stringStartsWith "ui:" -- Valid ["ui:label"]
+    Valid [ "ui:label" ] |> stringStartsWith "ui:" -- Valid ["ui:label"]
 
 -}
 stringStartsWith : String -> Outcome String -> Outcome String
@@ -278,7 +254,7 @@ stringStartsWith prefix outcome =
 
 {-| Check that a string ends with a suffix otherwise raise a warning
 
-    Valid ["image.jpg"] |> stringEndsWith ".jpg" -- Valid ["image.jpg"]
+    Valid [ "image.jpg" ] |> stringEndsWith ".jpg" -- Valid ["image.jpg"]
 
 -}
 stringEndsWith : String -> Outcome String -> Outcome String
@@ -288,7 +264,7 @@ stringEndsWith suffix outcome =
 
 {-| Check that a string contains a term otherwise raise a warning
 
-    Valid ["blue red green"] |> stringContains "red" -- Valid ["blue red green"]
+    Valid [ "blue red green" ] |> stringContains "red" -- Valid ["blue red green"]
 
 -}
 stringContains : String -> Outcome String -> Outcome String
@@ -357,7 +333,7 @@ matchCompactUri outcome =
 
 {-| Convert a tuple of String to a tuple of Int otherwise raise a warning
 
-    Valid ("3", "5") |> asIntTuple -- Valid (3, 5)
+    Valid ( "3", "5" ) |> asIntTuple -- Valid (3, 5)
 
 -}
 asIntTuple : Outcome ( String, String ) -> Outcome ( Int, Int )
@@ -368,7 +344,7 @@ asIntTuple outcome =
 
 {-| Convert a tuple of String to a tuple of Float otherwise raise a warning
 
-    Valid ("3.5", "5.5") |> asFloatTuple -- Valid (3.5, 5.5)
+    Valid ( "3.5", "5.5" ) |> asFloatTuple -- Valid (3.5, 5.5)
 
 -}
 asFloatTuple : Outcome ( String, String ) -> Outcome ( Float, Float )
@@ -379,7 +355,7 @@ asFloatTuple outcome =
 
 {-| Check that first value is strictly less than the second otherwise raise a warning
 
-    Valid (3, 5) |> asIntRange -- Valid (3, 5)
+    Valid ( 3, 5 ) |> asIntRange -- Valid (3, 5)
 
 -}
 asIntRange : Outcome ( Int, Int ) -> Outcome ( Int, Int )
@@ -389,7 +365,7 @@ asIntRange outcome =
 
 {-| Check that first value is strictly less than the second otherwise raise a warning
 
-    Valid (3.5, 5.5) |> asFloatRange -- Valid (3.5, 5.5)
+    Valid ( 3.5, 5.5 ) |> asFloatRange -- Valid (3.5, 5.5)
 
 -}
 asFloatRange : Outcome ( Float, Float ) -> Outcome ( Float, Float )
@@ -399,7 +375,7 @@ asFloatRange outcome =
 
 {-| Check a tuple of Int is within the range of a given range otherwise raise a warning
 
-    Valid (3, 5) |> withinIntRange (2, 7) -- Valid (3, 5)
+    Valid ( 3, 5 ) |> withinIntRange ( 2, 7 ) -- Valid (3, 5)
 
 -}
 withinIntRange : ( Int, Int ) -> Outcome ( Int, Int ) -> Outcome ( Int, Int )
@@ -409,7 +385,7 @@ withinIntRange range outcome =
 
 {-| Check a tuple of Float is within the range of a given range otherwise raise a warning
 
-    Valid (3.5, 5.2) |> withinFloatRange (2.1, 7.2) -- Valid (3.5, 5.2)
+    Valid ( 3.5, 5.2 ) |> withinFloatRange ( 2.1, 7.2 ) -- Valid (3.5, 5.2)
 
 -}
 withinFloatRange : ( Float, Float ) -> Outcome ( Float, Float ) -> Outcome ( Float, Float )
@@ -419,7 +395,7 @@ withinFloatRange range outcome =
 
 {-| Check that a string number of characters is within a range otherwise raise a warning
 
-    Valid "abcd" |> withinStringCharsRange (2, 7) -- Valid "abcd"
+    Valid "abcd" |> withinStringCharsRange ( 2, 7 ) -- Valid "abcd"
 
 -}
 withinStringCharsRange : ( Int, Int ) -> Outcome String -> Outcome String
@@ -429,7 +405,7 @@ withinStringCharsRange range outcome =
 
 {-| Check that all the strings' number of characters are within a range otherwise raise a warning
 
-    Valid ["abc", "abcd"] |> withinListStringCharsRange (2, 7) -- Valid "abcd"
+    Valid [ "abc", "abcd" ] |> withinListStringCharsRange ( 2, 7 ) -- Valid "abcd"
 
 -}
 withinListStringCharsRange : ( Int, Int ) -> Outcome (List String) -> Outcome (List String)
