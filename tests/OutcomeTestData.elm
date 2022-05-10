@@ -62,7 +62,7 @@ fuzzyV2Map = int
 
 validP1MapForValid: Int -> (Int -> String)
 validP1MapForValid value =
-    toString
+    String.fromInt
 
 validP2MapForValid: Int -> Outcome Int
 validP2MapForValid value =
@@ -78,7 +78,7 @@ summarizeMapForValid result =
 
 validP1MapForNone: Int -> (Int -> String)
 validP1MapForNone value =
-    toString
+    String.fromInt
 
 validP2MapForNone: Int -> Outcome Int
 validP2MapForNone value =
@@ -94,7 +94,7 @@ summarizeMapForNone result =
 
 validP1MapForWarning: Int -> (Int -> String)
 validP1MapForWarning value =
-    toString
+    String.fromInt
 
 validP2MapForWarning: Int -> Outcome Int
 validP2MapForWarning value =
@@ -119,7 +119,7 @@ fuzzyV3Map2 = int
 
 addNumbers : Int -> Int -> String
 addNumbers a b =
-    a + b |> toString
+    a + b |> String.fromInt
 
 validP1Map2ForValid: Int -> (Int -> Int -> String)
 validP1Map2ForValid value =

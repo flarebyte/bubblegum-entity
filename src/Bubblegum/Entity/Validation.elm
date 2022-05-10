@@ -69,7 +69,7 @@ asTuple outcome =
 -}
 listEqual : Int -> Outcome (List String) -> Outcome (List String)
 listEqual size outcome =
-    Outcome.check (matchListSize size) ("unsatisfied-constraint:list-equal-" ++ toString size) outcome
+    Outcome.check (matchListSize size) ("unsatisfied-constraint:list-equal-" ++ String.fromInt size) outcome
 
 
 {-| Ensure that the list equal or more than a given size otherwise raise a warning
@@ -79,7 +79,7 @@ listEqual size outcome =
 -}
 listMoreThan : Int -> Outcome (List String) -> Outcome (List String)
 listMoreThan size outcome =
-    Outcome.check (helperMoreThan size) ("unsatisfied-constraint:list-more-than-" ++ toString size) outcome
+    Outcome.check (helperMoreThan size) ("unsatisfied-constraint:list-more-than-" ++ String.fromInt size) outcome
 
 
 {-| Ensure that the list is strictly more than a given size otherwise raise a warning
@@ -89,7 +89,7 @@ listMoreThan size outcome =
 -}
 listStrictlyMoreThan : Int -> Outcome (List String) -> Outcome (List String)
 listStrictlyMoreThan size outcome =
-    Outcome.check (helperStrictlyMoreThan size) ("unsatisfied-constraint:list-strictly-more-than-" ++ toString size) outcome
+    Outcome.check (helperStrictlyMoreThan size) ("unsatisfied-constraint:list-strictly-more-than-" ++ String.fromInt size) outcome
 
 
 {-| Ensure that the list equal or less than a given size otherwise raise a warning
@@ -99,7 +99,7 @@ listStrictlyMoreThan size outcome =
 -}
 listLessThan : Int -> Outcome (List String) -> Outcome (List String)
 listLessThan size outcome =
-    Outcome.check (helperLessThan size) ("unsatisfied-constraint:list-less-than-" ++ toString size) outcome
+    Outcome.check (helperLessThan size) ("unsatisfied-constraint:list-less-than-" ++ String.fromInt size) outcome
 
 
 {-| Ensure that the list is strictly less than a given size otherwise raise a warning
@@ -109,7 +109,7 @@ listLessThan size outcome =
 -}
 listStrictlyLessThan : Int -> Outcome (List String) -> Outcome (List String)
 listStrictlyLessThan size outcome =
-    Outcome.check (helperStrictlyLessThan size) ("unsatisfied-constraint:list-strictly-less-than-" ++ toString size) outcome
+    Outcome.check (helperStrictlyLessThan size) ("unsatisfied-constraint:list-strictly-less-than-" ++ String.fromInt size) outcome
 
 
 {-| Enforce that the list to be unique
@@ -159,7 +159,7 @@ asBool outcome =
 -}
 intMoreThan : Int -> Outcome Int -> Outcome Int
 intMoreThan limit outcome =
-    Outcome.check (\v -> v >= limit) ("unsatisfied-constraint:int-more-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v >= limit) ("unsatisfied-constraint:int-more-than-" ++ String.fromInt limit) outcome
 
 
 {-| Check that an int is equal or more than a given value otherwise raise a warning
@@ -169,7 +169,7 @@ intMoreThan limit outcome =
 -}
 intStrictlyMoreThan : Int -> Outcome Int -> Outcome Int
 intStrictlyMoreThan limit outcome =
-    Outcome.check (\v -> v > limit) ("unsatisfied-constraint:int-strictly-more-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v > limit) ("unsatisfied-constraint:int-strictly-more-than-" ++ String.fromInt limit) outcome
 
 
 {-| Check that an int is equal or less than a given value otherwise raise a warning
@@ -179,7 +179,7 @@ intStrictlyMoreThan limit outcome =
 -}
 intLessThan : Int -> Outcome Int -> Outcome Int
 intLessThan limit outcome =
-    Outcome.check (\v -> v <= limit) ("unsatisfied-constraint:int-less-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v <= limit) ("unsatisfied-constraint:int-less-than-" ++ String.fromInt limit) outcome
 
 
 {-| Check that an int is strictly less than a given value otherwise raise a warning
@@ -189,7 +189,7 @@ intLessThan limit outcome =
 -}
 intStrictlyLessThan : Int -> Outcome Int -> Outcome Int
 intStrictlyLessThan limit outcome =
-    Outcome.check (\v -> v < limit) ("unsatisfied-constraint:int-strictly-less-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v < limit) ("unsatisfied-constraint:int-strictly-less-than-" ++ String.fromInt limit) outcome
 
 
 {-| Check that an int is equal or more than a given value otherwise raise a warning
@@ -199,7 +199,7 @@ intStrictlyLessThan limit outcome =
 -}
 floatMoreThan : Float -> Outcome Float -> Outcome Float
 floatMoreThan limit outcome =
-    Outcome.check (\v -> v >= limit) ("unsatisfied-constraint:float-more-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v >= limit) ("unsatisfied-constraint:float-more-than-" ++ String.fromFloat limit) outcome
 
 
 {-| Check that an int is strictly more than a given value otherwise raise a warning
@@ -209,7 +209,7 @@ floatMoreThan limit outcome =
 -}
 floatStrictlyMoreThan : Float -> Outcome Float -> Outcome Float
 floatStrictlyMoreThan limit outcome =
-    Outcome.check (\v -> v > limit) ("unsatisfied-constraint:float-strictly-more-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v > limit) ("unsatisfied-constraint:float-strictly-more-than-" ++ String.fromFloat limit) outcome
 
 
 {-| Check that an int is equal or less than a given value otherwise raise a warning
@@ -219,7 +219,7 @@ floatStrictlyMoreThan limit outcome =
 -}
 floatLessThan : Float -> Outcome Float -> Outcome Float
 floatLessThan limit outcome =
-    Outcome.check (\v -> v <= limit) ("unsatisfied-constraint:float-less-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v <= limit) ("unsatisfied-constraint:float-less-than-" ++ String.fromFloat limit) outcome
 
 
 {-| Check that an int is strictly less than a given value otherwise raise a warning
@@ -229,7 +229,7 @@ floatLessThan limit outcome =
 -}
 floatStrictlyLessThan : Float -> Outcome Float -> Outcome Float
 floatStrictlyLessThan limit outcome =
-    Outcome.check (\v -> v < limit) ("unsatisfied-constraint:float-strictly-less-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v < limit) ("unsatisfied-constraint:float-strictly-less-than-" ++ String.fromFloat limit) outcome
 
 
 {-| Check that a string belong to an enumeration otherwise raise a warning
@@ -291,7 +291,7 @@ matchRegex : String -> Outcome String -> Outcome String
 matchRegex regExp outcome =
     let
         re =
-            "^" ++ regExp ++ "$" |> Regex.regex
+            Maybe.withDefault Regex.never <| Regex.fromString ("^" ++ regExp ++ "$")
     in
     matchNormalizedString outcome |> Outcome.check (\v -> Regex.contains re v) "unsatisfied-constraint:regex"
 
@@ -310,7 +310,7 @@ matchAbsoluteUrl : Outcome String -> Outcome String
 matchAbsoluteUrl outcome =
     let
         re =
-            Regex.regex "^https?://[^\\s/$.?#].[^\\s]*$"
+            Maybe.withDefault Regex.never <| Regex.fromString "^https?://[^\\s/$.?#].[^\\s]*$"
     in
     matchNormalizedString outcome |> Outcome.check (\v -> Regex.contains re v) "unsatisfied-constraint:absolute-url"
 
@@ -326,7 +326,7 @@ matchCompactUri : Outcome String -> Outcome String
 matchCompactUri outcome =
     let
         re =
-            Regex.regex "^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$"
+            Maybe.withDefault Regex.never <| Regex.fromString "^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$"
     in
     matchNormalizedString outcome |> Outcome.check (\v -> Regex.contains re v) "unsatisfied-constraint:compact-uri"
 
@@ -380,7 +380,7 @@ asFloatRange outcome =
 -}
 withinIntRange : ( Int, Int ) -> Outcome ( Int, Int ) -> Outcome ( Int, Int )
 withinIntRange range outcome =
-    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-int-range:" ++ toString range) outcome
+    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-int-range:" ++ String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)) outcome
 
 
 {-| Check a tuple of Float is within the range of a given range otherwise raise a warning
@@ -390,7 +390,7 @@ withinIntRange range outcome =
 -}
 withinFloatRange : ( Float, Float ) -> Outcome ( Float, Float ) -> Outcome ( Float, Float )
 withinFloatRange range outcome =
-    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-float-range:" ++ toString range) outcome
+    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-float-range:" ++ String.fromFloat (first range) ++ "<->" ++ String.fromFloat (second range)) outcome
 
 
 {-| Check that a string number of characters is within a range otherwise raise a warning
@@ -400,7 +400,7 @@ withinFloatRange range outcome =
 -}
 withinStringCharsRange : ( Int, Int ) -> Outcome String -> Outcome String
 withinStringCharsRange range outcome =
-    Outcome.check (helperCharsRange range) ("unsatisfied-constraint:within-string-chars-range:" ++ toString range) outcome
+    Outcome.check (helperCharsRange range) ("unsatisfied-constraint:within-string-chars-range:" ++ String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)) outcome
 
 
 {-| Check that all the strings' number of characters are within a range otherwise raise a warning
@@ -410,7 +410,7 @@ withinStringCharsRange range outcome =
 -}
 withinListStringCharsRange : ( Int, Int ) -> Outcome (List String) -> Outcome (List String)
 withinListStringCharsRange range outcome =
-    Outcome.check (\list -> List.all (helperCharsRange range) list) ("unsatisfied-constraint:within-list-string-chars-range:" ++ toString range) outcome
+    Outcome.check (\list -> List.all (helperCharsRange range) list) ("unsatisfied-constraint:within-list-string-chars-range:" ++ String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)) outcome
 
 
 

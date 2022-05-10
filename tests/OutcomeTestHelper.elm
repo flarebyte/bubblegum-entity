@@ -6,7 +6,7 @@ module OutcomeTestHelper exposing (..)
 import Bubblegum.Entity.Outcome as Outcome exposing (..)
 
 import FunctionTester exposing(..)
-import Regex as Regex exposing(regex)
+import Regex
 
 expectValid: Outcome a -> String
 expectValid outcome =
@@ -35,7 +35,7 @@ expectValidOutcomeRegex: String -> Outcome String -> String
 expectValidOutcomeRegex term outcome =
     case outcome of
         Valid s ->
-            if Regex.contains (regex term) s then ok else s ++ " does not match " ++ term
+            if Regex.contains (Maybe.withDefault Regex.never <| Regex.fromString term) s then ok else s ++ " does not match " ++ term
         None ->
             "should not be none"
         Warning s ->
@@ -49,5 +49,5 @@ expectWarningOutcomeRegex term outcome =
         None ->
             "should not be none"
         Warning s ->
-            if Regex.contains (regex term) s then ok else s ++ " does not match warning " ++ term
+            if Regex.contains (Maybe.withDefault Regex.never <| Regex.fromString term) s then ok else s ++ " does not match warning " ++ term
             
