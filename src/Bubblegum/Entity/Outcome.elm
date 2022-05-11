@@ -1,4 +1,7 @@
-module Bubblegum.Entity.Outcome exposing (..)
+module Bubblegum.Entity.Outcome exposing
+    ( Outcome, withDefault, map, map2, or, fromMaybe, toMaybe
+    , check, checkOrNone, trueMapToConstant, isValid, isNone, isWarning
+    )
 
 {-| An outcome is a type which borrows concepts from both Elm Maybe and Result
 
@@ -74,10 +77,10 @@ map2 func ra rb =
         ( None, None ) ->
             None
 
-        ( Valid a, None ) ->
+        ( Valid _, None ) ->
             None
 
-        ( None, Valid b ) ->
+        ( None, Valid _ ) ->
             None
 
         ( Warning msga, Warning msgb ) ->
@@ -210,7 +213,7 @@ toMaybe outcome =
         None ->
             Nothing
 
-        Warning msg ->
+        Warning _ ->
             Nothing
 
         Valid value ->
@@ -222,7 +225,7 @@ toMaybe outcome =
 isValid : Outcome a -> Bool
 isValid outcome =
     case outcome of
-        Valid v ->
+        Valid _ ->
             True
 
         _ ->
@@ -246,7 +249,7 @@ isNone outcome =
 isWarning : Outcome a -> Bool
 isWarning outcome =
     case outcome of
-        Warning w ->
+        Warning _ ->
             True
 
         _ ->

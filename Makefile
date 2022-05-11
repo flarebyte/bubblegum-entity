@@ -6,6 +6,11 @@ reset:
 	rm -rf elm-stuff
 	rm -rf tests/elm-stuff
 
+install-global:
+	yarn global add elm-format@0.8.4
+	yarn global add elm-review
+	yarn global add elm-upgrade
+
 build: test beautify doc
 
 build-ci:
@@ -22,7 +27,7 @@ beautify:
 	elm-format src/ --yes
 
 doc:
-	elm-make --docs=documentation.json
+	elm make --docs=documentation.json
 
 generate:
 	cd scripts && python -B generate_tests.py

@@ -3,6 +3,7 @@ module Bubblegum.Entity.Validation exposing
     , asIntRange, asFloatRange, withinIntRange, withinFloatRange
     , listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan
     , matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange
+    , floatLessThan, floatMoreThan, floatStrictlyLessThan, floatStrictlyMoreThan, intLessThan, intMoreThan, intStrictlyLessThan, intStrictlyMoreThan
     )
 
 {-| List of validations with implicit transformations that can be applied to an outcome
@@ -465,31 +466,31 @@ onlyTuple listTuple =
 isInt : String -> Bool
 isInt value =
     case String.toInt value of
-        Ok _ ->
+        Just _ ->
             True
 
-        Err _ ->
+        Nothing ->
             False
 
 
 isFloat : String -> Bool
 isFloat value =
     case String.toFloat value of
-        Ok _ ->
+        Just _ ->
             True
 
-        Err _ ->
+        Nothing ->
             False
 
 
 intOrZero : String -> Int
 intOrZero value =
-    String.toInt value |> Result.withDefault 0
+    String.toInt value |> Maybe.withDefault 0
 
 
 floatOrZero : String -> Float
 floatOrZero value =
-    String.toFloat value |> Result.withDefault 0
+    String.toFloat value |> Maybe.withDefault 0
 
 
 stringToBool : String -> Bool
