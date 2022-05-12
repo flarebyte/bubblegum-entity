@@ -1,5 +1,5 @@
 module Bubblegum.Entity.Outcome exposing
-    ( Outcome, withDefault, map, map2, or, fromMaybe, toMaybe
+    ( Outcome(..), withDefault, map, map2, or, fromMaybe, toMaybe
     , check, checkOrNone, trueMapToConstant, isValid, isNone, isWarning
     )
 

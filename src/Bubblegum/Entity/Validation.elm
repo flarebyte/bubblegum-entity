@@ -34,6 +34,11 @@ For most validations:
 
 @docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange
 
+
+## Number validation
+
+@docs floatLessThan, floatMoreThan, floatStrictlyLessThan, floatStrictlyMoreThan, intLessThan, intMoreThan, intStrictlyLessThan, intStrictlyMoreThan
+
 -}
 
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
