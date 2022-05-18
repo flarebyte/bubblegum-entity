@@ -8,3 +8,8 @@ repl-temp-*
 
 .DS_Store
 *.log
+
+node_modules/
+dist/
+report/
+.message
