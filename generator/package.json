@@ -1,0 +1,34 @@
+{
+    "name": "bubblegum-entity-generator",
+    "description": "Generator for bubblegum-entity",
+    "version": "0.1.0",
+    "license": "MIT",
+    "private": true,
+    "type": "module",
+    "engines": {
+      "node": ">=14"
+    },
+    "main": "./src/generator.mjs",
+    "scripts": {
+      "lint:ci": "baldrick lint ci",
+      "lint": "baldrick lint check -s src",
+      "lint:fix": "baldrick lint fix -s src",
+      "ready": "yarn lint && yarn test:cov && yarn outdated && yarn audit",
+      "reset": "rm -rf dist; rm -rf report",
+      "test:ci": "baldrick test ci",
+      "test": "baldrick test check",
+      "test:cov": "baldrick test cov",
+      "test:fix": "baldrick test fix",
+      "generate": "ts-node .src/generator.ts"
+    },
+    "dependencies": {
+      "typescript": "^4.5.5",
+      "fs-jetpack": "^4.3.1",
+      "ts-morph": "^13.0.3",
+      "ts-node": "^10.4.0"
+    },
+    "devDependencies": {
+      "baldrick-dev-ts": "^0.15.0"
+    },
+    "peerDependencies": {}
+  }
