@@ -1,4 +1,4 @@
-interface FunctionInfo {
+export interface FunctionInfo {
     name: string;
     params: [string, string][];
     returned: string;

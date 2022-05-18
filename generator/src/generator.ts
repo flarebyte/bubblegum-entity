@@ -1,10 +1,10 @@
-import { readElmContent } from "./elm-io";
+import { readElmFunctions } from "./elm-io.js";
 
-console.log('prepare');
+console.log("prepare");
 const generate = async () => {
-  console.log('Stating generation ...');
-  const attrContent = await readElmContent('Attribute');
-  console.log(attrContent)
+  console.log("Starting generation ...");
+  const attrFunctions = await readElmFunctions("Attribute");
+  console.log(JSON.stringify(attrFunctions, null, 2));
 };
 
 await generate();
