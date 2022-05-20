@@ -1,14 +1,24 @@
 import path from "node:path";
 import jetpack from "fs-jetpack";
+import Mustache from "mustache";
 import { FunctionInfo, parseElmFunctions } from "./parse-elm-function.js";
 import {
   FunctionMeta,
   mergeWithExtendedMeta,
   ExtendedFunctionInfo,
   toFunctionMetaObject,
+  FunctionTemplateInfo,
 } from "./data/data-model.js";
 const elmSourceDir = "../src/Bubblegum/Entity";
 const generatedDir = "../generated";
+const templateDir = "../template";
+
+/**
+ *  Custom global config for Mustache
+ */
+Mustache.escape = function (text: string) {
+  return text;
+};
 
 export const readElmContent = async (name: string): Promise<string> => {
   const filename = path.join(elmSourceDir, `${name}.elm`);
@@ -68,6 +78,18 @@ export const mergeElmFunctions = async (
     mergeWithExtendedMeta(fn, metaDict[fn.name] || defaultFunctionMeta)
   );
   await saveExtendedElmFunctions(name, extendedFunctions);
-  console.log(`Generated extended model for ${name} with ${extendedFunctions.length} functions`)
+  console.log(
+    `Generated extended model for ${name} with ${extendedFunctions.length} functions`
+  );
   return extendedFunctions;
+};
+
+export const hydrateFunctionTemplate = async (
+  category: string,
+  name: string,
+  templateInfo: FunctionTemplateInfo
+) => {
+  const filename = path.join(templateDir, category, `${name}.mustache`);
+  const template = (await jetpack.readAsync(filename, "utf8")) || "[]";
+  Mustache.render(template, templateInfo);
 };

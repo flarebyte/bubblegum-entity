@@ -12,6 +12,10 @@ export interface ExtendedFunctionInfo extends FunctionInfo {
   states: MetaState[];
 }
 
+export interface FunctionTemplateInfo {
+  function: ExtendedFunctionInfo;
+}
+
 export const toFunctionMetaObject = (
   metaArray: FunctionMeta[]
 ): { [name: string]: FunctionMeta } =>
