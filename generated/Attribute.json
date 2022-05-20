@@ -1,0 +1,178 @@
+[
+  {
+    "name": "setId",
+    "params": [
+      [
+        "id",
+        "Maybe String"
+      ],
+      [
+        "model",
+        "Model"
+      ]
+    ],
+    "returned": "Model",
+    "states": []
+  },
+  {
+    "name": "setKey",
+    "params": [
+      [
+        "key",
+        "String"
+      ],
+      [
+        "model",
+        "Model"
+      ]
+    ],
+    "returned": "Model",
+    "states": []
+  },
+  {
+    "name": "setFacets",
+    "params": [
+      [
+        "facets",
+        "List String"
+      ],
+      [
+        "model",
+        "Model"
+      ]
+    ],
+    "returned": "Model",
+    "states": []
+  },
+  {
+    "name": "setValues",
+    "params": [
+      [
+        "values",
+        "List String"
+      ],
+      [
+        "model",
+        "Model"
+      ]
+    ],
+    "returned": "Model",
+    "states": []
+  },
+  {
+    "name": "findAttributeByKey",
+    "params": [
+      [
+        "key",
+        "String"
+      ],
+      [
+        "attributes",
+        "List Model"
+      ]
+    ],
+    "returned": "Maybe Model",
+    "states": [
+      {
+        "name": "just model"
+      },
+      {
+        "name": "nothing"
+      }
+    ]
+  },
+  {
+    "name": "deleteAttributeByKey",
+    "params": [
+      [
+        "key",
+        "String"
+      ],
+      [
+        "attributes",
+        "List Model"
+      ]
+    ],
+    "returned": "List Model",
+    "states": []
+  },
+  {
+    "name": "findAttributeFirstValueByKey",
+    "params": [
+      [
+        "key",
+        "String"
+      ],
+      [
+        "attributes",
+        "List Model"
+      ]
+    ],
+    "returned": "Maybe String",
+    "states": []
+  },
+  {
+    "name": "findOutcomeByKey",
+    "params": [
+      [
+        "key",
+        "String"
+      ],
+      [
+        "attributes",
+        "List Model"
+      ]
+    ],
+    "returned": "Outcome (List String)",
+    "states": []
+  },
+  {
+    "name": "createTuple",
+    "params": [
+      [
+        "a",
+        "a"
+      ],
+      [
+        "b",
+        "a"
+      ]
+    ],
+    "returned": "( a, a )",
+    "states": []
+  },
+  {
+    "name": "findOutcomeByKeyTuple",
+    "params": [
+      [
+        "tuple",
+        "( String, String )"
+      ],
+      [
+        "attributes",
+        "List Model"
+      ]
+    ],
+    "returned": "Outcome ( List String, List String )",
+    "states": []
+  },
+  {
+    "name": "replaceAttributeByKey",
+    "params": [
+      [
+        "key",
+        "String"
+      ],
+      [
+        "values",
+        "List String"
+      ],
+      [
+        "attributes",
+        "List Model"
+      ]
+    ],
+    "returned": "List Model",
+    "states": []
+  }
+]

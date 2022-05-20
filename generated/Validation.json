@@ -1,0 +1,653 @@
+[
+  {
+    "name": "asSingle",
+    "params": [
+      [
+        "outcome",
+        "Outcome (List String)"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "asTuple",
+    "params": [
+      [
+        "outcome",
+        "Outcome ( List String, List String )"
+      ]
+    ],
+    "returned": "Outcome ( String, String )",
+    "states": []
+  },
+  {
+    "name": "listEqual",
+    "params": [
+      [
+        "size",
+        "Int"
+      ],
+      [
+        "outcome",
+        "Outcome (List String)"
+      ]
+    ],
+    "returned": "Outcome (List String)",
+    "states": []
+  },
+  {
+    "name": "listMoreThan",
+    "params": [
+      [
+        "size",
+        "Int"
+      ],
+      [
+        "outcome",
+        "Outcome (List String)"
+      ]
+    ],
+    "returned": "Outcome (List String)",
+    "states": []
+  },
+  {
+    "name": "listStrictlyMoreThan",
+    "params": [
+      [
+        "size",
+        "Int"
+      ],
+      [
+        "outcome",
+        "Outcome (List String)"
+      ]
+    ],
+    "returned": "Outcome (List String)",
+    "states": []
+  },
+  {
+    "name": "listLessThan",
+    "params": [
+      [
+        "size",
+        "Int"
+      ],
+      [
+        "outcome",
+        "Outcome (List String)"
+      ]
+    ],
+    "returned": "Outcome (List String)",
+    "states": []
+  },
+  {
+    "name": "listStrictlyLessThan",
+    "params": [
+      [
+        "size",
+        "Int"
+      ],
+      [
+        "outcome",
+        "Outcome (List String)"
+      ]
+    ],
+    "returned": "Outcome (List String)",
+    "states": []
+  },
+  {
+    "name": "asUnique",
+    "params": [
+      [
+        "outcome",
+        "Outcome (List String)"
+      ]
+    ],
+    "returned": "Outcome (List String)",
+    "states": []
+  },
+  {
+    "name": "asInt",
+    "params": [
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome Int",
+    "states": []
+  },
+  {
+    "name": "asFloat",
+    "params": [
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome Float",
+    "states": []
+  },
+  {
+    "name": "asBool",
+    "params": [
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome Bool",
+    "states": []
+  },
+  {
+    "name": "intMoreThan",
+    "params": [
+      [
+        "limit",
+        "Int"
+      ],
+      [
+        "outcome",
+        "Outcome Int"
+      ]
+    ],
+    "returned": "Outcome Int",
+    "states": []
+  },
+  {
+    "name": "intStrictlyMoreThan",
+    "params": [
+      [
+        "limit",
+        "Int"
+      ],
+      [
+        "outcome",
+        "Outcome Int"
+      ]
+    ],
+    "returned": "Outcome Int",
+    "states": []
+  },
+  {
+    "name": "intLessThan",
+    "params": [
+      [
+        "limit",
+        "Int"
+      ],
+      [
+        "outcome",
+        "Outcome Int"
+      ]
+    ],
+    "returned": "Outcome Int",
+    "states": []
+  },
+  {
+    "name": "intStrictlyLessThan",
+    "params": [
+      [
+        "limit",
+        "Int"
+      ],
+      [
+        "outcome",
+        "Outcome Int"
+      ]
+    ],
+    "returned": "Outcome Int",
+    "states": []
+  },
+  {
+    "name": "floatMoreThan",
+    "params": [
+      [
+        "limit",
+        "Float"
+      ],
+      [
+        "outcome",
+        "Outcome Float"
+      ]
+    ],
+    "returned": "Outcome Float",
+    "states": []
+  },
+  {
+    "name": "floatStrictlyMoreThan",
+    "params": [
+      [
+        "limit",
+        "Float"
+      ],
+      [
+        "outcome",
+        "Outcome Float"
+      ]
+    ],
+    "returned": "Outcome Float",
+    "states": []
+  },
+  {
+    "name": "floatLessThan",
+    "params": [
+      [
+        "limit",
+        "Float"
+      ],
+      [
+        "outcome",
+        "Outcome Float"
+      ]
+    ],
+    "returned": "Outcome Float",
+    "states": []
+  },
+  {
+    "name": "floatStrictlyLessThan",
+    "params": [
+      [
+        "limit",
+        "Float"
+      ],
+      [
+        "outcome",
+        "Outcome Float"
+      ]
+    ],
+    "returned": "Outcome Float",
+    "states": []
+  },
+  {
+    "name": "matchEnum",
+    "params": [
+      [
+        "enum",
+        "List String"
+      ],
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "stringStartsWith",
+    "params": [
+      [
+        "prefix",
+        "String"
+      ],
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "stringEndsWith",
+    "params": [
+      [
+        "suffix",
+        "String"
+      ],
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "stringContains",
+    "params": [
+      [
+        "str",
+        "String"
+      ],
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "matchNormalizedString",
+    "params": [
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "matchRegex",
+    "params": [
+      [
+        "regExp",
+        "String"
+      ],
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "matchAbsoluteUrl",
+    "params": [
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "matchCompactUri",
+    "params": [
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "asIntTuple",
+    "params": [
+      [
+        "outcome",
+        "Outcome ( String, String )"
+      ]
+    ],
+    "returned": "Outcome ( Int, Int )",
+    "states": []
+  },
+  {
+    "name": "asFloatTuple",
+    "params": [
+      [
+        "outcome",
+        "Outcome ( String, String )"
+      ]
+    ],
+    "returned": "Outcome ( Float, Float )",
+    "states": []
+  },
+  {
+    "name": "asIntRange",
+    "params": [
+      [
+        "outcome",
+        "Outcome ( Int, Int )"
+      ]
+    ],
+    "returned": "Outcome ( Int, Int )",
+    "states": []
+  },
+  {
+    "name": "asFloatRange",
+    "params": [
+      [
+        "outcome",
+        "Outcome ( Float, Float )"
+      ]
+    ],
+    "returned": "Outcome ( Float, Float )",
+    "states": []
+  },
+  {
+    "name": "withinIntRange",
+    "params": [
+      [
+        "range",
+        "( Int, Int )"
+      ],
+      [
+        "outcome",
+        "Outcome ( Int, Int )"
+      ]
+    ],
+    "returned": "Outcome ( Int, Int )",
+    "states": []
+  },
+  {
+    "name": "withinFloatRange",
+    "params": [
+      [
+        "range",
+        "( Float, Float )"
+      ],
+      [
+        "outcome",
+        "Outcome ( Float, Float )"
+      ]
+    ],
+    "returned": "Outcome ( Float, Float )",
+    "states": []
+  },
+  {
+    "name": "withinStringCharsRange",
+    "params": [
+      [
+        "range",
+        "( Int, Int )"
+      ],
+      [
+        "outcome",
+        "Outcome String"
+      ]
+    ],
+    "returned": "Outcome String",
+    "states": []
+  },
+  {
+    "name": "withinListStringCharsRange",
+    "params": [
+      [
+        "range",
+        "( Int, Int )"
+      ],
+      [
+        "outcome",
+        "Outcome (List String)"
+      ]
+    ],
+    "returned": "Outcome (List String)",
+    "states": []
+  },
+  {
+    "name": "helperCharsRange",
+    "params": [
+      [
+        "range",
+        "( Int, Int )"
+      ],
+      [
+        "str",
+        "String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "matchListSize",
+    "params": [
+      [
+        "expected",
+        "Int"
+      ],
+      [
+        "list",
+        "List String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "helperMoreThan",
+    "params": [
+      [
+        "expected",
+        "Int"
+      ],
+      [
+        "list",
+        "List String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "helperStrictlyMoreThan",
+    "params": [
+      [
+        "expected",
+        "Int"
+      ],
+      [
+        "list",
+        "List String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "helperLessThan",
+    "params": [
+      [
+        "expected",
+        "Int"
+      ],
+      [
+        "list",
+        "List String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "helperStrictlyLessThan",
+    "params": [
+      [
+        "expected",
+        "Int"
+      ],
+      [
+        "list",
+        "List String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "onlyOne",
+    "params": [
+      [
+        "list",
+        "List String"
+      ]
+    ],
+    "returned": "String",
+    "states": []
+  },
+  {
+    "name": "onlyTuple",
+    "params": [
+      [
+        "listTuple",
+        "( List String, List String )"
+      ]
+    ],
+    "returned": "( String, String )",
+    "states": []
+  },
+  {
+    "name": "isInt",
+    "params": [
+      [
+        "value",
+        "String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "isFloat",
+    "params": [
+      [
+        "value",
+        "String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "intOrZero",
+    "params": [
+      [
+        "value",
+        "String"
+      ]
+    ],
+    "returned": "Int",
+    "states": []
+  },
+  {
+    "name": "floatOrZero",
+    "params": [
+      [
+        "value",
+        "String"
+      ]
+    ],
+    "returned": "Float",
+    "states": []
+  },
+  {
+    "name": "stringToBool",
+    "params": [
+      [
+        "value",
+        "String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "isBool",
+    "params": [
+      [
+        "value",
+        "String"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  }
+]

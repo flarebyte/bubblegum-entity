@@ -28,6 +28,27 @@ export const readElmFunctions = async (
   return parseElmFunctions(content);
 };
 
+export const saveExtendedElmFunctions = async (
+  name: string,
+  extendedFunctions: ExtendedFunctionInfo[]
+): Promise<number> => {
+  const filename = path.join(generatedDir, `${name}.json`);
+  await jetpack.writeAsync(
+    filename,
+    JSON.stringify(extendedFunctions, null, 2)
+  );
+  return extendedFunctions.length;
+};
+
+export const readExtendedElmFunctions = async (
+  name: string
+): Promise<ExtendedFunctionInfo[]> => {
+  const filename = path.join(generatedDir, `${name}.json`);
+  const content = (await jetpack.readAsync(filename, "utf8")) || "[]";
+  const extendedFunctions: ExtendedFunctionInfo[] = JSON.parse(content);
+  return extendedFunctions;
+};
+
 /**
  * Delete previously generated folder
  */
@@ -46,5 +67,7 @@ export const mergeElmFunctions = async (
   const extendedFunctions = elmFunctions.map((fn) =>
     mergeWithExtendedMeta(fn, metaDict[fn.name] || defaultFunctionMeta)
   );
+  await saveExtendedElmFunctions(name, extendedFunctions);
+  console.log(`Generated extended model for ${name} with ${extendedFunctions.length} functions`)
   return extendedFunctions;
 };

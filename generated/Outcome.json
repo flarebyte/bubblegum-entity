@@ -1,0 +1,170 @@
+[
+  {
+    "name": "withDefault",
+    "params": [
+      [
+        "def",
+        "a"
+      ],
+      [
+        "outcome",
+        "Outcome a"
+      ]
+    ],
+    "returned": "Outcome a",
+    "states": []
+  },
+  {
+    "name": "map",
+    "params": [
+      [
+        "func",
+        "(a -> value)"
+      ],
+      [
+        "ra",
+        "Outcome a"
+      ]
+    ],
+    "returned": "Outcome value",
+    "states": []
+  },
+  {
+    "name": "map2",
+    "params": [
+      [
+        "func",
+        "(a -> b @ value)"
+      ],
+      [
+        "ra",
+        "Outcome a"
+      ],
+      [
+        "rb",
+        "Outcome b"
+      ]
+    ],
+    "returned": "Outcome value",
+    "states": []
+  },
+  {
+    "name": "check",
+    "params": [
+      [
+        "checker",
+        "(a -> Bool)"
+      ],
+      [
+        "warnMsg",
+        "String"
+      ],
+      [
+        "ra",
+        "Outcome a"
+      ]
+    ],
+    "returned": "Outcome a",
+    "states": []
+  },
+  {
+    "name": "checkOrNone",
+    "params": [
+      [
+        "checker",
+        "(a -> Bool)"
+      ],
+      [
+        "ra",
+        "Outcome a"
+      ]
+    ],
+    "returned": "Outcome a",
+    "states": []
+  },
+  {
+    "name": "trueMapToConstant",
+    "params": [
+      [
+        "const",
+        "a"
+      ],
+      [
+        "outcome",
+        "Outcome Bool"
+      ]
+    ],
+    "returned": "Outcome a",
+    "states": []
+  },
+  {
+    "name": "or",
+    "params": [
+      [
+        "ma",
+        "Outcome a"
+      ],
+      [
+        "mb",
+        "Outcome a"
+      ]
+    ],
+    "returned": "Outcome a",
+    "states": []
+  },
+  {
+    "name": "fromMaybe",
+    "params": [
+      [
+        "maybe",
+        "Maybe a"
+      ]
+    ],
+    "returned": "Outcome a",
+    "states": []
+  },
+  {
+    "name": "toMaybe",
+    "params": [
+      [
+        "outcome",
+        "Outcome a"
+      ]
+    ],
+    "returned": "Maybe a",
+    "states": []
+  },
+  {
+    "name": "isValid",
+    "params": [
+      [
+        "outcome",
+        "Outcome a"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "isNone",
+    "params": [
+      [
+        "outcome",
+        "Outcome a"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  },
+  {
+    "name": "isWarning",
+    "params": [
+      [
+        "outcome",
+        "Outcome a"
+      ]
+    ],
+    "returned": "Bool",
+    "states": []
+  }
+]

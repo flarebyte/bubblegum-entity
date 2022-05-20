@@ -1,10 +1,17 @@
-import { readElmFunctions } from "./elm-io.js";
+import { attributesData } from "./data/attribute-data.js";
+import { mergeElmFunctions } from "./elm-io.js";
 
 console.log("prepare");
+
+const generateExtendedModel = async () => {
+  console.log("Generate extended models ...");
+  await mergeElmFunctions("Attribute", attributesData);
+  await mergeElmFunctions("Outcome", []);
+  await mergeElmFunctions("Validation", []);
+};
 const generate = async () => {
   console.log("Starting generation ...");
-  const attrFunctions = await readElmFunctions("Attribute");
-  console.log(JSON.stringify(attrFunctions, null, 2));
+  await generateExtendedModel();
 };
 
 await generate();
