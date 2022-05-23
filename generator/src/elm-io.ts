@@ -7,11 +7,11 @@ import {
   mergeWithExtendedMeta,
   ExtendedFunctionInfo,
   toFunctionMetaObject,
-  FunctionTemplateInfo,
+  TemplateInfo,
 } from "./data/data-model.js";
 const elmSourceDir = "../src/Bubblegum/Entity";
 const generatedDir = "../generated";
-const templateDir = "../template";
+const templateDir = "../generator/template";
 
 /**
  *  Custom global config for Mustache
@@ -84,12 +84,16 @@ export const mergeElmFunctions = async (
   return extendedFunctions;
 };
 
-export const hydrateFunctionTemplate = async (
-  category: string,
-  name: string,
-  templateInfo: FunctionTemplateInfo
-) => {
-  const filename = path.join(templateDir, category, `${name}.mustache`);
+export const hydrateFunctionTemplate = async (templateInfo: TemplateInfo) => {
+  const filename = path.join(
+    templateDir,
+    `${templateInfo.templateName}.mustache`
+  );
+  const targetFilename = path.join(
+    templateInfo.targetDir,
+    `${templateInfo.targetName}.elm`
+  );
   const template = (await jetpack.readAsync(filename, "utf8")) || "[]";
-  Mustache.render(template, templateInfo);
+  const content = Mustache.render(template, templateInfo);
+  await jetpack.writeAsync(targetFilename, content);
 };

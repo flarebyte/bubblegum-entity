@@ -1,0 +1,18 @@
+module {{moduleName}}Tests exposing (suite)
+
+{-| Unit tests for testing the Bubblegum.Entity.${moduleName}
+
+  **generated** in scripts/*.py
+
+-}
+import Test exposing (..)
+import Expect as Expect
+import FunctionTester exposing (ok,ok1,ok2,ok3)
+import {{moduleName}}TestData exposing (..)
+import {{packageNameDot}}.{{moduleName}} as {{moduleName}}
+
+
+suite : Test
+suite =
+    describe "The {{moduleName}} module"
+        [ 

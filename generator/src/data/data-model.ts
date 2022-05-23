@@ -12,8 +12,11 @@ export interface ExtendedFunctionInfo extends FunctionInfo {
   states: MetaState[];
 }
 
-export interface FunctionTemplateInfo {
-  function: ExtendedFunctionInfo;
+export interface TemplateInfo {
+  templateName: string;
+  targetDir: string;
+  targetName: string;
+  functions: ExtendedFunctionInfo[];
 }
 
 export const toFunctionMetaObject = (
