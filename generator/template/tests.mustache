@@ -1,8 +1,8 @@
 module {{moduleName}}Tests exposing (suite)
 
-{-| Unit tests for testing the Bubblegum.Entity.${moduleName}
+{-| Unit tests for testing the Bubblegum.Entity.{{moduleName}}
 
-  **generated** in scripts/*.py
+  **generated** in generator/src/generator.ts
 
 -}
 import Test exposing (..)
@@ -15,4 +15,24 @@ import {{packageNameDot}}.{{moduleName}} as {{moduleName}}
 suite : Test
 suite =
     describe "The {{moduleName}} module"
-        [ 
+        [
+            describe "{{name}}"
+            [
+               fuzz fuzzyV1{{nameU}} "{{name}} should return {{state}}" <|
+                \\v1 ->
+                    {{moduleName}}.{{name}} (validP1{{nameU}}For{{stateU}} v1)
+                    |> summarize{{nameU}}For{{stateU}}
+                    |> Expect.equal {{ok}},
+               fuzz2 fuzzyV1{{nameU}} fuzzyV2{{nameU}} "{{name}} should return {{state}}" <|
+                \\v1 v2 ->
+                    {{moduleName}}.{{name}} (validP1{{nameU}}For{{stateU}} v1) (validP2{{nameU}}For{{stateU}} v2)
+                    |> summarize{{nameU}}For{{stateU}}
+                    |> Expect.equal {{ok}}
+               fuzz3 fuzzyV1{{nameU}} fuzzyV2{{nameU}} fuzzyV3{{nameU}} "{{name}} should return {{state}}" <|
+                \\v1 v2 v3->
+                    ${moduleName}.{{name}} (validP1{{nameU}}For{{stateU}} v1) (validP2{{nameU}}For{{stateU}} v2) (validP3{{nameU}}For{{stateU}} v3)
+                    |> summarize{{nameU}}For{{stateU}}
+                    |> Expect.equal {{ok}}
+            ],
+            
+        ]
