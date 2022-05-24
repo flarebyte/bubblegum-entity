@@ -16,6 +16,9 @@ export interface TemplateInfo {
   templateName: string;
   targetDir: string;
   targetName: string;
+  packageName: string;
+  packageNameDot: string;
+  moduleName: string;
   functions: ExtendedFunctionInfo[];
 }
 

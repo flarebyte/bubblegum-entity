@@ -16,6 +16,8 @@ suite : Test
 suite =
     describe "The {{moduleName}} module"
         [
+            {{#functions}}
+            {{#states}}
             describe "{{name}}"
             [
                fuzz fuzzyV1{{nameU}} "{{name}} should return {{state}}" <|
@@ -34,5 +36,7 @@ suite =
                     |> summarize{{nameU}}For{{stateU}}
                     |> Expect.equal {{ok}}
             ],
+            {{/states}}
+            {{/functions}}
             
         ]
