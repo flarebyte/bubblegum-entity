@@ -24,29 +24,36 @@ const list: MetaState = {
 const emptyList: MetaState = {
   stateName: "empty list",
 };
+const ok = "ok2"
 export const attributesData: FunctionMeta[] = [
   {
     name: "findAttributeByKey",
     states: [justModel, nothing],
+    ok
   },
   {
     name: "findAttributeFirstValueByKey",
     states: [justString, nothing],
+    ok
   },
   {
     name: "findOutcomeByKey",
     states: [validOutcome, noneOutcome],
+    ok
   },
   {
     name: "findOutcomeByKeyTuple",
     states: [validOutcome, outcomeWithFirstNone],
+    ok
   },
   {
     name: "deleteAttributeByKey",
     states: [list, emptyList],
+    ok
   },
   {
     name: "replaceAttributeByKey",
     states: [list, emptyList],
+    ok
   },
 ];

@@ -6,6 +6,7 @@ export interface MetaState {
 export interface FunctionMeta {
   name: string;
   states: MetaState[];
+  ok: string;
 }
 
 export interface ExtendedFunctionInfo extends FunctionInfo {
