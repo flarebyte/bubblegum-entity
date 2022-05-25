@@ -92,7 +92,7 @@ export const hydrateFunctionTemplate = async (templateInfo: TemplateInfo) => {
   );
   const targetFilename = path.join(
     templateInfo.targetDir,
-    `${templateInfo.targetName}2.elm`
+    `${templateInfo.targetName}.elm`
   );
   const template = (await jetpack.readAsync(filename, "utf8")) || "[]";
   const functionsWithState = await (
@@ -106,7 +106,7 @@ export const hydrateFunctionTemplate = async (templateInfo: TemplateInfo) => {
   }));
   const enhancedTemplateInfo = {
     ...templateInfo,
-    packageNameDot: templateInfo.packageName.replace(/[/]/, "."),
+    packageNameDot: templateInfo.packageName.replace(/\//, "."),
     functions,
     camelCaseUpper: function () {
       return camelCaseUpper;

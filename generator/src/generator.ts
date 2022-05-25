@@ -10,16 +10,16 @@ const generateExtendedModel = async () => {
   await mergeElmFunctions("Validation", []);
 };
 
-const generateTests = async() => {
+const generateTests = async () => {
   console.log("Generate tests in Elm ...");
   await hydrateFunctionTemplate({
-  moduleName: 'Attribute',
-  templateName: "Tests",
-  targetDir: "../tests",
-  targetName: "AttributeTests",
-  packageName: "Bubblegum/Entity"
-})
-}
+    moduleName: "Attribute",
+    templateName: "Tests",
+    targetDir: "../tests",
+    targetName: "AttributeTests",
+    packageName: "Bubblegum/Entity",
+  });
+};
 const generate = async () => {
   console.log("Starting generation ...");
   await generateExtendedModel();

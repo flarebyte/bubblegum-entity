@@ -94,7 +94,14 @@
       ]
     ],
     "returned": "List Model",
-    "states": []
+    "states": [
+      {
+        "stateName": "list"
+      },
+      {
+        "stateName": "empty list"
+      }
+    ]
   },
   {
     "name": "findAttributeFirstValueByKey",
@@ -109,7 +116,14 @@
       ]
     ],
     "returned": "Maybe String",
-    "states": []
+    "states": [
+      {
+        "stateName": "just string"
+      },
+      {
+        "stateName": "nothing"
+      }
+    ]
   },
   {
     "name": "findOutcomeByKey",
@@ -124,7 +138,14 @@
       ]
     ],
     "returned": "Outcome (List String)",
-    "states": []
+    "states": [
+      {
+        "stateName": "valid outcome"
+      },
+      {
+        "stateName": "none outcome"
+      }
+    ]
   },
   {
     "name": "createTuple",
@@ -154,7 +175,14 @@
       ]
     ],
     "returned": "Outcome ( List String, List String )",
-    "states": []
+    "states": [
+      {
+        "stateName": "valid outcome"
+      },
+      {
+        "stateName": "outcome with first none"
+      }
+    ]
   },
   {
     "name": "replaceAttributeByKey",
@@ -173,6 +201,13 @@
       ]
     ],
     "returned": "List Model",
-    "states": []
+    "states": [
+      {
+        "stateName": "list"
+      },
+      {
+        "stateName": "empty list"
+      }
+    ]
   }
 ]
