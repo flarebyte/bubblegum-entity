@@ -103,8 +103,10 @@ export const hydrateFunctionTemplate = async (templateInfo: TemplateInfo) => {
     ...fn,
     name: { text: fn.name, firstUpper: firstUpper(fn.name) },
     states: fn.states.map((state) => ({
-      text: state.stateName,
-      camelCaseUpper: camelCaseUpper(state.stateName),
+      state: {
+        text: state.stateName,
+        camelCaseUpper: camelCaseUpper(state.stateName),
+      },
     })),
     has1Param: fn.params.length === 1,
     has2Params: fn.params.length === 2,
