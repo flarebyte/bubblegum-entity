@@ -5,10 +5,10 @@ export const attributesData: FunctionMeta[] = [
     name: "findAttributeByKey",
     states: [
       {
-        name: "just model",
+        stateName: "just model",
       },
       {
-        name: "nothing",
+        stateName: "nothing",
       },
     ],
   },

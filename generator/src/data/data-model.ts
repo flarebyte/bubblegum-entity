@@ -1,7 +1,7 @@
 import { FunctionInfo } from "../parse-elm-function";
 
 export interface MetaState {
-  name: string;
+  stateName: string;
 }
 export interface FunctionMeta {
   name: string;
@@ -17,9 +17,7 @@ export interface TemplateInfo {
   targetDir: string;
   targetName: string;
   packageName: string;
-  packageNameDot: string;
   moduleName: string;
-  functions: ExtendedFunctionInfo[];
 }
 
 export const toFunctionMetaObject = (

@@ -9,6 +9,7 @@ import {
   toFunctionMetaObject,
   TemplateInfo,
 } from "./data/data-model.js";
+import { camelCaseUpper, firstUpper } from "./text-utils.js";
 const elmSourceDir = "../src/Bubblegum/Entity";
 const generatedDir = "../generated";
 const templateDir = "../generator/template";
@@ -91,9 +92,30 @@ export const hydrateFunctionTemplate = async (templateInfo: TemplateInfo) => {
   );
   const targetFilename = path.join(
     templateInfo.targetDir,
-    `${templateInfo.targetName}.elm`
+    `${templateInfo.targetName}2.elm`
   );
   const template = (await jetpack.readAsync(filename, "utf8")) || "[]";
-  const content = Mustache.render(template, templateInfo);
+  const functionsWithState = await (
+    await readExtendedElmFunctions(templateInfo.moduleName)
+  ).filter((f) => f.states.length > 0);
+  const functions = functionsWithState.map((fn) => ({
+    ...fn,
+    has1Param: fn.params.length === 1,
+    has2Params: fn.params.length === 2,
+    has3Params: fn.params.length === 3,
+  }));
+  const enhancedTemplateInfo = {
+    ...templateInfo,
+    packageNameDot: templateInfo.packageName.replace(/[/]/, "."),
+    functions,
+    camelCaseUpper: function () {
+      return camelCaseUpper;
+    },
+    firstUpper: function () {
+      return firstUpper;
+    },
+  };
+  console.log(JSON.stringify(enhancedTemplateInfo, null, 2));
+  const content = Mustache.render(template, enhancedTemplateInfo);
   await jetpack.writeAsync(targetFilename, content);
 };
