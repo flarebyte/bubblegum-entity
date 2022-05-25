@@ -16,10 +16,10 @@ const camelCase =
  * @param text the text to split
  */
 const splitBySpace = (text: string): string[] => text.split(" ");
-export const camelCaseUpper = (text: string, render: Function) => {
+export const camelCaseUpper = (text: string) => {
   const newText = camelCase(splitBySpace)(text);
-  return render(newText.slice(0, 1).toUpperCase() + newText.slice(1));
+  return newText.slice(0, 1).toUpperCase() + newText.slice(1);
 };
-export const firstUpper = (text: string, render: Function) => {
-  return render(text.slice(0, 1).toUpperCase() + text.slice(1));
+export const firstUpper = (text: string) => {
+  return text.slice(0, 1).toUpperCase() + text.slice(1);
 };

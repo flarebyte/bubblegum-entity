@@ -10,6 +10,7 @@ import {
   TemplateInfo,
 } from "./data/data-model.js";
 import { camelCaseUpper, firstUpper } from "./text-utils.js";
+import { formatDiagnostic } from "typescript";
 const elmSourceDir = "../src/Bubblegum/Entity";
 const generatedDir = "../generated";
 const templateDir = "../generator/template";
@@ -100,6 +101,11 @@ export const hydrateFunctionTemplate = async (templateInfo: TemplateInfo) => {
   ).filter((f) => f.states.length > 0);
   const functions = functionsWithState.map((fn) => ({
     ...fn,
+    name: { text: fn.name, firstUpper: firstUpper(fn.name) },
+    states: fn.states.map((state) => ({
+      text: state.stateName,
+      camelCaseUpper: camelCaseUpper(state.stateName),
+    })),
     has1Param: fn.params.length === 1,
     has2Params: fn.params.length === 2,
     has3Params: fn.params.length === 3,
@@ -108,12 +114,6 @@ export const hydrateFunctionTemplate = async (templateInfo: TemplateInfo) => {
     ...templateInfo,
     packageNameDot: templateInfo.packageName.replace(/\//, "."),
     functions,
-    camelCaseUpper: function () {
-      return camelCaseUpper;
-    },
-    firstUpper: function () {
-      return firstUpper;
-    },
   };
   console.log(JSON.stringify(enhancedTemplateInfo, null, 2));
   const content = Mustache.render(template, enhancedTemplateInfo);
