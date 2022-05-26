@@ -8,7 +8,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "asTuple",
@@ -19,7 +20,8 @@
       ]
     ],
     "returned": "Outcome ( String, String )",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "listEqual",
@@ -34,7 +36,8 @@
       ]
     ],
     "returned": "Outcome (List String)",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "listMoreThan",
@@ -49,7 +52,8 @@
       ]
     ],
     "returned": "Outcome (List String)",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "listStrictlyMoreThan",
@@ -64,7 +68,8 @@
       ]
     ],
     "returned": "Outcome (List String)",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "listLessThan",
@@ -79,7 +84,8 @@
       ]
     ],
     "returned": "Outcome (List String)",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "listStrictlyLessThan",
@@ -94,7 +100,8 @@
       ]
     ],
     "returned": "Outcome (List String)",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "asUnique",
@@ -105,7 +112,8 @@
       ]
     ],
     "returned": "Outcome (List String)",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "asInt",
@@ -116,7 +124,8 @@
       ]
     ],
     "returned": "Outcome Int",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "asFloat",
@@ -127,7 +136,8 @@
       ]
     ],
     "returned": "Outcome Float",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "asBool",
@@ -138,7 +148,8 @@
       ]
     ],
     "returned": "Outcome Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "intMoreThan",
@@ -153,7 +164,8 @@
       ]
     ],
     "returned": "Outcome Int",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "intStrictlyMoreThan",
@@ -168,7 +180,8 @@
       ]
     ],
     "returned": "Outcome Int",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "intLessThan",
@@ -183,7 +196,8 @@
       ]
     ],
     "returned": "Outcome Int",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "intStrictlyLessThan",
@@ -198,7 +212,8 @@
       ]
     ],
     "returned": "Outcome Int",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "floatMoreThan",
@@ -213,7 +228,8 @@
       ]
     ],
     "returned": "Outcome Float",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "floatStrictlyMoreThan",
@@ -228,7 +244,8 @@
       ]
     ],
     "returned": "Outcome Float",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "floatLessThan",
@@ -243,7 +260,8 @@
       ]
     ],
     "returned": "Outcome Float",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "floatStrictlyLessThan",
@@ -258,7 +276,8 @@
       ]
     ],
     "returned": "Outcome Float",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "matchEnum",
@@ -273,7 +292,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "stringStartsWith",
@@ -288,7 +308,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "stringEndsWith",
@@ -303,7 +324,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "stringContains",
@@ -318,7 +340,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "matchNormalizedString",
@@ -329,7 +352,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "matchRegex",
@@ -344,7 +368,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "matchAbsoluteUrl",
@@ -355,7 +380,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "matchCompactUri",
@@ -366,7 +392,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "asIntTuple",
@@ -377,7 +404,8 @@
       ]
     ],
     "returned": "Outcome ( Int, Int )",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "asFloatTuple",
@@ -388,7 +416,8 @@
       ]
     ],
     "returned": "Outcome ( Float, Float )",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "asIntRange",
@@ -399,7 +428,8 @@
       ]
     ],
     "returned": "Outcome ( Int, Int )",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "asFloatRange",
@@ -410,7 +440,8 @@
       ]
     ],
     "returned": "Outcome ( Float, Float )",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "withinIntRange",
@@ -425,7 +456,8 @@
       ]
     ],
     "returned": "Outcome ( Int, Int )",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "withinFloatRange",
@@ -440,7 +472,8 @@
       ]
     ],
     "returned": "Outcome ( Float, Float )",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "withinStringCharsRange",
@@ -455,7 +488,8 @@
       ]
     ],
     "returned": "Outcome String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "withinListStringCharsRange",
@@ -470,7 +504,8 @@
       ]
     ],
     "returned": "Outcome (List String)",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "helperCharsRange",
@@ -485,7 +520,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "matchListSize",
@@ -500,7 +536,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "helperMoreThan",
@@ -515,7 +552,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "helperStrictlyMoreThan",
@@ -530,7 +568,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "helperLessThan",
@@ -545,7 +584,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "helperStrictlyLessThan",
@@ -560,7 +600,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "onlyOne",
@@ -571,7 +612,8 @@
       ]
     ],
     "returned": "String",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "onlyTuple",
@@ -582,7 +624,8 @@
       ]
     ],
     "returned": "( String, String )",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "isInt",
@@ -593,7 +636,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "isFloat",
@@ -604,7 +648,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "intOrZero",
@@ -615,7 +660,8 @@
       ]
     ],
     "returned": "Int",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "floatOrZero",
@@ -626,7 +672,8 @@
       ]
     ],
     "returned": "Float",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "stringToBool",
@@ -637,7 +684,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "isBool",
@@ -648,6 +696,7 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   }
 ]

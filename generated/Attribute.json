@@ -12,7 +12,8 @@
       ]
     ],
     "returned": "Model",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "setKey",
@@ -27,7 +28,8 @@
       ]
     ],
     "returned": "Model",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "setFacets",
@@ -42,7 +44,8 @@
       ]
     ],
     "returned": "Model",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "setValues",
@@ -57,7 +60,8 @@
       ]
     ],
     "returned": "Model",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "findAttributeByKey",
@@ -79,7 +83,8 @@
       {
         "stateName": "nothing"
       }
-    ]
+    ],
+    "ok": "ok2"
   },
   {
     "name": "deleteAttributeByKey",
@@ -101,7 +106,8 @@
       {
         "stateName": "empty list"
       }
-    ]
+    ],
+    "ok": "ok2"
   },
   {
     "name": "findAttributeFirstValueByKey",
@@ -123,7 +129,8 @@
       {
         "stateName": "nothing"
       }
-    ]
+    ],
+    "ok": "ok2"
   },
   {
     "name": "findOutcomeByKey",
@@ -145,7 +152,8 @@
       {
         "stateName": "none outcome"
       }
-    ]
+    ],
+    "ok": "ok2"
   },
   {
     "name": "createTuple",
@@ -160,7 +168,8 @@
       ]
     ],
     "returned": "( a, a )",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "findOutcomeByKeyTuple",
@@ -182,7 +191,8 @@
       {
         "stateName": "outcome with first none"
       }
-    ]
+    ],
+    "ok": "ok2"
   },
   {
     "name": "replaceAttributeByKey",
@@ -208,6 +218,7 @@
       {
         "stateName": "empty list"
       }
-    ]
+    ],
+    "ok": "ok2"
   }
 ]

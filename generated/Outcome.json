@@ -12,7 +12,8 @@
       ]
     ],
     "returned": "Outcome a",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "map",
@@ -27,7 +28,8 @@
       ]
     ],
     "returned": "Outcome value",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "map2",
@@ -46,7 +48,8 @@
       ]
     ],
     "returned": "Outcome value",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "check",
@@ -65,7 +68,8 @@
       ]
     ],
     "returned": "Outcome a",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "checkOrNone",
@@ -80,7 +84,8 @@
       ]
     ],
     "returned": "Outcome a",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "trueMapToConstant",
@@ -95,7 +100,8 @@
       ]
     ],
     "returned": "Outcome a",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "or",
@@ -110,7 +116,8 @@
       ]
     ],
     "returned": "Outcome a",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "fromMaybe",
@@ -121,7 +128,8 @@
       ]
     ],
     "returned": "Outcome a",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "toMaybe",
@@ -132,7 +140,8 @@
       ]
     ],
     "returned": "Maybe a",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "isValid",
@@ -143,7 +152,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "isNone",
@@ -154,7 +164,8 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   },
   {
     "name": "isWarning",
@@ -165,6 +176,7 @@
       ]
     ],
     "returned": "Bool",
-    "states": []
+    "states": [],
+    "ok": ""
   }
 ]

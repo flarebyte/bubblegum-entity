@@ -27,6 +27,7 @@ test:
 
 beautify:
 	elm-format src/ --yes
+	elm-format tests/ --yes
 
 doc:
 	elm make --docs=documentation.json
@@ -48,3 +49,4 @@ diff:
 
 gen:
 	cd generator; node --loader ts-node/esm src/generator.ts
+	elm-format tests/ --yes
