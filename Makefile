@@ -45,3 +45,6 @@ parse:
 
 diff:
 	elm-package diff
+
+gen:
+	cd generator; node --loader ts-node/esm src/generator.ts
