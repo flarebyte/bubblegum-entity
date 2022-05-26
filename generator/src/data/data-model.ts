@@ -9,9 +9,7 @@ export interface FunctionMeta {
   ok: string;
 }
 
-export interface ExtendedFunctionInfo extends FunctionInfo {
-  states: MetaState[];
-}
+export interface ExtendedFunctionInfo extends FunctionInfo, FunctionMeta {}
 
 export interface TemplateInfo {
   templateName: string;
@@ -28,8 +26,11 @@ export const toFunctionMetaObject = (
 
 export const mergeWithExtendedMeta = (
   functionInfo: FunctionInfo,
-  meta: FunctionMeta
-): ExtendedFunctionInfo => ({
-  ...functionInfo,
-  states: meta.states,
-});
+  meta?: FunctionMeta
+): ExtendedFunctionInfo =>
+  meta
+    ? {
+        ...functionInfo,
+        ...meta,
+      }
+    : { ...functionInfo, states: [], ok: "" };

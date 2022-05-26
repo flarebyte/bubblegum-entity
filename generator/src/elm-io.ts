@@ -75,9 +75,8 @@ export const mergeElmFunctions = async (
 ): Promise<ExtendedFunctionInfo[]> => {
   const elmFunctions = await readElmFunctions(name);
   const metaDict = toFunctionMetaObject(metas);
-  const defaultFunctionMeta: FunctionMeta = { name: "", states: [] };
   const extendedFunctions = elmFunctions.map((fn) =>
-    mergeWithExtendedMeta(fn, metaDict[fn.name] || defaultFunctionMeta)
+    mergeWithExtendedMeta(fn, metaDict[fn.name])
   );
   await saveExtendedElmFunctions(name, extendedFunctions);
   console.log(
