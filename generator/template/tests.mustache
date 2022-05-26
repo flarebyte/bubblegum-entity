@@ -25,21 +25,21 @@ suite =
                 \v1 ->
                     {{moduleName}}.{{name.text}} (validP1{{name.firstUpper}}For{{state.camelCaseUpper}} v1)
                     |> summarize{{name.firstUpper}}For{{state.camelCaseUpper}}
-                    |> Expect.equal {{ok}},
+                    |> Expect.equal {{ok}}
                {{/has1Param}}
                {{#has2Params}}
                fuzz2 fuzzyV1{{name.firstUpper}} fuzzyV2{{name.firstUpper}} "{{name.text}} should return {{state.text}}" <|
                 \v1 v2 ->
                     {{moduleName}}.{{name.text}} (validP1{{name.firstUpper}}For{{state.camelCaseUpper}} v1) (validP2{{name.firstUpper}}For{{state.camelCaseUpper}} v2)
                     |> summarize{{name.firstUpper}}For{{state.camelCaseUpper}}
-                    |> Expect.equal {{ok}},
+                    |> Expect.equal {{ok}}
                {{/has2Params}}
                {{#has3Params}}
                fuzz3 fuzzyV1{{name.firstUpper}} fuzzyV2{{name.firstUpper}} fuzzyV3{{name.firstUpper}} "{{name.text}} should return {{state.text}}" <|
                 \v1 v2 v3->
                     {{moduleName}.{{name.text}} (validP1{{name.firstUpper}}For{{state.camelCaseUpper}} v1) (validP2{{name.firstUpper}}For{{state.camelCaseUpper}} v2) (validP3{{name.firstUpper}}For{{state.camelCaseUpper}} v3)
                     |> summarize{{name.firstUpper}}For{{state.camelCaseUpper}}
-                    |> Expect.equal {{ok}},
+                    |> Expect.equal {{ok}}
                 {{/has3Params}}
             ],
             {{/states}}
