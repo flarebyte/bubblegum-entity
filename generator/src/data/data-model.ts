@@ -11,6 +11,29 @@ export interface FunctionMeta {
 
 export interface ExtendedFunctionInfo extends FunctionInfo, FunctionMeta {}
 
+export interface TextValue {
+  text: string;
+  camelCaseUpper: string;
+  camelCaseLower: string;
+}
+
+export interface MustacheParam {
+  paramName: TextValue;
+  paramType: TextValue;
+}
+
+export interface MustacheState {
+  stateName: TextValue;
+}
+
+export interface MustacheFunctionInfo {
+  functionName: TextValue;
+  params: MustacheParam[];
+  returned: TextValue;
+  states: MustacheState[];
+  ok: TextValue;
+}
+
 export interface TemplateInfo {
   templateName: string;
   targetDir: string;
