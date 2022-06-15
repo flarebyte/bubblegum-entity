@@ -1,4 +1,6 @@
 {
+  "moduleName": "Attribute",
+  "packageNameDot": "Bubblegum.Entity",
   "functions": {
     "__merging_primary_key": "functionName",
     "findAttributeByKey": {

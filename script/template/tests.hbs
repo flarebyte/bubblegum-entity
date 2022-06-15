@@ -16,33 +16,33 @@ suite : Test
 suite =
     describe "The {{moduleName}} module"
         [
-            {{#functions}}
-            describe "{{name.text}}"
+            {{#each functions}}
+            describe "{{functionName}}"
             [
                {{#states}}
                {{#has1Param}}
-               fuzz fuzzyV1{{name.firstUpper}} "{{name.text}} should return {{state.text}}" <|
+               fuzz fuzzyV1{{firstUpper functionName}} "{{functionName}} should return {{state.text}}" <|
                 \v1 ->
-                    {{moduleName}}.{{name.text}} (validP1{{name.firstUpper}}For{{state.camelCaseUpper}} v1)
-                    |> summarize{{name.firstUpper}}For{{state.camelCaseUpper}}
+                    {{moduleName}}.{{functionName}} (validP1{{firstUpper functionName}}For{{state.camelCaseUpper}} v1)
+                    |> summarize{{firstUpper functionName}}For{{state.camelCaseUpper}}
                     |> Expect.equal {{ok}},
                {{/has1Param}}
                {{#has2Params}}
-               fuzz2 fuzzyV1{{name.firstUpper}} fuzzyV2{{name.firstUpper}} "{{name.text}} should return {{state.text}}" <|
+               fuzz2 fuzzyV1{{firstUpper functionName}} fuzzyV2{{firstUpper functionName}} "{{functionName}} should return {{state.text}}" <|
                 \v1 v2 ->
-                    {{moduleName}}.{{name.text}} (validP1{{name.firstUpper}}For{{state.camelCaseUpper}} v1) (validP2{{name.firstUpper}}For{{state.camelCaseUpper}} v2)
-                    |> summarize{{name.firstUpper}}For{{state.camelCaseUpper}}
+                    {{moduleName}}.{{functionName}} (validP1{{firstUpper functionName}}For{{state.camelCaseUpper}} v1) (validP2{{firstUpper functionName}}For{{state.camelCaseUpper}} v2)
+                    |> summarize{{firstUpper functionName}}For{{state.camelCaseUpper}}
                     |> Expect.equal {{ok}},
                {{/has2Params}}
                {{#has3Params}}
-               fuzz3 fuzzyV1{{name.firstUpper}} fuzzyV2{{name.firstUpper}} fuzzyV3{{name.firstUpper}} "{{name.text}} should return {{state.text}}" <|
+               fuzz3 fuzzyV1{{firstUpper functionName}} fuzzyV2{{firstUpper functionName}} fuzzyV3{{firstUpper functionName}} "{{functionName}} should return {{state.text}}" <|
                 \v1 v2 v3->
-                    {{moduleName}}.{{name.text}} (validP1{{name.firstUpper}}For{{state.camelCaseUpper}} v1) (validP2{{name.firstUpper}}For{{state.camelCaseUpper}} v2) (validP3{{name.firstUpper}}For{{state.camelCaseUpper}} v3)
-                    |> summarize{{name.firstUpper}}For{{state.camelCaseUpper}}
+                    {{moduleName}}.{{functionName}} (validP1{{name.firstUpper}}For{{state.camelCaseUpper}} v1) (validP2{{firstUpper functionName}}For{{state.camelCaseUpper}} v2) (validP3{{firstUpper functionName}}For{{state.camelCaseUpper}} v3)
+                    |> summarize{{firstUpper functionName}}For{{state.camelCaseUpper}}
                     |> Expect.equal {{ok}},
                 {{/has3Params}}
                 {{/states}}
             ],
-            {{/functions}}
+            {{/each}}
             
         ]

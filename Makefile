@@ -44,3 +44,4 @@ diff:
 generate:
 	rm -rf generated
 	npx baldrick-whisker object generated/attribute.json src/Bubblegum/Entity/Attribute.elm script/data/attribute.json
+	npx baldrick-whisker render generated/attribute.json script/template/tests.hbs tests/AttributeTests2.elm
