@@ -1,0 +1,71 @@
+{
+  "functions": {
+    "__merging_primary_key": "functionName",
+    "findAttributeByKey": {
+      "states": [
+        {
+          "stateName": "just model"
+        },
+        {
+          "stateName": "nothing"
+        }
+      ],
+      "ok": "ok2"
+    },
+    "findAttributeFirstValueByKey": {
+      "states": [
+        {
+          "stateName": "just string"
+        },
+        {
+          "stateName": "nothing"
+        }
+      ],
+      "ok": "ok2"
+    },
+    "findOutcomeByKey": {
+      "states": [
+        {
+          "stateName": "valid outcome"
+        },
+        {
+          "stateName": "none outcome"
+        }
+      ],
+      "ok": "ok2"
+    },
+    "findOutcomeByKeyTuple": {
+      "states": [
+        {
+          "stateName": "valid outcome"
+        },
+        {
+          "stateName": "outcome with first none"
+        }
+      ],
+      "ok": "ok2"
+    },
+    "deleteAttributeByKey": {
+      "states": [
+        {
+          "stateName": "list"
+        },
+        {
+          "stateName": "empty list"
+        }
+      ],
+      "ok": "ok2"
+    },
+    "replaceAttributeByKey": {
+      "states": [
+        {
+          "stateName": "list"
+        },
+        {
+          "stateName": "empty list"
+        }
+      ],
+      "ok": "ok2"
+    }
+  }
+}

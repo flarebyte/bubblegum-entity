@@ -16,7 +16,7 @@ install-global:
 build: test beautify doc
 
 build-ci:
-	sh script/build-ci.sh
+	sh scripts/build-ci.sh
 
 install:
 	elm install -y
@@ -38,9 +38,15 @@ preview-doc:
 analyze:
 	elm-analyse -s -o
 
+generate:
+	cd scripts && python -B generate_tests.py
+
+parse:
+	python scripts/parse_elm.py
+
 diff:
 	elm-package diff
 
-generate:
-	rm -rf generated
-	npx baldrick-whisker object generated/attribute.json src/Bubblegum/Entity/Attribute.elm
+gen:
+	cd generator; node --loader ts-node/esm src/generator.ts
+	elm-format tests/ --yes

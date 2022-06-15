@@ -1,224 +1,162 @@
-[
-  {
-    "name": "setId",
-    "params": [
-      [
-        "id",
-        "Maybe String"
+{
+  "functions": [
+    {
+      "functionName": "setId",
+      "params": [
+        {
+          "paramName": "id",
+          "paramType": "Maybe String"
+        },
+        {
+          "paramName": "model",
+          "paramType": "Model"
+        }
       ],
-      [
-        "model",
-        "Model"
-      ]
-    ],
-    "returned": "Model",
-    "states": [],
-    "ok": ""
-  },
-  {
-    "name": "setKey",
-    "params": [
-      [
-        "key",
-        "String"
+      "returned": "Model"
+    },
+    {
+      "functionName": "setKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "model",
+          "paramType": "Model"
+        }
       ],
-      [
-        "model",
-        "Model"
-      ]
-    ],
-    "returned": "Model",
-    "states": [],
-    "ok": ""
-  },
-  {
-    "name": "setFacets",
-    "params": [
-      [
-        "facets",
-        "List String"
+      "returned": "Model"
+    },
+    {
+      "functionName": "setFacets",
+      "params": [
+        {
+          "paramName": "facets",
+          "paramType": "List String"
+        },
+        {
+          "paramName": "model",
+          "paramType": "Model"
+        }
       ],
-      [
-        "model",
-        "Model"
-      ]
-    ],
-    "returned": "Model",
-    "states": [],
-    "ok": ""
-  },
-  {
-    "name": "setValues",
-    "params": [
-      [
-        "values",
-        "List String"
+      "returned": "Model"
+    },
+    {
+      "functionName": "setValues",
+      "params": [
+        {
+          "paramName": "values",
+          "paramType": "List String"
+        },
+        {
+          "paramName": "model",
+          "paramType": "Model"
+        }
       ],
-      [
-        "model",
-        "Model"
-      ]
-    ],
-    "returned": "Model",
-    "states": [],
-    "ok": ""
-  },
-  {
-    "name": "findAttributeByKey",
-    "params": [
-      [
-        "key",
-        "String"
+      "returned": "Model"
+    },
+    {
+      "functionName": "findAttributeByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
       ],
-      [
-        "attributes",
-        "List Model"
-      ]
-    ],
-    "returned": "Maybe Model",
-    "states": [
-      {
-        "stateName": "just model"
-      },
-      {
-        "stateName": "nothing"
-      }
-    ],
-    "ok": "ok2"
-  },
-  {
-    "name": "deleteAttributeByKey",
-    "params": [
-      [
-        "key",
-        "String"
+      "returned": "Maybe Model"
+    },
+    {
+      "functionName": "deleteAttributeByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
       ],
-      [
-        "attributes",
-        "List Model"
-      ]
-    ],
-    "returned": "List Model",
-    "states": [
-      {
-        "stateName": "list"
-      },
-      {
-        "stateName": "empty list"
-      }
-    ],
-    "ok": "ok2"
-  },
-  {
-    "name": "findAttributeFirstValueByKey",
-    "params": [
-      [
-        "key",
-        "String"
+      "returned": "List Model"
+    },
+    {
+      "functionName": "findAttributeFirstValueByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
       ],
-      [
-        "attributes",
-        "List Model"
-      ]
-    ],
-    "returned": "Maybe String",
-    "states": [
-      {
-        "stateName": "just string"
-      },
-      {
-        "stateName": "nothing"
-      }
-    ],
-    "ok": "ok2"
-  },
-  {
-    "name": "findOutcomeByKey",
-    "params": [
-      [
-        "key",
-        "String"
+      "returned": "Maybe String"
+    },
+    {
+      "functionName": "findOutcomeByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
       ],
-      [
-        "attributes",
-        "List Model"
-      ]
-    ],
-    "returned": "Outcome (List String)",
-    "states": [
-      {
-        "stateName": "valid outcome"
-      },
-      {
-        "stateName": "none outcome"
-      }
-    ],
-    "ok": "ok2"
-  },
-  {
-    "name": "createTuple",
-    "params": [
-      [
-        "a",
-        "a"
+      "returned": "Outcome (List String)"
+    },
+    {
+      "functionName": "createTuple",
+      "params": [
+        {
+          "paramName": "a",
+          "paramType": "a"
+        },
+        {
+          "paramName": "b",
+          "paramType": "a"
+        }
       ],
-      [
-        "b",
-        "a"
-      ]
-    ],
-    "returned": "( a, a )",
-    "states": [],
-    "ok": ""
-  },
-  {
-    "name": "findOutcomeByKeyTuple",
-    "params": [
-      [
-        "tuple",
-        "( String, String )"
+      "returned": "( a, a )"
+    },
+    {
+      "functionName": "findOutcomeByKeyTuple",
+      "params": [
+        {
+          "paramName": "tuple",
+          "paramType": "( String, String )"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
       ],
-      [
-        "attributes",
-        "List Model"
-      ]
-    ],
-    "returned": "Outcome ( List String, List String )",
-    "states": [
-      {
-        "stateName": "valid outcome"
-      },
-      {
-        "stateName": "outcome with first none"
-      }
-    ],
-    "ok": "ok2"
-  },
-  {
-    "name": "replaceAttributeByKey",
-    "params": [
-      [
-        "key",
-        "String"
+      "returned": "Outcome ( List String, List String )"
+    },
+    {
+      "functionName": "replaceAttributeByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "values",
+          "paramType": "List String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
       ],
-      [
-        "values",
-        "List String"
-      ],
-      [
-        "attributes",
-        "List Model"
-      ]
-    ],
-    "returned": "List Model",
-    "states": [
-      {
-        "stateName": "list"
-      },
-      {
-        "stateName": "empty list"
-      }
-    ],
-    "ok": "ok2"
-  }
-]
+      "returned": "List Model"
+    }
+  ]
+}
