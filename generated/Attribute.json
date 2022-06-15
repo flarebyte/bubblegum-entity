@@ -68,7 +68,16 @@
           "paramType": "List Model"
         }
       ],
-      "returned": "Maybe Model"
+      "returned": "Maybe Model",
+      "states": [
+        {
+          "stateName": "just model"
+        },
+        {
+          "stateName": "nothing"
+        }
+      ],
+      "ok": "ok2"
     },
     {
       "functionName": "deleteAttributeByKey",
@@ -82,7 +91,16 @@
           "paramType": "List Model"
         }
       ],
-      "returned": "List Model"
+      "returned": "List Model",
+      "states": [
+        {
+          "stateName": "list"
+        },
+        {
+          "stateName": "empty list"
+        }
+      ],
+      "ok": "ok2"
     },
     {
       "functionName": "findAttributeFirstValueByKey",
@@ -96,7 +114,16 @@
           "paramType": "List Model"
         }
       ],
-      "returned": "Maybe String"
+      "returned": "Maybe String",
+      "states": [
+        {
+          "stateName": "just string"
+        },
+        {
+          "stateName": "nothing"
+        }
+      ],
+      "ok": "ok2"
     },
     {
       "functionName": "findOutcomeByKey",
@@ -110,7 +137,16 @@
           "paramType": "List Model"
         }
       ],
-      "returned": "Outcome (List String)"
+      "returned": "Outcome (List String)",
+      "states": [
+        {
+          "stateName": "valid outcome"
+        },
+        {
+          "stateName": "none outcome"
+        }
+      ],
+      "ok": "ok2"
     },
     {
       "functionName": "createTuple",
@@ -138,7 +174,16 @@
           "paramType": "List Model"
         }
       ],
-      "returned": "Outcome ( List String, List String )"
+      "returned": "Outcome ( List String, List String )",
+      "states": [
+        {
+          "stateName": "valid outcome"
+        },
+        {
+          "stateName": "outcome with first none"
+        }
+      ],
+      "ok": "ok2"
     },
     {
       "functionName": "replaceAttributeByKey",
@@ -156,7 +201,16 @@
           "paramType": "List Model"
         }
       ],
-      "returned": "List Model"
+      "returned": "List Model",
+      "states": [
+        {
+          "stateName": "list"
+        },
+        {
+          "stateName": "empty list"
+        }
+      ],
+      "ok": "ok2"
     }
   ]
 }
