@@ -17,32 +17,34 @@ suite =
     describe "The {{moduleName}} module"
         [
             {{#each functions}}
+            {{#if states}}
             describe "{{functionName}}"    
             [
-               {{#each states}}
+               {{#listJoin ', newline' states}}
                {{#ifSatisfy 'equals' ../params.length '1'}}
                fuzz fuzzyV1{{upperFirstChar ../this.functionName}} "{{../this.functionName}} should return {{stateName}}" <|
                 \v1 ->
                     {{moduleName}}.{{../this.functionName}} (validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v1)
                     |> summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}
-                    |> Expect.equal {{ok}},
+                    |> Expect.equal {{../this.ok}}
                {{/ifSatisfy}}
                {{#ifSatisfy 'equals' ../params.length '2'}}
                fuzz2 fuzzyV1{{upperFirstChar ../this.functionName}} fuzzyV2{{upperFirstChar ../this.functionName}} "{{../this.functionName}} should return {{stateName}}" <|
                 \v1 v2 ->
                     {{moduleName}}.{{../this.functionName}} (validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v1) (validP2{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v2)
                     |> summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}
-                    |> Expect.equal {{ok}},
+                    |> Expect.equal {{../this.ok}}
                {{/ifSatisfy}}
                {{#ifSatisfy 'equals'../params.length '3'}}
                fuzz3 fuzzyV1{{upperFirstChar ../this.functionName}} fuzzyV2{{upperFirstChar ../this.functionName}} fuzzyV3{{upperFirstChar ../this.functionName}} "{{../this.functionName}} should return {{stateName}}" <|
                 \v1 v2 v3->
                     {{moduleName}}.{{../this.functionName}} (validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v1) (validP2{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v2) (validP3{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v3)
                     |> summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}
-                    |> Expect.equal {{ok}},
+                    |> Expect.equal {{../this.ok}}
                {{/ifSatisfy}}
-                {{/each}}
+                {{/listJoin}}
             ],
+            {{/if}}
             {{/each}}
             
         ]
