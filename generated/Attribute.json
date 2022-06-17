@@ -212,5 +212,7 @@
       ],
       "ok": "ok2"
     }
-  ]
+  ],
+  "moduleName": "Attribute",
+  "packageNameDot": "Bubblegum.Entity"
 }
