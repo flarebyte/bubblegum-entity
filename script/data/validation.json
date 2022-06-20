@@ -46,7 +46,8 @@
     },
     "withinStringCharsRange": {
       "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
-      "ok": "ok1"
+      "ok": "ok1",
+      "noDescribeComma": true
     }
   }
 }

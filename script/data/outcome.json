@@ -55,7 +55,8 @@
     },
     "toMaybe": {
       "states": [{ "stateName": "just" }, { "stateName": "nothing" }],
-      "ok": "ok1"
+      "ok": "ok1",
+      "noDescribeComma": true
     }
   }
 }

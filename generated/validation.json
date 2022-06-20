@@ -503,7 +503,8 @@
           "stateName": "invalid"
         }
       ],
-      "ok": "ok1"
+      "ok": "ok1",
+      "noDescribeComma": true
     },
     {
       "functionName": "withinListStringCharsRange",

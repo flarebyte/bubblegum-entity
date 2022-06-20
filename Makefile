@@ -49,10 +49,12 @@ generate:
 	npx baldrick-whisker@latest render generated/attribute.json script/template/tests.hbs tests/AttributeTests.elm
 	npx baldrick-whisker@latest render generated/outcome.json script/template/tests.hbs tests/OutcomeTests.elm
 	npx baldrick-whisker@latest render generated/validation.json script/template/tests.hbs tests/ValidationTests.elm
-	elm-format tests/AttributeTests.elm --yes
+	elm-format tests/*Tests.elm --yes
 	make test
 
 assist:
 	npx baldrick-whisker@latest render --diff generated/attribute.json script/template/test-data.hbs tests/AttributeTestData.elm
+	npx baldrick-whisker@latest render --diff generated/outcome.json script/template/test-data.hbs tests/OutcomeTestData.elm
+	npx baldrick-whisker@latest render --diff generated/validation.json script/template/test-data.hbs tests/ValidationTestData.elm
 
 

@@ -43,7 +43,7 @@ suite =
                     |> Expect.equal {{../this.ok}}
                 {{/ifSatisfy}}
                 {{/each}}   
-            ]{{#unless @last}},{{/unless}}
+            ]{{#unless noDescribeComma}},{{/unless}}
             {{/if}}
             {{/each}}
             

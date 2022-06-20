@@ -1,5 +1,8 @@
+Checks that you have defined the following functions in tests/{{moduleName}}TestData.elm
 
 {{#each functions}}
+{{#if states}}
+{{#ifSatisfy 'not contains ignore-case' ../output functionName}}
 {{#ifSatisfy 'equals' params.length '1'}}
 -- {{functionName}}
 fuzzyV1{{upperFirstChar functionName}} : Fuzzer String -- should produce {{params.[0].paramType}}
@@ -24,51 +27,50 @@ fuzzyV2{{upperFirstChar functionName}} = string
 fuzzyV3{{upperFirstChar functionName}} : Fuzzer String -- should produce {{params.[2].paramType}}
 fuzzyV3{{upperFirstChar functionName}} = string 
 {{/ifSatisfy}}
-{{#if states}}
 {{#each states}}
 {{#ifSatisfy 'equals' ../params.length '1'}}
-validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[0].paramType}} -- about {{params.[0].paramName}}
-validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
+validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}: String -> {{../this.params.[0].paramType}} -- about {{../this.params.[0].paramName}}
+validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} value =
     value
     
-summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: {{returned}} -> List String
-summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}} result =
+summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}: {{../returned}} -> List String
+summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} result =
     [
         justOrErr "attr is missing" result.attr
         , ok
     ]
 {{/ifSatisfy}}
 {{#ifSatisfy 'equals' ../params.length '2'}}
-validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[0].paramType}} -- about {{params.[0].paramName}}
-validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
+validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}: String -> {{../this.params.[0].paramType}} -- about {{../this.params.[0].paramName}}
+validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} value =
     value
 
-validP2{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[1].paramType}} -- about {{params.[1].paramName}}
-validP2{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
+validP2{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}: String -> {{../this.params.[1].paramType}} -- about {{../this.params.[1].paramName}}
+validP2{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} value =
     value
     
-summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: {{returned}} -> List String
-summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}} result =
+summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}: {{../returned}} -> List String
+summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} result =
     [
         justOrErr "attr is missing" result.attr
         , ok
     ]
 {{/ifSatisfy}}
 {{#ifSatisfy 'equals'../params.length '3'}}
-validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[0].paramType}} -- about {{params.[0].paramName}}
-validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
+validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}: String -> {{../this.params.[0].paramType}} -- about {{../this.params.[0].paramName}}
+validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} value =
     value
 
-validP2{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[1].paramType}} -- about {{params.[1].paramName}}
-validP2{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
+validP2{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}: String -> {{../this.params.[1].paramType}} -- about {{../this.params.[1].paramName}}
+validP2{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} value =
     value
 
-validP3{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[2].paramType}} -- -- about {{params.[2].paramName}}
-validP3{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
+validP3{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}: String -> {{../this.params.[2].paramType}} -- about {{../this.params.[2].paramName}}
+validP3{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} value =
     value
     
-summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: {{returned}} -> List String
-summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}} result =
+summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}: {{../returned}} -> List String
+summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} result =
     [
         justOrErr "attr is missing" result.attr
         , ok
@@ -76,5 +78,6 @@ summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}} result =
 {{/ifSatisfy}}
 {{/each}}   
 ]
+{{/ifSatisfy}}
 {{/if}}
 {{/each}}

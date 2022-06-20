@@ -68,7 +68,8 @@
           "stateName": "empty list"
         }
       ],
-      "ok": "ok2"
+      "ok": "ok2",
+      "noDescribeComma": true
     }
   }
 }
