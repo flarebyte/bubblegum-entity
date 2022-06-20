@@ -27,48 +27,48 @@ fuzzyV3{{upperFirstChar functionName}} = string
 {{#if states}}
 {{#each states}}
 {{#ifSatisfy 'equals' ../params.length '1'}}
-validP1{{upperFirstChar functionName}}For${stateU}: String -> {{params.[0].paramType}} -- about ${paramName0}
-validP1{{upperFirstChar functionName}}For${stateU} value =
+validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[0].paramType}} -- about {{params.[0].paramName}}
+validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
     value
     
-summarize{{upperFirstChar functionName}}For${stateU}: ${returned} -> List String
-summarize{{upperFirstChar functionName}}For${stateU} result =
+summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: {{returned}} -> List String
+summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}} result =
     [
         justOrErr "attr is missing" result.attr
         , ok
     ]
 {{/ifSatisfy}}
 {{#ifSatisfy 'equals' ../params.length '2'}}
-validP1{{upperFirstChar functionName}}For${stateU}: String -> {{params.[0].paramType}} -- about ${paramName0}
-validP1{{upperFirstChar functionName}}For${stateU} value =
+validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[0].paramType}} -- about {{params.[0].paramName}}
+validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
     value
 
-validP2{{upperFirstChar functionName}}For${stateU}: String -> {{params.[1].paramType}} -- about ${paramName1}
-validP2{{upperFirstChar functionName}}For${stateU} value =
+validP2{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[1].paramType}} -- about {{params.[1].paramName}}
+validP2{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
     value
     
-summarize{{upperFirstChar functionName}}For${stateU}: ${returned} -> List String
-summarize{{upperFirstChar functionName}}For${stateU} result =
+summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: {{returned}} -> List String
+summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}} result =
     [
         justOrErr "attr is missing" result.attr
         , ok
     ]
 {{/ifSatisfy}}
 {{#ifSatisfy 'equals'../params.length '3'}}
-validP1{{upperFirstChar functionName}}For${stateU}: String -> {{params.[0].paramType}} -- about ${paramName0}
-validP1{{upperFirstChar functionName}}For${stateU} value =
+validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[0].paramType}} -- about {{params.[0].paramName}}
+validP1{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
     value
 
-validP2{{upperFirstChar functionName}}For${stateU}: String -> {{params.[1].paramType}} -- about ${paramName1}
-validP2{{upperFirstChar functionName}}For${stateU} value =
+validP2{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[1].paramType}} -- about {{params.[1].paramName}}
+validP2{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
     value
 
-validP3{{upperFirstChar functionName}}For${stateU}: String -> {{params.[2].paramType}} -- -- about ${paramName2}
-validP3{{upperFirstChar functionName}}For${stateU} value =
+validP3{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: String -> {{params.[2].paramType}} -- -- about {{params.[2].paramName}}
+validP3{{upperFirstChar functionName}}For{{upperCamelCase stateName}} value =
     value
     
-summarize{{upperFirstChar functionName}}For${stateU}: ${returned} -> List String
-summarize{{upperFirstChar functionName}}For${stateU} result =
+summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}}: {{returned}} -> List String
+summarize{{upperFirstChar functionName}}For{{upperCamelCase stateName}} result =
     [
         justOrErr "attr is missing" result.attr
         , ok
