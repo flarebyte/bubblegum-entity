@@ -1,0 +1,61 @@
+{
+  "moduleName": "Outcome",
+  "packageNameDot": "Bubblegum.Entity",
+  "oks": ["ok1", "ok2"],
+  "functions": {
+    "__merging_primary_key": "functionName",
+    "withDefault": {
+      "states": [{ "stateName": "valid" }, { "stateName": "none" }],
+      "ok": "ok2"
+    },
+    "map": {
+      "states": [
+        { "stateName": "valid" },
+        { "stateName": "none" },
+        { "stateName": "warning" }
+      ],
+      "ok": "ok2"
+    },
+    "map2": {
+      "states": [
+        { "stateName": "valid" },
+        { "stateName": "none" },
+        { "stateName": "warning" }
+      ],
+      "ok": "ok2"
+    },
+    "check": {
+      "states": [
+        { "stateName": "valid" },
+        { "stateName": "none" },
+        { "stateName": "warning" },
+        { "stateName": "check failed" }
+      ],
+      "ok": "ok2"
+    },
+    "checkOrNone": {
+      "states": [
+        { "stateName": "valid" },
+        { "stateName": "check failed" },
+        { "stateName": "warning" }
+      ],
+      "ok": "ok2"
+    },
+    "trueMapToConstant": {
+      "states": [{ "stateName": "true" }, { "stateName": "false" }],
+      "ok": "ok2"
+    },
+    "or": {
+      "states": [{ "stateName": "first" }, { "stateName": "second" }],
+      "ok": "ok2"
+    },
+    "fromMaybe": {
+      "states": [{ "stateName": "valid" }, { "stateName": "none" }],
+      "ok": "ok2"
+    },
+    "toMaybe": {
+      "states": [{ "stateName": "just" }, { "stateName": "nothing" }],
+      "ok": "ok1"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+
+{{#each functions}}
+{{#ifSatisfy 'equals' params.length '1'}}
+-- {{functionName}}
+fuzzyV1{{upperFirstChar functionName}} : Fuzzer String -- should produce {{params.[0].paramType}}
+fuzzyV1{{upperFirstChar functionName}} = string 
+{{/ifSatisfy}}
+{{#ifSatisfy 'equals' params.length '2'}}
+-- {{functionName}}
+fuzzyV1{{upperFirstChar functionName}} : Fuzzer String -- should produce {{params.[0].paramType}}
+fuzzyV1{{upperFirstChar functionName}} = string 
+
+fuzzyV2{{upperFirstChar functionName}} : Fuzzer String -- should produce {{params.[1].paramType}}
+fuzzyV2{{upperFirstChar functionName}} = string 
+{{/ifSatisfy}}
+{{#ifSatisfy 'equals' params.length '3'}}
+-- {{functionName}}
+fuzzyV1{{upperFirstChar functionName}} : Fuzzer String -- should produce {{params.[0].paramType}}
+fuzzyV1{{upperFirstChar functionName}} = string 
+
+fuzzyV2{{upperFirstChar functionName}} : Fuzzer String -- should produce {{params.[1].paramType}}
+fuzzyV2{{upperFirstChar functionName}} = string
+
+fuzzyV3{{upperFirstChar functionName}} : Fuzzer String -- should produce {{params.[2].paramType}}
+fuzzyV3{{upperFirstChar functionName}} = string 
+{{/ifSatisfy}}
+{{#if states}}
+{{#each states}}
+{{#ifSatisfy 'equals' ../params.length '1'}}
+validP1{{upperFirstChar functionName}}For${stateU}: String -> {{params.[0].paramType}} -- about ${paramName0}
+validP1{{upperFirstChar functionName}}For${stateU} value =
+    value
+    
+summarize{{upperFirstChar functionName}}For${stateU}: ${returned} -> List String
+summarize{{upperFirstChar functionName}}For${stateU} result =
+    [
+        justOrErr "attr is missing" result.attr
+        , ok
+    ]
+{{/ifSatisfy}}
+{{#ifSatisfy 'equals' ../params.length '2'}}
+validP1{{upperFirstChar functionName}}For${stateU}: String -> {{params.[0].paramType}} -- about ${paramName0}
+validP1{{upperFirstChar functionName}}For${stateU} value =
+    value
+
+validP2{{upperFirstChar functionName}}For${stateU}: String -> {{params.[1].paramType}} -- about ${paramName1}
+validP2{{upperFirstChar functionName}}For${stateU} value =
+    value
+    
+summarize{{upperFirstChar functionName}}For${stateU}: ${returned} -> List String
+summarize{{upperFirstChar functionName}}For${stateU} result =
+    [
+        justOrErr "attr is missing" result.attr
+        , ok
+    ]
+{{/ifSatisfy}}
+{{#ifSatisfy 'equals'../params.length '3'}}
+validP1{{upperFirstChar functionName}}For${stateU}: String -> {{params.[0].paramType}} -- about ${paramName0}
+validP1{{upperFirstChar functionName}}For${stateU} value =
+    value
+
+validP2{{upperFirstChar functionName}}For${stateU}: String -> {{params.[1].paramType}} -- about ${paramName1}
+validP2{{upperFirstChar functionName}}For${stateU} value =
+    value
+
+validP3{{upperFirstChar functionName}}For${stateU}: String -> {{params.[2].paramType}} -- -- about ${paramName2}
+validP3{{upperFirstChar functionName}}For${stateU} value =
+    value
+    
+summarize{{upperFirstChar functionName}}For${stateU}: ${returned} -> List String
+summarize{{upperFirstChar functionName}}For${stateU} result =
+    [
+        justOrErr "attr is missing" result.attr
+        , ok
+    ]
+{{/ifSatisfy}}
+{{/each}}   
+]
+{{/if}}
+{{/each}}

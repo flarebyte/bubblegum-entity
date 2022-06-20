@@ -1,0 +1,692 @@
+{
+  "functions": [
+    {
+      "functionName": "asSingle",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome (List String)"
+        }
+      ],
+      "returned": "Outcome String"
+    },
+    {
+      "functionName": "asTuple",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome ( List String, List String )"
+        }
+      ],
+      "returned": "Outcome ( String, String )"
+    },
+    {
+      "functionName": "listEqual",
+      "params": [
+        {
+          "paramName": "size",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome (List String)"
+        }
+      ],
+      "returned": "Outcome (List String)"
+    },
+    {
+      "functionName": "listMoreThan",
+      "params": [
+        {
+          "paramName": "size",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome (List String)"
+        }
+      ],
+      "returned": "Outcome (List String)"
+    },
+    {
+      "functionName": "listStrictlyMoreThan",
+      "params": [
+        {
+          "paramName": "size",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome (List String)"
+        }
+      ],
+      "returned": "Outcome (List String)",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
+    },
+    {
+      "functionName": "listLessThan",
+      "params": [
+        {
+          "paramName": "size",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome (List String)"
+        }
+      ],
+      "returned": "Outcome (List String)"
+    },
+    {
+      "functionName": "listStrictlyLessThan",
+      "params": [
+        {
+          "paramName": "size",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome (List String)"
+        }
+      ],
+      "returned": "Outcome (List String)",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
+    },
+    {
+      "functionName": "asUnique",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome (List String)"
+        }
+      ],
+      "returned": "Outcome (List String)"
+    },
+    {
+      "functionName": "asInt",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome Int"
+    },
+    {
+      "functionName": "asFloat",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome Float"
+    },
+    {
+      "functionName": "asBool",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome Bool"
+    },
+    {
+      "functionName": "intMoreThan",
+      "params": [
+        {
+          "paramName": "limit",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome Int"
+        }
+      ],
+      "returned": "Outcome Int"
+    },
+    {
+      "functionName": "intStrictlyMoreThan",
+      "params": [
+        {
+          "paramName": "limit",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome Int"
+        }
+      ],
+      "returned": "Outcome Int"
+    },
+    {
+      "functionName": "intLessThan",
+      "params": [
+        {
+          "paramName": "limit",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome Int"
+        }
+      ],
+      "returned": "Outcome Int"
+    },
+    {
+      "functionName": "intStrictlyLessThan",
+      "params": [
+        {
+          "paramName": "limit",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome Int"
+        }
+      ],
+      "returned": "Outcome Int"
+    },
+    {
+      "functionName": "floatMoreThan",
+      "params": [
+        {
+          "paramName": "limit",
+          "paramType": "Float"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome Float"
+        }
+      ],
+      "returned": "Outcome Float"
+    },
+    {
+      "functionName": "floatStrictlyMoreThan",
+      "params": [
+        {
+          "paramName": "limit",
+          "paramType": "Float"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome Float"
+        }
+      ],
+      "returned": "Outcome Float"
+    },
+    {
+      "functionName": "floatLessThan",
+      "params": [
+        {
+          "paramName": "limit",
+          "paramType": "Float"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome Float"
+        }
+      ],
+      "returned": "Outcome Float"
+    },
+    {
+      "functionName": "floatStrictlyLessThan",
+      "params": [
+        {
+          "paramName": "limit",
+          "paramType": "Float"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome Float"
+        }
+      ],
+      "returned": "Outcome Float"
+    },
+    {
+      "functionName": "matchEnum",
+      "params": [
+        {
+          "paramName": "enum",
+          "paramType": "List String"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome String",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
+    },
+    {
+      "functionName": "stringStartsWith",
+      "params": [
+        {
+          "paramName": "prefix",
+          "paramType": "String"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome String",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
+    },
+    {
+      "functionName": "stringEndsWith",
+      "params": [
+        {
+          "paramName": "suffix",
+          "paramType": "String"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome String"
+    },
+    {
+      "functionName": "stringContains",
+      "params": [
+        {
+          "paramName": "str",
+          "paramType": "String"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome String"
+    },
+    {
+      "functionName": "matchNormalizedString",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome String"
+    },
+    {
+      "functionName": "matchRegex",
+      "params": [
+        {
+          "paramName": "regExp",
+          "paramType": "String"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome String"
+    },
+    {
+      "functionName": "matchAbsoluteUrl",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome String",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
+    },
+    {
+      "functionName": "matchCompactUri",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome String",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
+    },
+    {
+      "functionName": "asIntTuple",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome ( String, String )"
+        }
+      ],
+      "returned": "Outcome ( Int, Int )"
+    },
+    {
+      "functionName": "asFloatTuple",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome ( String, String )"
+        }
+      ],
+      "returned": "Outcome ( Float, Float )"
+    },
+    {
+      "functionName": "asIntRange",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome ( Int, Int )"
+        }
+      ],
+      "returned": "Outcome ( Int, Int )",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
+    },
+    {
+      "functionName": "asFloatRange",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome ( Float, Float )"
+        }
+      ],
+      "returned": "Outcome ( Float, Float )",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
+    },
+    {
+      "functionName": "withinIntRange",
+      "params": [
+        {
+          "paramName": "range",
+          "paramType": "( Int, Int )"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome ( Int, Int )"
+        }
+      ],
+      "returned": "Outcome ( Int, Int )"
+    },
+    {
+      "functionName": "withinFloatRange",
+      "params": [
+        {
+          "paramName": "range",
+          "paramType": "( Float, Float )"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome ( Float, Float )"
+        }
+      ],
+      "returned": "Outcome ( Float, Float )"
+    },
+    {
+      "functionName": "withinStringCharsRange",
+      "params": [
+        {
+          "paramName": "range",
+          "paramType": "( Int, Int )"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome String"
+        }
+      ],
+      "returned": "Outcome String",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
+    },
+    {
+      "functionName": "withinListStringCharsRange",
+      "params": [
+        {
+          "paramName": "range",
+          "paramType": "( Int, Int )"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome (List String)"
+        }
+      ],
+      "returned": "Outcome (List String)"
+    },
+    {
+      "functionName": "helperCharsRange",
+      "params": [
+        {
+          "paramName": "range",
+          "paramType": "( Int, Int )"
+        },
+        {
+          "paramName": "str",
+          "paramType": "String"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "matchListSize",
+      "params": [
+        {
+          "paramName": "expected",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "list",
+          "paramType": "List String"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "helperMoreThan",
+      "params": [
+        {
+          "paramName": "expected",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "list",
+          "paramType": "List String"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "helperStrictlyMoreThan",
+      "params": [
+        {
+          "paramName": "expected",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "list",
+          "paramType": "List String"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "helperLessThan",
+      "params": [
+        {
+          "paramName": "expected",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "list",
+          "paramType": "List String"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "helperStrictlyLessThan",
+      "params": [
+        {
+          "paramName": "expected",
+          "paramType": "Int"
+        },
+        {
+          "paramName": "list",
+          "paramType": "List String"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "onlyOne",
+      "params": [
+        {
+          "paramName": "list",
+          "paramType": "List String"
+        }
+      ],
+      "returned": "String"
+    },
+    {
+      "functionName": "onlyTuple",
+      "params": [
+        {
+          "paramName": "listTuple",
+          "paramType": "( List String, List String )"
+        }
+      ],
+      "returned": "( String, String )"
+    },
+    {
+      "functionName": "isInt",
+      "params": [
+        {
+          "paramName": "value",
+          "paramType": "String"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "isFloat",
+      "params": [
+        {
+          "paramName": "value",
+          "paramType": "String"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "intOrZero",
+      "params": [
+        {
+          "paramName": "value",
+          "paramType": "String"
+        }
+      ],
+      "returned": "Int"
+    },
+    {
+      "functionName": "floatOrZero",
+      "params": [
+        {
+          "paramName": "value",
+          "paramType": "String"
+        }
+      ],
+      "returned": "Float"
+    },
+    {
+      "functionName": "stringToBool",
+      "params": [
+        {
+          "paramName": "value",
+          "paramType": "String"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "isBool",
+      "params": [
+        {
+          "paramName": "value",
+          "paramType": "String"
+        }
+      ],
+      "returned": "Bool"
+    }
+  ],
+  "moduleName": "Validation",
+  "packageNameDot": "Bubblegum.Entity",
+  "oks": [
+    "ok1"
+  ]
+}

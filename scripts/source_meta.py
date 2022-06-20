@@ -41,3 +41,6 @@ metaValidation = {
     'withinStringCharsRange': setMeta(1, ["valid", "invalid"])
     # 'withinListStringCharsRange': setMeta(1, ["valid", "invalid"])
     }
+
+import json
+print(json.dumps(metaValidation, indent=2))

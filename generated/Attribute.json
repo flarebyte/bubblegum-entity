@@ -214,5 +214,8 @@
     }
   ],
   "moduleName": "Attribute",
-  "packageNameDot": "Bubblegum.Entity"
+  "packageNameDot": "Bubblegum.Entity",
+  "oks": [
+    "ok2"
+  ]
 }

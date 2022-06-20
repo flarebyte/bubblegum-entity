@@ -1,6 +1,7 @@
 {
   "moduleName": "Attribute",
   "packageNameDot": "Bubblegum.Entity",
+  "oks": ["ok2"],
   "functions": {
     "__merging_primary_key": "functionName",
     "findAttributeByKey": {
