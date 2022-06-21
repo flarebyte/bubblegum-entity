@@ -9,7 +9,7 @@
       },
       {
         "fileMatch": [
-          "script/data/*.json"
+          "script/data/module/*.json"
         ],
         "url": "./script/schema/module.schema.json"
       },
