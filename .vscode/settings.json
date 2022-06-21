@@ -1,0 +1,23 @@
+{
+  "makefile.extensionOutputFolder": "./.vscode",
+  "json.schemas": [
+    {
+        "fileMatch": [
+          "generated/*.json"
+        ],
+        "url": "./script/schema/merged.schema.json"
+      },
+      {
+        "fileMatch": [
+          "script/data/*.json"
+        ],
+        "url": "./script/schema/module.schema.json"
+      },
+      {
+        "fileMatch": [
+          "script/data/project.json"
+        ],
+        "url": "./script/schema/project.schema.json"
+      }
+  ]
+}

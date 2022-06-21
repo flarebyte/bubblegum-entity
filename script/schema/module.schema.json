@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Module",
+  "description": "Schema for adding metadata to a module",
+  "definitions": {
+    "Module": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "moduleName": {
+          "type": "string",
+          "description": "The name of the Elm module"
+        },
+        "packageNameDot": {
+          "type": "string",
+          "description": "The Elm package name separated by dots",
+          "examples": ["Bubblegum.Entity"]
+        },
+        "oks": {
+          "type": "array",
+          "description": "The list of  ok variables for indicating success that are used for testing the module",
+          "items": {
+            "type": "string"
+          }
+        },
+        "functions": {
+          "$ref": "#/definitions/Functions"
+        }
+      },
+      "required": ["functions", "moduleName", "oks", "packageNameDot"],
+      "title": "Description of a module"
+    },
+    "Functions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "__merging_primary_key": {
+          "constant": "functionName",
+          "description": "Utility key that is used for merging by baldrick-whisker"
+        }
+      },
+      "patternProperties": {
+        "^[A-Za-z0-9]+": {
+          "$ref": "#/definitions/Function"
+        }
+      },
+      "required": ["__merging_primary_key"],
+      "title": "List of Elm functions"
+    },
+    "Function": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "states": {
+          "type": "array",
+          "description": "List of all the states that the unit tests need to support for a function",
+          "items": {
+            "$ref": "#/definitions/State"
+          }
+        },
+        "ok": {
+          "type": "string",
+          "description": "Value to expect for success"
+        }
+      },
+      "required": ["ok", "states"],
+      "title": "Metadata for function",
+      "description": "Additional metadata for the Elm function"
+    },
+    "State": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "stateName": {
+          "type": "string",
+          "title": "Name of the state"
+        }
+      },
+      "required": ["stateName"],
+      "title": "State",
+      "description": "State that need to be tested"
+    }
+  }
+}

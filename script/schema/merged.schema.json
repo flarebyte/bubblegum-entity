@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Module",
+  "description": "Schema for the model once it has been generated an merged",
+  "definitions": {
+    "Module": {
+      "type": "object",
+      "description": "Root object after merging",
+      "additionalProperties": false,
+      "properties": {
+        "functions": {
+          "type": "array",
+          "title": "Elm functions",
+          "items": {
+            "$ref": "#/definitions/Function"
+          }
+        },
+        "moduleName": {
+          "type": "string",
+          "description": "The name of the Elm module"
+        },
+        "packageNameDot": {
+          "type": "string",
+          "description": "The Elm package name separated by dots",
+          "examples": ["Bubblegum.Entity"]
+        },
+        "oks": {
+          "type": "array",
+          "description": "The list of  ok variables for indicating success that are used for testing the module",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["functions", "moduleName", "oks", "packageNameDot"],
+      "title": "Elm Module"
+    },
+    "Function": {
+      "type": "object",
+      "description": "Description of an Elm function",
+      "additionalProperties": false,
+      "properties": {
+        "functionName": {
+          "type": "string",
+          "title": "Name of the Elm function"
+        },
+        "params": {
+          "type": "array",
+          "title": "List of parameters for the Elm function",
+          "items": {
+            "$ref": "#/definitions/Param"
+          }
+        },
+        "returned": {
+          "type": "string",
+          "description": "Type returned by the function"
+        },
+        "states": {
+          "type": "array",
+          "description": "List of all the states that the unit tests need to support for a function",
+          "items": {
+            "$ref": "#/definitions/State"
+          }
+        },
+        "ok": {
+          "type": "string",
+          "description": "Value to expect for success"
+        },
+        "noDescribeComma": {
+          "type": "boolean",
+          "description": "Set to true if the function is the last one and we should omit the coma"
+        }
+      },
+      "required": ["functionName", "params", "returned"],
+      "title": "Elm function"
+    },
+    "Param": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "paramName": {
+          "type": "string",
+          "title": "Name of the parameter"
+        },
+        "paramType": {
+          "type": "string",
+          "title": "Type of the parameter"
+        }
+      },
+      "required": ["paramName", "paramType"],
+      "title": "Function parameter"
+    },
+    "State": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "stateName": {
+          "type": "string",
+          "title": "Name of the state"
+        }
+      },
+      "required": ["stateName"],
+      "title": "State that need to be tested"
+    }
+  }
+}

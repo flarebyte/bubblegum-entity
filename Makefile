@@ -41,8 +41,13 @@ analyze:
 diff:
 	elm-package diff
 
+pre-generate:
+	npx baldrick-whisker@latest render script/data/project.json script/template/generate.hbs script/generate.sh
+	npx baldrick-whisker@latest render script/data/project.json script/template/assist.hbs script/assist.sh
+
 generate:
 	rm -rf generated
+	mkdir generated
 	sh script/generate.sh
 	elm-format tests/*Tests.elm --yes
 	make test

@@ -1,0 +1,5 @@
+#!/bin/sh
+{{#each modules}}
+echo "Generating assistance for {{moduleName}} ..."
+npx baldrick-whisker@latest render --diff generated/{{dasherize moduleName}}.json script/template/test-data.hbs tests/{{moduleName}}TestData.elm
+{{/each}}

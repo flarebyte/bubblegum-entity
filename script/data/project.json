@@ -1,0 +1,14 @@
+{
+    "packageNameSlash": "Bubblegum/Entity",
+    "modules": [
+        {
+            "moduleName": "Attribute"
+        },
+        {
+            "moduleName": "Outcome"
+        },
+        {
+            "moduleName": "Validation"
+        }
+    ]
+}
