@@ -1,16 +1,9 @@
-# Bubblegum Entity Access
+# Bubblegum-entity
+
+![Status of direct dependencies](https://reiner-dolp.github.io/elm-badges/flarebyte/bubblegum-entity/dependencies.svg) ![License of the package](https://reiner-dolp.github.io/elm-badges/flarebyte/bubblegum-entity/license.svg) ![Latest version of the package](https://reiner-dolp.github.io/elm-badges/flarebyte/bubblegum-entity/version.svg)
 
 > Access to settings and states for widgets of the Bubblegum UI toolkit
 
-[![Build Status](https://semaphoreci.com/api/v1/olih/bubblegum-entity/branches/master/badge.svg)](https://semaphoreci.com/olih/bubblegum-entity)
-
-## Installing Elm packages
-
-There is no dependency.
-
-```
-elm-app package install flarebyte/bubblegum-entity
-```
 ## Model
 
 ### Attribute
@@ -19,11 +12,11 @@ An attribute represents a small piece of information such as a [Semantic triple]
 
 ```
 attrLabel =
-     { id = Just "id:1234"
-    , key = "ui:label"
-    , facets = ["blue"]
-    , values = ["Some label"]
-    }  
+{ id = Just "id:1234"
+, key = "ui:label"
+, facets = ["blue"]
+, values = ["Some label"]
+}
 
 ```
 
@@ -33,9 +26,9 @@ An outcome is a type which borrows concepts from both Elm Maybe and Result.
 
 ```
 type Outcome value
-    = Valid value
-    | None
-    | Warning String
+= Valid value
+| None
+| Warning String
 ```
 
 ### Settings
@@ -43,12 +36,12 @@ type Outcome value
 A settings entity represents some configuration that is applied to a widget.
 
 ```
- {
-     attributes = [
-         attr "ui:label" "some label"
-         , attr "ui:font" "Arial"
-     ]
- }
+{
+attributes = [
+attr "ui:label" "some label"
+, attr "ui:font" "Arial"
+]
+}
 
 ```
 
@@ -57,11 +50,11 @@ A settings entity represents some configuration that is applied to a widget.
 A state entity is similar to settings but represents the live state that is applied to a widget.
 
 ```
- {
-     attributes = [
-         attr "ui:selection" "first item"
-     ]
- }
+{
+attributes = [
+attr "ui:selection" "first item"
+]
+}
 
 ```
 ### Validation
@@ -70,28 +63,25 @@ List of validations that can be applied to an outcome.
 
 For most validations:
 
-  - None will propagate as None.
-  - Warning will propagate as Warning.
-  - A failure to validate the outcome will produce a Warning.
+- None will propagate as None.
+- Warning will propagate as Warning.
+- A failure to validate the outcome will produce a Warning.
 
-## Technical design
+## Documentation and links
 
-See [Technical design](TECHNICAL_DESIGN.md)
+* [Code Maintenance](MAINTENANCE.md)
+* [Code Of Conduct](CODE_OF_CONDUCT.md)
+* [Api for bubblegum-entity](API.md)
+* [Contributing](CONTRIBUTING.md)
+* [Glossary](GLOSSARY.md)
+* [Diagram for the code base](INTERNAL.md)
+* [Vocabulary used in the code base](CODE_VOCABULARY.md)
+* [Architectural Decision Records](DECISIONS.md)
+* [Contributors](https://github.com/flarebyte/bubblegum-entity/graphs/contributors)
+* [Dependencies](https://github.com/flarebyte/bubblegum-entity/network/dependencies)
 
-## Contributing
+## Installation
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-Managed automatically by [Elm version rules](https://github.com/elm-lang/elm-package#version-rules).
-
-## Authors
-
-* **Olivier Huin** - *Initial work* - [olih](https://github.com/olih)
-
-See also the list of [contributors](https://github.com/flarebyte/bubblegum-entity/graphs/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the BSD 3-Clause License - see the [LICENSE.md](LICENSE) file for details
+```bash
+elm install flarebyte/bubblegum-entity
+```
