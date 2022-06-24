@@ -1,4 +1,7 @@
-module Bubblegum.Entity.Outcome exposing (..)
+module Bubblegum.Entity.Outcome exposing
+    ( Outcome(..), withDefault, map, map2, or, fromMaybe, toMaybe
+    , check, checkOrNone, trueMapToConstant, isValid, isNone, isWarning
+    )
 
 {-| An outcome is a type which borrows concepts from both Elm Maybe and Result
 
@@ -74,10 +77,10 @@ map2 func ra rb =
         ( None, None ) ->
             None
 
-        ( Valid a, None ) ->
+        ( Valid _, None ) ->
             None
 
-        ( None, Valid b ) ->
+        ( None, Valid _ ) ->
             None
 
         ( Warning msga, Warning msgb ) ->
@@ -92,8 +95,9 @@ map2 func ra rb =
 
 {-| Check that a valid outcome verifies the criteria otherwise raise a warning
 
-    check String.isEmpty "should not be empty string" (Valid "some text" ) -- Valid "some text"
-    check String.isEmpty "should not be empty string" (Valid "" ) -- Warning "should not be empty string"
+    check String.isEmpty "should not be empty string" (Valid "some text") -- Valid "some text"
+
+    check String.isEmpty "should not be empty string" (Valid "") -- Warning "should not be empty string"
 
 -}
 check : (a -> Bool) -> String -> Outcome a -> Outcome a
@@ -108,14 +112,16 @@ check checker warnMsg ra =
         Valid value ->
             if checker value then
                 Valid value
+
             else
                 Warning warnMsg
 
 
 {-| Check that a valid outcome verifies the criteria otherwise return none
 
-    checkOrNone String.isEmpty (Valid "some text" ) -- Valid "some text"
-    checkOrNone String.isEmpty (Valid "" ) -- None
+    checkOrNone String.isEmpty (Valid "some text") -- Valid "some text"
+
+    checkOrNone String.isEmpty (Valid "") -- None
 
 -}
 checkOrNone : (a -> Bool) -> Outcome a -> Outcome a
@@ -130,14 +136,16 @@ checkOrNone checker ra =
         Valid value ->
             if checker value then
                 Valid value
+
             else
                 None
 
 
 {-| An outcome with a true value will produce a constant outcome
 
-    trueMapToConstant ["alpha"] (Valid True ) -- Valid ["alpha"]
-    trueMapToConstant ["alpha"] (Valid False ) -- None
+    trueMapToConstant [ "alpha" ] (Valid True) -- Valid ["alpha"]
+
+    trueMapToConstant [ "alpha" ] (Valid False) -- None
 
 -}
 trueMapToConstant : a -> Outcome Bool -> Outcome a
@@ -152,13 +160,14 @@ trueMapToConstant const outcome =
         Valid value ->
             if value then
                 Valid const
+
             else
                 None
 
 
 {-| Like the boolean '||' this will return the first value that is positive ('Valid').
 
-    or (None) (Valid "str") -- Valid "str"
+    or None (Valid "str") -- Valid "str"
 
 -}
 or : Outcome a -> Outcome a -> Outcome a
@@ -177,6 +186,7 @@ or ma mb =
 {-| Convert a maybe to an outcome
 
     fromMaybe (Just "str") -- Valid "str"
+
     fromMaybe Nothing -- None
 
 -}
@@ -193,6 +203,7 @@ fromMaybe maybe =
 {-| Convert an outcome to a maybe
 
     toMaybe (Valid "str") -- Just "str"
+
     toMaybe None -- Nothing
 
 -}
@@ -202,7 +213,7 @@ toMaybe outcome =
         None ->
             Nothing
 
-        Warning msg ->
+        Warning _ ->
             Nothing
 
         Valid value ->
@@ -214,7 +225,7 @@ toMaybe outcome =
 isValid : Outcome a -> Bool
 isValid outcome =
     case outcome of
-        Valid v ->
+        Valid _ ->
             True
 
         _ ->
@@ -238,7 +249,7 @@ isNone outcome =
 isWarning : Outcome a -> Bool
 isWarning outcome =
     case outcome of
-        Warning w ->
+        Warning _ ->
             True
 
         _ ->

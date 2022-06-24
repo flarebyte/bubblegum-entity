@@ -1,0 +1,263 @@
+{
+  "functions": [
+    {
+      "functionName": "withDefault",
+      "params": [
+        {
+          "paramName": "def",
+          "paramType": "a"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome a"
+        }
+      ],
+      "returned": "Outcome a",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "none"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "map",
+      "params": [
+        {
+          "paramName": "func",
+          "paramType": "(a -> value)"
+        },
+        {
+          "paramName": "ra",
+          "paramType": "Outcome a"
+        }
+      ],
+      "returned": "Outcome value",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "none"
+        },
+        {
+          "stateName": "warning"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "map2",
+      "params": [
+        {
+          "paramName": "func",
+          "paramType": "(a -> b @ value)"
+        },
+        {
+          "paramName": "ra",
+          "paramType": "Outcome a"
+        },
+        {
+          "paramName": "rb",
+          "paramType": "Outcome b"
+        }
+      ],
+      "returned": "Outcome value",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "none"
+        },
+        {
+          "stateName": "warning"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "check",
+      "params": [
+        {
+          "paramName": "checker",
+          "paramType": "(a -> Bool)"
+        },
+        {
+          "paramName": "warnMsg",
+          "paramType": "String"
+        },
+        {
+          "paramName": "ra",
+          "paramType": "Outcome a"
+        }
+      ],
+      "returned": "Outcome a",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "none"
+        },
+        {
+          "stateName": "warning"
+        },
+        {
+          "stateName": "check failed"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "checkOrNone",
+      "params": [
+        {
+          "paramName": "checker",
+          "paramType": "(a -> Bool)"
+        },
+        {
+          "paramName": "ra",
+          "paramType": "Outcome a"
+        }
+      ],
+      "returned": "Outcome a",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "check failed"
+        },
+        {
+          "stateName": "warning"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "trueMapToConstant",
+      "params": [
+        {
+          "paramName": "const",
+          "paramType": "a"
+        },
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome Bool"
+        }
+      ],
+      "returned": "Outcome a",
+      "states": [
+        {
+          "stateName": "true"
+        },
+        {
+          "stateName": "false"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "or",
+      "params": [
+        {
+          "paramName": "ma",
+          "paramType": "Outcome a"
+        },
+        {
+          "paramName": "mb",
+          "paramType": "Outcome a"
+        }
+      ],
+      "returned": "Outcome a",
+      "states": [
+        {
+          "stateName": "first"
+        },
+        {
+          "stateName": "second"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "fromMaybe",
+      "params": [
+        {
+          "paramName": "maybe",
+          "paramType": "Maybe a"
+        }
+      ],
+      "returned": "Outcome a",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "none"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "toMaybe",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome a"
+        }
+      ],
+      "returned": "Maybe a",
+      "states": [
+        {
+          "stateName": "just"
+        },
+        {
+          "stateName": "nothing"
+        }
+      ],
+      "ok": "ok1",
+      "noDescribeComma": true
+    },
+    {
+      "functionName": "isValid",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome a"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "isNone",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome a"
+        }
+      ],
+      "returned": "Bool"
+    },
+    {
+      "functionName": "isWarning",
+      "params": [
+        {
+          "paramName": "outcome",
+          "paramType": "Outcome a"
+        }
+      ],
+      "returned": "Bool"
+    }
+  ],
+  "moduleName": "Outcome",
+  "packageNameDot": "Bubblegum.Entity",
+  "oks": [
+    "ok1",
+    "ok2"
+  ]
+}

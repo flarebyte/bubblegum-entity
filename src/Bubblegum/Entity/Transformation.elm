@@ -1,8 +1,4 @@
-module Bubblegum.Entity.Transformation
-    exposing
-        ( addStringPrefix
-        , addStringSuffix
-        )
+module Bubblegum.Entity.Transformation exposing (addStringPrefix, addStringSuffix)
 
 {-| List of functions that can applied to an Outcome
 

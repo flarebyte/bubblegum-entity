@@ -4,6 +4,12 @@ elm-stuff
 repl-temp-*
 
 *.pyc
-.vscode
+.vscode/*.log
 
 .DS_Store
+*.log
+
+node_modules/
+dist/
+report/
+.message

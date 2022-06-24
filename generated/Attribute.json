@@ -1,0 +1,222 @@
+{
+  "functions": [
+    {
+      "functionName": "setId",
+      "params": [
+        {
+          "paramName": "id",
+          "paramType": "Maybe String"
+        },
+        {
+          "paramName": "model",
+          "paramType": "Model"
+        }
+      ],
+      "returned": "Model"
+    },
+    {
+      "functionName": "setKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "model",
+          "paramType": "Model"
+        }
+      ],
+      "returned": "Model"
+    },
+    {
+      "functionName": "setFacets",
+      "params": [
+        {
+          "paramName": "facets",
+          "paramType": "List String"
+        },
+        {
+          "paramName": "model",
+          "paramType": "Model"
+        }
+      ],
+      "returned": "Model"
+    },
+    {
+      "functionName": "setValues",
+      "params": [
+        {
+          "paramName": "values",
+          "paramType": "List String"
+        },
+        {
+          "paramName": "model",
+          "paramType": "Model"
+        }
+      ],
+      "returned": "Model"
+    },
+    {
+      "functionName": "findAttributeByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
+      ],
+      "returned": "Maybe Model",
+      "states": [
+        {
+          "stateName": "just model"
+        },
+        {
+          "stateName": "nothing"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "deleteAttributeByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
+      ],
+      "returned": "List Model",
+      "states": [
+        {
+          "stateName": "list"
+        },
+        {
+          "stateName": "empty list"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "findAttributeFirstValueByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
+      ],
+      "returned": "Maybe String",
+      "states": [
+        {
+          "stateName": "just string"
+        },
+        {
+          "stateName": "nothing"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "findOutcomeByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
+      ],
+      "returned": "Outcome (List String)",
+      "states": [
+        {
+          "stateName": "valid outcome"
+        },
+        {
+          "stateName": "none outcome"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "createTuple",
+      "params": [
+        {
+          "paramName": "a",
+          "paramType": "a"
+        },
+        {
+          "paramName": "b",
+          "paramType": "a"
+        }
+      ],
+      "returned": "( a, a )"
+    },
+    {
+      "functionName": "findOutcomeByKeyTuple",
+      "params": [
+        {
+          "paramName": "tuple",
+          "paramType": "( String, String )"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
+      ],
+      "returned": "Outcome ( List String, List String )",
+      "states": [
+        {
+          "stateName": "valid outcome"
+        },
+        {
+          "stateName": "outcome with first none"
+        }
+      ],
+      "ok": "ok2"
+    },
+    {
+      "functionName": "replaceAttributeByKey",
+      "params": [
+        {
+          "paramName": "key",
+          "paramType": "String"
+        },
+        {
+          "paramName": "values",
+          "paramType": "List String"
+        },
+        {
+          "paramName": "attributes",
+          "paramType": "List Model"
+        }
+      ],
+      "returned": "List Model",
+      "states": [
+        {
+          "stateName": "list"
+        },
+        {
+          "stateName": "empty list"
+        }
+      ],
+      "ok": "ok2",
+      "noDescribeComma": true
+    }
+  ],
+  "moduleName": "Attribute",
+  "packageNameDot": "Bubblegum.Entity",
+  "oks": [
+    "ok2"
+  ]
+}

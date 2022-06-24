@@ -1,0 +1,53 @@
+{
+  "moduleName": "Validation",
+  "packageNameDot": "Bubblegum.Entity",
+  "oks": ["ok1"],
+  "functions": {
+    "__merging_primary_key": "functionName",
+    "asIntRange": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "asFloatRange": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "_withinIntRange": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "_withinFloatRange": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "listStrictlyLessThan": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "listStrictlyMoreThan": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "matchAbsoluteUrl": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "matchEnum": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "matchCompactUri": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "stringStartsWith": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1"
+    },
+    "withinStringCharsRange": {
+      "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
+      "ok": "ok1",
+      "noDescribeComma": true
+    }
+  }
+}

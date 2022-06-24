@@ -1,0 +1,50 @@
+module {{moduleName}}Tests exposing (suite)
+
+{-| Unit tests for testing the Bubblegum.Entity.{{moduleName}}
+
+  **generated** with make generate
+
+-}
+import Test exposing (..)
+import Expect as Expect
+import FunctionTester exposing ({{#listJoin "," oks}}{{this}}{{/listJoin}})
+import {{moduleName}}TestData exposing (..)
+import {{packageNameDot}}.{{moduleName}} as {{moduleName}}
+
+
+suite : Test
+suite =
+    describe "The {{moduleName}} module"
+        [
+            {{#each functions}}
+            {{#if states}}
+            describe "{{functionName}}"    
+            [
+               {{#each states}}
+               {{#ifSatisfy 'equals' ../params.length '1'}}
+               {{#unless @first}},{{/unless}}fuzz fuzzyV1{{upperFirstChar ../this.functionName}} "{{../this.functionName}} should return {{stateName}}" <|
+                \v1 ->
+                    {{../../moduleName}}.{{../this.functionName}} (validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v1)
+                    |> summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}
+                    |> Expect.equal {{../this.ok}}
+                {{/ifSatisfy}}
+               {{#ifSatisfy 'equals' ../params.length '2'}}
+               {{#unless @first}},{{/unless}}fuzz2 fuzzyV1{{upperFirstChar ../this.functionName}} fuzzyV2{{upperFirstChar ../this.functionName}} "{{../this.functionName}} should return {{stateName}}" <|
+                \v1 v2 ->
+                    {{../../moduleName}}.{{../this.functionName}} (validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v1) (validP2{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v2)
+                    |> summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}
+                    |> Expect.equal {{../this.ok}}
+                {{/ifSatisfy}}
+               {{#ifSatisfy 'equals'../params.length '3'}}
+               {{#unless @first}},{{/unless}}fuzz3 fuzzyV1{{upperFirstChar ../this.functionName}} fuzzyV2{{upperFirstChar ../this.functionName}} fuzzyV3{{upperFirstChar ../this.functionName}} "{{../this.functionName}} should return {{stateName}}" <|
+                \v1 v2 v3->
+                    {{../../moduleName}}.{{../this.functionName}} (validP1{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v1) (validP2{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v2) (validP3{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}} v3)
+                    |> summarize{{upperFirstChar ../this.functionName}}For{{upperCamelCase stateName}}
+                    |> Expect.equal {{../this.ok}}
+                {{/ifSatisfy}}
+                {{/each}}   
+            ]{{#unless noDescribeComma}},{{/unless}}
+            {{/if}}
+            {{/each}}
+            
+        ]

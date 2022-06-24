@@ -1,17 +1,8 @@
-module Bubblegum.Entity.Attribute
-    exposing
-        ( Model
-        , deleteAttributeByKey
-        , findAttributeByKey
-        , findAttributeFirstValueByKey
-        , findOutcomeByKey
-        , findOutcomeByKeyTuple
-        , replaceAttributeByKey
-        , setFacets
-        , setId
-        , setKey
-        , setValues
-        )
+module Bubblegum.Entity.Attribute exposing
+    ( Model, setId, setKey, setValues, setFacets
+    , findAttributeByKey, findAttributeFirstValueByKey, replaceAttributeByKey, deleteAttributeByKey
+    , findOutcomeByKey, findOutcomeByKeyTuple
+    )
 
 {-| An attribute represents a small piece of information such as a [Semantic triple](https://en.wikipedia.org/wiki/Semantic_triple).
 
@@ -81,7 +72,7 @@ setKey key model =
 
 {-| Set an optional list of tags to mark the data
 
-    setFacets ["min", "inclusive"] model
+    setFacets [ "min", "inclusive" ] model
 
 -}
 setFacets : List String -> Model -> Model
@@ -91,7 +82,7 @@ setFacets facets model =
 
 {-| Set a list of string values
 
-    setValues ["some label"] model
+    setValues [ "some label" ] model
 
 -}
 setValues : List String -> Model -> Model
@@ -122,6 +113,7 @@ findAttributeByKey key attributes =
         first :: rest ->
             if first.key == key then
                 Just first
+
             else
                 findAttributeByKey key rest
 
@@ -163,7 +155,7 @@ createTuple a b =
 
 {-| Find an outcome searching by a couple of keys
 
-    findOutcomeByKeyTuple ("ui:min", "ui:max") models -- Valid (["1"], ["10"])
+    findOutcomeByKeyTuple ( "ui:min", "ui:max" ) models -- Valid (["1"], ["10"])
 
 -}
 findOutcomeByKeyTuple : ( String, String ) -> List Model -> Outcome ( List String, List String )

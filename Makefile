@@ -6,29 +6,52 @@ reset:
 	rm -rf elm-stuff
 	rm -rf tests/elm-stuff
 
+install-global:
+	yarn global add elm-format@0.8.4
+	yarn global add elm-review
+	yarn global add elm-upgrade
+	yarn global add elm-doc-preview
+	yarn global add elm-analyse
+
 build: test beautify doc
 
 build-ci:
-	sh scripts/build-ci.sh
+	sh script/build-ci.sh
 
 install:
-	elm-package install -y
-	pushd tests && elm-package install -y && popd
+	elm install -y
+	pushd tests && elm install -y && popd
 
 test:
 	elm-test
 
 beautify:
 	elm-format src/ --yes
+	elm-format tests/ --yes
 
 doc:
-	elm-make --docs=documentation.json
+	elm make --docs=documentation.json
 
-generate:
-	cd scripts && python -B generate_tests.py
+preview-doc:
+	elm-doc-preview
 
-parse:
-	python scripts/parse_elm.py
+analyze:
+	elm-analyse -s -o
 
 diff:
 	elm-package diff
+
+pre-generate:
+	npx baldrick-whisker@latest render script/data/project.json script/template/generate.hbs script/generate.sh
+	npx baldrick-whisker@latest render script/data/project.json script/template/assist.hbs script/assist.sh
+
+generate:
+	rm -rf generated
+	mkdir generated
+	sh script/generate.sh
+	elm-format tests/*Tests.elm --yes
+	make test
+
+assist:
+	sh script/assist.sh
+

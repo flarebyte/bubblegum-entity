@@ -1,33 +1,10 @@
-module Bubblegum.Entity.Validation
-    exposing
-        ( asBool
-        , asFloat
-        , asFloatRange
-        , asFloatTuple
-        , asInt
-        , asIntRange
-        , asIntTuple
-        , asSingle
-        , asTuple
-        , asUnique
-        , listEqual
-        , listLessThan
-        , listMoreThan
-        , listStrictlyLessThan
-        , listStrictlyMoreThan
-        , matchAbsoluteUrl
-        , matchCompactUri
-        , matchEnum
-        , matchNormalizedString
-        , matchRegex
-        , stringContains
-        , stringEndsWith
-        , stringStartsWith
-        , withinFloatRange
-        , withinIntRange
-        , withinListStringCharsRange
-        , withinStringCharsRange
-        )
+module Bubblegum.Entity.Validation exposing
+    ( asSingle, asTuple, asBool, asFloat, asInt, asIntTuple, asFloatTuple, asUnique
+    , asIntRange, asFloatRange, withinIntRange, withinFloatRange
+    , listEqual, listLessThan, listMoreThan, listStrictlyLessThan, listStrictlyMoreThan
+    , matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange
+    , floatLessThan, floatMoreThan, floatStrictlyLessThan, floatStrictlyMoreThan, intLessThan, intMoreThan, intStrictlyLessThan, intStrictlyMoreThan
+    )
 
 {-| List of validations with implicit transformations that can be applied to an outcome
 
@@ -57,6 +34,11 @@ For most validations:
 
 @docs matchAbsoluteUrl, matchCompactUri, matchEnum, matchNormalizedString, matchRegex, stringContains, stringStartsWith, stringEndsWith, withinListStringCharsRange, withinStringCharsRange
 
+
+## Number validation
+
+@docs floatLessThan, floatMoreThan, floatStrictlyLessThan, floatStrictlyMoreThan, intLessThan, intMoreThan, intStrictlyLessThan, intStrictlyMoreThan
+
 -}
 
 import Bubblegum.Entity.Outcome as Outcome exposing (Outcome(..))
@@ -68,7 +50,7 @@ import Tuple exposing (first, second)
 
 {-| Convert a list with only one string to a single string.
 
-    Valid ["alpha"] |> asSingle -- Valid "alpha"
+    Valid [ "alpha" ] |> asSingle -- Valid "alpha"
 
 -}
 asSingle : Outcome (List String) -> Outcome String
@@ -78,7 +60,7 @@ asSingle outcome =
 
 {-| Convert a tuple of singleton list to a tuple of String
 
-    Valid (["min"], ["max"]) |> asTuple -- Valid ("min", "max")
+    Valid ( [ "min" ], [ "max" ] ) |> asTuple -- Valid ("min", "max")
 
 -}
 asTuple : Outcome ( List String, List String ) -> Outcome ( String, String )
@@ -88,57 +70,57 @@ asTuple outcome =
 
 {-| Ensure that the list equal a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listEqual 2 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listEqual 2 -- Valid ["alpha", "beta"]
 
 -}
 listEqual : Int -> Outcome (List String) -> Outcome (List String)
 listEqual size outcome =
-    Outcome.check (matchListSize size) ("unsatisfied-constraint:list-equal-" ++ toString size) outcome
+    Outcome.check (matchListSize size) ("unsatisfied-constraint:list-equal-" ++ String.fromInt size) outcome
 
 
 {-| Ensure that the list equal or more than a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listMoreThan 2 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listMoreThan 2 -- Valid ["alpha", "beta"]
 
 -}
 listMoreThan : Int -> Outcome (List String) -> Outcome (List String)
 listMoreThan size outcome =
-    Outcome.check (helperMoreThan size) ("unsatisfied-constraint:list-more-than-" ++ toString size) outcome
+    Outcome.check (helperMoreThan size) ("unsatisfied-constraint:list-more-than-" ++ String.fromInt size) outcome
 
 
 {-| Ensure that the list is strictly more than a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listStrictlyMoreThan 1 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listStrictlyMoreThan 1 -- Valid ["alpha", "beta"]
 
 -}
 listStrictlyMoreThan : Int -> Outcome (List String) -> Outcome (List String)
 listStrictlyMoreThan size outcome =
-    Outcome.check (helperStrictlyMoreThan size) ("unsatisfied-constraint:list-strictly-more-than-" ++ toString size) outcome
+    Outcome.check (helperStrictlyMoreThan size) ("unsatisfied-constraint:list-strictly-more-than-" ++ String.fromInt size) outcome
 
 
 {-| Ensure that the list equal or less than a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listLessThan 2 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listLessThan 2 -- Valid ["alpha", "beta"]
 
 -}
 listLessThan : Int -> Outcome (List String) -> Outcome (List String)
 listLessThan size outcome =
-    Outcome.check (helperLessThan size) ("unsatisfied-constraint:list-less-than-" ++ toString size) outcome
+    Outcome.check (helperLessThan size) ("unsatisfied-constraint:list-less-than-" ++ String.fromInt size) outcome
 
 
 {-| Ensure that the list is strictly less than a given size otherwise raise a warning
 
-    Valid ["alpha", "beta"] |> listStrictlyLessThan 3 -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta" ] |> listStrictlyLessThan 3 -- Valid ["alpha", "beta"]
 
 -}
 listStrictlyLessThan : Int -> Outcome (List String) -> Outcome (List String)
 listStrictlyLessThan size outcome =
-    Outcome.check (helperStrictlyLessThan size) ("unsatisfied-constraint:list-strictly-less-than-" ++ toString size) outcome
+    Outcome.check (helperStrictlyLessThan size) ("unsatisfied-constraint:list-strictly-less-than-" ++ String.fromInt size) outcome
 
 
 {-| Enforce that the list to be unique
 
-    Valid ["alpha", "beta", "alpha"] |> asUnique -- Valid ["alpha", "beta"]
+    Valid [ "alpha", "beta", "alpha" ] |> asUnique -- Valid ["alpha", "beta"]
 
 -}
 asUnique : Outcome (List String) -> Outcome (List String)
@@ -183,7 +165,7 @@ asBool outcome =
 -}
 intMoreThan : Int -> Outcome Int -> Outcome Int
 intMoreThan limit outcome =
-    Outcome.check (\v -> v >= limit) ("unsatisfied-constraint:int-more-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v >= limit) ("unsatisfied-constraint:int-more-than-" ++ String.fromInt limit) outcome
 
 
 {-| Check that an int is equal or more than a given value otherwise raise a warning
@@ -193,7 +175,7 @@ intMoreThan limit outcome =
 -}
 intStrictlyMoreThan : Int -> Outcome Int -> Outcome Int
 intStrictlyMoreThan limit outcome =
-    Outcome.check (\v -> v > limit) ("unsatisfied-constraint:int-strictly-more-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v > limit) ("unsatisfied-constraint:int-strictly-more-than-" ++ String.fromInt limit) outcome
 
 
 {-| Check that an int is equal or less than a given value otherwise raise a warning
@@ -203,7 +185,7 @@ intStrictlyMoreThan limit outcome =
 -}
 intLessThan : Int -> Outcome Int -> Outcome Int
 intLessThan limit outcome =
-    Outcome.check (\v -> v <= limit) ("unsatisfied-constraint:int-less-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v <= limit) ("unsatisfied-constraint:int-less-than-" ++ String.fromInt limit) outcome
 
 
 {-| Check that an int is strictly less than a given value otherwise raise a warning
@@ -213,7 +195,7 @@ intLessThan limit outcome =
 -}
 intStrictlyLessThan : Int -> Outcome Int -> Outcome Int
 intStrictlyLessThan limit outcome =
-    Outcome.check (\v -> v < limit) ("unsatisfied-constraint:int-strictly-less-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v < limit) ("unsatisfied-constraint:int-strictly-less-than-" ++ String.fromInt limit) outcome
 
 
 {-| Check that an int is equal or more than a given value otherwise raise a warning
@@ -223,7 +205,7 @@ intStrictlyLessThan limit outcome =
 -}
 floatMoreThan : Float -> Outcome Float -> Outcome Float
 floatMoreThan limit outcome =
-    Outcome.check (\v -> v >= limit) ("unsatisfied-constraint:float-more-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v >= limit) ("unsatisfied-constraint:float-more-than-" ++ String.fromFloat limit) outcome
 
 
 {-| Check that an int is strictly more than a given value otherwise raise a warning
@@ -233,7 +215,7 @@ floatMoreThan limit outcome =
 -}
 floatStrictlyMoreThan : Float -> Outcome Float -> Outcome Float
 floatStrictlyMoreThan limit outcome =
-    Outcome.check (\v -> v > limit) ("unsatisfied-constraint:float-strictly-more-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v > limit) ("unsatisfied-constraint:float-strictly-more-than-" ++ String.fromFloat limit) outcome
 
 
 {-| Check that an int is equal or less than a given value otherwise raise a warning
@@ -243,7 +225,7 @@ floatStrictlyMoreThan limit outcome =
 -}
 floatLessThan : Float -> Outcome Float -> Outcome Float
 floatLessThan limit outcome =
-    Outcome.check (\v -> v <= limit) ("unsatisfied-constraint:float-less-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v <= limit) ("unsatisfied-constraint:float-less-than-" ++ String.fromFloat limit) outcome
 
 
 {-| Check that an int is strictly less than a given value otherwise raise a warning
@@ -253,12 +235,12 @@ floatLessThan limit outcome =
 -}
 floatStrictlyLessThan : Float -> Outcome Float -> Outcome Float
 floatStrictlyLessThan limit outcome =
-    Outcome.check (\v -> v < limit) ("unsatisfied-constraint:float-strictly-less-than-" ++ toString limit) outcome
+    Outcome.check (\v -> v < limit) ("unsatisfied-constraint:float-strictly-less-than-" ++ String.fromFloat limit) outcome
 
 
 {-| Check that a string belong to an enumeration otherwise raise a warning
 
-    Valid ["alpha"] |> matchEnum ["beta", "alpha"] -- Valid ["alpha"]
+    Valid [ "alpha" ] |> matchEnum [ "beta", "alpha" ] -- Valid ["alpha"]
 
 -}
 matchEnum : List String -> Outcome String -> Outcome String
@@ -268,7 +250,7 @@ matchEnum enum outcome =
 
 {-| Check that a string starts with a prefix otherwise raise a warning
 
-    Valid ["ui:label"] |> stringStartsWith "ui:" -- Valid ["ui:label"]
+    Valid [ "ui:label" ] |> stringStartsWith "ui:" -- Valid ["ui:label"]
 
 -}
 stringStartsWith : String -> Outcome String -> Outcome String
@@ -278,7 +260,7 @@ stringStartsWith prefix outcome =
 
 {-| Check that a string ends with a suffix otherwise raise a warning
 
-    Valid ["image.jpg"] |> stringEndsWith ".jpg" -- Valid ["image.jpg"]
+    Valid [ "image.jpg" ] |> stringEndsWith ".jpg" -- Valid ["image.jpg"]
 
 -}
 stringEndsWith : String -> Outcome String -> Outcome String
@@ -288,7 +270,7 @@ stringEndsWith suffix outcome =
 
 {-| Check that a string contains a term otherwise raise a warning
 
-    Valid ["blue red green"] |> stringContains "red" -- Valid ["blue red green"]
+    Valid [ "blue red green" ] |> stringContains "red" -- Valid ["blue red green"]
 
 -}
 stringContains : String -> Outcome String -> Outcome String
@@ -315,7 +297,7 @@ matchRegex : String -> Outcome String -> Outcome String
 matchRegex regExp outcome =
     let
         re =
-            "^" ++ regExp ++ "$" |> Regex.regex
+            Maybe.withDefault Regex.never <| Regex.fromString ("^" ++ regExp ++ "$")
     in
     matchNormalizedString outcome |> Outcome.check (\v -> Regex.contains re v) "unsatisfied-constraint:regex"
 
@@ -334,7 +316,7 @@ matchAbsoluteUrl : Outcome String -> Outcome String
 matchAbsoluteUrl outcome =
     let
         re =
-            Regex.regex "^https?://[^\\s/$.?#].[^\\s]*$"
+            Maybe.withDefault Regex.never <| Regex.fromString "^https?://[^\\s/$.?#].[^\\s]*$"
     in
     matchNormalizedString outcome |> Outcome.check (\v -> Regex.contains re v) "unsatisfied-constraint:absolute-url"
 
@@ -350,14 +332,14 @@ matchCompactUri : Outcome String -> Outcome String
 matchCompactUri outcome =
     let
         re =
-            Regex.regex "^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$"
+            Maybe.withDefault Regex.never <| Regex.fromString "^[a-z][a-z0-9_.-]{1,15}:\\w[^\\s]*$"
     in
     matchNormalizedString outcome |> Outcome.check (\v -> Regex.contains re v) "unsatisfied-constraint:compact-uri"
 
 
 {-| Convert a tuple of String to a tuple of Int otherwise raise a warning
 
-    Valid ("3", "5") |> asIntTuple -- Valid (3, 5)
+    Valid ( "3", "5" ) |> asIntTuple -- Valid (3, 5)
 
 -}
 asIntTuple : Outcome ( String, String ) -> Outcome ( Int, Int )
@@ -368,7 +350,7 @@ asIntTuple outcome =
 
 {-| Convert a tuple of String to a tuple of Float otherwise raise a warning
 
-    Valid ("3.5", "5.5") |> asFloatTuple -- Valid (3.5, 5.5)
+    Valid ( "3.5", "5.5" ) |> asFloatTuple -- Valid (3.5, 5.5)
 
 -}
 asFloatTuple : Outcome ( String, String ) -> Outcome ( Float, Float )
@@ -379,7 +361,7 @@ asFloatTuple outcome =
 
 {-| Check that first value is strictly less than the second otherwise raise a warning
 
-    Valid (3, 5) |> asIntRange -- Valid (3, 5)
+    Valid ( 3, 5 ) |> asIntRange -- Valid (3, 5)
 
 -}
 asIntRange : Outcome ( Int, Int ) -> Outcome ( Int, Int )
@@ -389,7 +371,7 @@ asIntRange outcome =
 
 {-| Check that first value is strictly less than the second otherwise raise a warning
 
-    Valid (3.5, 5.5) |> asFloatRange -- Valid (3.5, 5.5)
+    Valid ( 3.5, 5.5 ) |> asFloatRange -- Valid (3.5, 5.5)
 
 -}
 asFloatRange : Outcome ( Float, Float ) -> Outcome ( Float, Float )
@@ -399,42 +381,42 @@ asFloatRange outcome =
 
 {-| Check a tuple of Int is within the range of a given range otherwise raise a warning
 
-    Valid (3, 5) |> withinIntRange (2, 7) -- Valid (3, 5)
+    Valid ( 3, 5 ) |> withinIntRange ( 2, 7 ) -- Valid (3, 5)
 
 -}
 withinIntRange : ( Int, Int ) -> Outcome ( Int, Int ) -> Outcome ( Int, Int )
 withinIntRange range outcome =
-    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-int-range:" ++ toString range) outcome
+    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-int-range:" ++ String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)) outcome
 
 
 {-| Check a tuple of Float is within the range of a given range otherwise raise a warning
 
-    Valid (3.5, 5.2) |> withinFloatRange (2.1, 7.2) -- Valid (3.5, 5.2)
+    Valid ( 3.5, 5.2 ) |> withinFloatRange ( 2.1, 7.2 ) -- Valid (3.5, 5.2)
 
 -}
 withinFloatRange : ( Float, Float ) -> Outcome ( Float, Float ) -> Outcome ( Float, Float )
 withinFloatRange range outcome =
-    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-float-range:" ++ toString range) outcome
+    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-float-range:" ++ String.fromFloat (first range) ++ "<->" ++ String.fromFloat (second range)) outcome
 
 
 {-| Check that a string number of characters is within a range otherwise raise a warning
 
-    Valid "abcd" |> withinStringCharsRange (2, 7) -- Valid "abcd"
+    Valid "abcd" |> withinStringCharsRange ( 2, 7 ) -- Valid "abcd"
 
 -}
 withinStringCharsRange : ( Int, Int ) -> Outcome String -> Outcome String
 withinStringCharsRange range outcome =
-    Outcome.check (helperCharsRange range) ("unsatisfied-constraint:within-string-chars-range:" ++ toString range) outcome
+    Outcome.check (helperCharsRange range) ("unsatisfied-constraint:within-string-chars-range:" ++ String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)) outcome
 
 
 {-| Check that all the strings' number of characters are within a range otherwise raise a warning
 
-    Valid ["abc", "abcd"] |> withinListStringCharsRange (2, 7) -- Valid "abcd"
+    Valid [ "abc", "abcd" ] |> withinListStringCharsRange ( 2, 7 ) -- Valid "abcd"
 
 -}
 withinListStringCharsRange : ( Int, Int ) -> Outcome (List String) -> Outcome (List String)
 withinListStringCharsRange range outcome =
-    Outcome.check (\list -> List.all (helperCharsRange range) list) ("unsatisfied-constraint:within-list-string-chars-range:" ++ toString range) outcome
+    Outcome.check (\list -> List.all (helperCharsRange range) list) ("unsatisfied-constraint:within-list-string-chars-range:" ++ String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)) outcome
 
 
 
@@ -489,31 +471,31 @@ onlyTuple listTuple =
 isInt : String -> Bool
 isInt value =
     case String.toInt value of
-        Ok _ ->
+        Just _ ->
             True
 
-        Err _ ->
+        Nothing ->
             False
 
 
 isFloat : String -> Bool
 isFloat value =
     case String.toFloat value of
-        Ok _ ->
+        Just _ ->
             True
 
-        Err _ ->
+        Nothing ->
             False
 
 
 intOrZero : String -> Int
 intOrZero value =
-    String.toInt value |> Result.withDefault 0
+    String.toInt value |> Maybe.withDefault 0
 
 
 floatOrZero : String -> Float
 floatOrZero value =
-    String.toFloat value |> Result.withDefault 0
+    String.toFloat value |> Maybe.withDefault 0
 
 
 stringToBool : String -> Bool

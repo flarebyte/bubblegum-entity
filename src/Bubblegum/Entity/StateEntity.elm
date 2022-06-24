@@ -1,4 +1,4 @@
-module Bubblegum.Entity.StateEntity exposing (Model, asAttributesIn, setAttributes)
+module Bubblegum.Entity.StateEntity exposing (Model, setAttributes, asAttributesIn)
 
 {-| A state entity represents the state that could be applied to a widget
 
@@ -27,4 +27,4 @@ setAttributes attributes model =
 -}
 asAttributesIn : Model -> List Attribute.Model -> Model
 asAttributesIn =
-    flip setAttributes
+    \b a -> setAttributes a b
