@@ -16,320 +16,361 @@ The typical developer workflow goes as follow:
 
 > Run GitHub Actions inside a docker container
 
-__Motivation:__ Test GitHub Actions locally
+**Motivation:** Test GitHub Actions locally
 
-__When to use it:__ When changing github actions
+**When to use it:** When changing github actions
 
-__Run:__ ```act```
+**Run:** `act`
 
-__From package:__ [act](https://github.com/nektos/act) of [brew](https://docs.brew.sh/) :  Run GitHub Actions locally
+**From package:** [act](https://github.com/nektos/act) of
+[brew](https://docs.brew.sh/) : Run GitHub Actions locally
 
----
+***
 
 ### Build the library
 
 > Transpile all the Elm source code to javascript
 
-__Motivation:__ The code has to be build before been published
+**Motivation:** The code has to be build before been published
 
-__When to use it:__ Before building
+**When to use it:** Before building
 
-__Run:__ ```make build```
+**Run:** `make build`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Generate the documentation
 
 > Generate the markdown documentation for the Elm project
 
-__Motivation:__ Good documentation is essential for developer experience
+**Motivation:** Good documentation is essential for developer experience
 
-__When to use it:__ Before publishing
+**When to use it:** Before publishing
 
-__Run:__ ```make doc```
+**Run:** `make doc`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Preview the documentation
 
 > Generate the markdown documentation for the Elm project
 
-__Motivation:__ Good documentation is essential for developer experience
+**Motivation:** Good documentation is essential for developer experience
 
-__When to use it:__ Before publishing
+**When to use it:** Before publishing
 
-__Run:__ ```make preview-doc```
+**Run:** `make preview-doc`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Update github repository
 
 > Enable useful features for the github project repository
 
-__Motivation:__ Create consistent settings
+**Motivation:** Create consistent settings
 
-__When to use it:__ After creating
+**When to use it:** After creating
 
-__Run:__ ```make github```
+**Run:** `make github`
 
-__From package:__ [gh](https://cli.github.com/) of [brew](https://docs.brew.sh/) :  GitHub CLI brings GitHub to your terminal
+**From package:** [gh](https://cli.github.com/) of
+[brew](https://docs.brew.sh/) : GitHub CLI brings GitHub to your terminal
 
----
+***
 
 ### Static code analysis
 
 > Find problems in Elm code
 
-__Motivation:__ Make the code more consistent and avoid bugs
+**Motivation:** Make the code more consistent and avoid bugs
 
-__When to use it:__ Before compilation
+**When to use it:** Before compilation
 
-__Run:__ ```make analyze```
+**Run:** `make analyze`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Beautify Elm source code
 
-> Formats Elm source code according to a standard set of rules based on the official Elm Style Guide
+> Formats Elm source code according to a standard set of rules based on
+> the official Elm Style Guide
 
-__Motivation:__ Make the code more consistent and avoid bugs
+**Motivation:** Make the code more consistent and avoid bugs
 
-__When to use it:__ Before compilation
+**When to use it:** Before compilation
 
-__Run:__ ```make beautify```
+**Run:** `make beautify`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Detects Elm code API changes
 
 > See what changed in the package between versions
 
-__Motivation:__ Sometimes a MAJOR change is not actually very big, so this can help you plan your upgrade timelines
+**Motivation:** Sometimes a MAJOR change is not actually very big, so this
+can help you plan your upgrade timelines
 
-__When to use it:__ Before compilation
+**When to use it:** Before compilation
 
-__Run:__ ```make diff```
+**Run:** `make diff`
 
-__From package:__ [elm](https://guide.elm-lang.org/install/elm.html) of [npm](https://www.npmjs.com/) :  Dependency management
+**From package:** [elm](https://guide.elm-lang.org/install/elm.html) of
+[npm](https://www.npmjs.com/) : Dependency management
 
----
+***
 
 ### Markdown check
 
 > Checks that the markdown documents follows some consistent guidelines
 
-__Motivation:__ Make the markdown documents consistent in style
+**Motivation:** Make the markdown documents consistent in style
 
-__When to use it:__ Before publishing
+**When to use it:** Before publishing
 
-__Run:__ ```make md```
+**Run:** `make md`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Markdown fix
 
-> Modify the markdown documents to ensure they follow some consistent guidelines
+> Modify the markdown documents to ensure they follow some consistent
+> guidelines
 
-__Motivation:__ Make the markdown documents consistent in style
+**Motivation:** Make the markdown documents consistent in style
 
-__When to use it:__ Before publishing
+**When to use it:** Before publishing
 
-__Run:__ ```make md-fix```
+**Run:** `make md-fix`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Install local dependencies
 
 > Install some dependencies
 
-__Motivation:__ Before running most commands
+**Motivation:** Before running most commands
 
-__When to use it:__ Before building
+**When to use it:** Before building
 
-__Run:__ ```make install```
+**Run:** `make install`
 
-__From package:__ [elm](https://guide.elm-lang.org/install/elm.html) of [npm](https://www.npmjs.com/) :  Dependency management
+**From package:** [elm](https://guide.elm-lang.org/install/elm.html) of
+[npm](https://www.npmjs.com/) : Dependency management
 
----
+***
 
 ### Install global dependencies
 
 > Install some dependencies globally
 
-__Motivation:__ Before running most commands
+**Motivation:** Before running most commands
 
-__When to use it:__ Before building
+**When to use it:** Before building
 
-__Run:__ ```make install-global```
+**Run:** `make install-global`
 
-__From package:__ [yarn](https://classic.yarnpkg.com/en/) of [npm](https://www.npmjs.com/) :  Dependency management
+**From package:** [yarn](https://classic.yarnpkg.com/en/) of
+[npm](https://www.npmjs.com/) : Dependency management
 
----
+***
 
 ### Ready for publishing
 
-> Run a sequence of commands to check that the library is ready to be published
+> Run a sequence of commands to check that the library is ready to be
+> published
 
-__Motivation:__ Detect quality flaws before pushing the code
+**Motivation:** Detect quality flaws before pushing the code
 
-__When to use it:__ Before pushing a branch
+**When to use it:** Before pushing a branch
 
-__Run:__ ```make ready```
+**Run:** `make ready`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Reset distribution and report folders
 
 > Delete the dist and report folder
 
-__Motivation:__ Start from a clean slate
+**Motivation:** Start from a clean slate
 
-__When to use it:__ Before building
+**When to use it:** Before building
 
-__Run:__ ```make reset```
+**Run:** `make reset`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Unit testing
 
 > Run the unit tests
 
-__Motivation:__ Check that the units of code behave as intended
+**Motivation:** Check that the units of code behave as intended
 
-__When to use it:__ After compilation, before build
+**When to use it:** After compilation, before build
 
-__Run:__ ```make test```
+**Run:** `make test`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Help for commands
 
 > Summarize all the yarn and shell commands
 
-__Motivation:__ Assist the developer in quickly finding commands
+**Motivation:** Assist the developer in quickly finding commands
 
-__When to use it:__ Before running a command
+**When to use it:** Before running a command
 
-__Run:__ ```make help```
+**Run:** `make help`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Git commit from file
 
 > Git commit a message that has been saved in the .message file
 
-__Motivation:__ Quicker commit for pre-defined use cases
+**Motivation:** Quicker commit for pre-defined use cases
 
-__When to use it:__ When commit to github
+**When to use it:** When commit to github
 
-__Run:__ ```gcf```
+**Run:** `gcf`
 
-__From package:__ [zsh](https://www.zsh.org/) of [brew](https://docs.brew.sh/) :  Shell designed for interactive use
+**From package:** [zsh](https://www.zsh.org/) of
+[brew](https://docs.brew.sh/) : Shell designed for interactive use
 
----
+***
 
 ### Reset generated folders
 
 > Delete the generated folder
 
-__Motivation:__ Start generation from a clean slate
+**Motivation:** Start generation from a clean slate
 
-__When to use it:__ Before generation
+**When to use it:** Before generation
 
-__Run:__ ```make reset-generated```
+**Run:** `make reset-generated`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Prepare scripts for code generation
 
 > Generate the scripts used for code generation
 
-__Motivation:__ The generation scripts contain a fair amount of boilerplate code that can be easily generated
+**Motivation:** The generation scripts contain a fair amount of boilerplate
+code that can be easily generated
 
-__When to use it:__ Before generation
+**When to use it:** Before generation
 
-__Run:__ ```make pre-generate```
+**Run:** `make pre-generate`
 
-__From package:__ [zsh](https://www.zsh.org/) of [brew](https://docs.brew.sh/) :  Shell designed for interactive use
+**From package:** [zsh](https://www.zsh.org/) of
+[brew](https://docs.brew.sh/) : Shell designed for interactive use
 
----
+***
 
 ### Generate some Elm Code
 
 > Generate some of the boilerplate code for the Elm project
 
-__Motivation:__ Standardize and boost the development process
+**Motivation:** Standardize and boost the development process
 
-__When to use it:__ When changing model
+**When to use it:** When changing model
 
-__Run:__ ```make generate```
+**Run:** `make generate`
 
-__From package:__ [zsh](https://www.zsh.org/) of [brew](https://docs.brew.sh/) :  Shell designed for interactive use
+**From package:** [zsh](https://www.zsh.org/) of
+[brew](https://docs.brew.sh/) : Shell designed for interactive use
 
----
+***
 
 ### Generate some code in the console
 
 > Generate some of the boilerplate code that has to be manually added
 
-__Motivation:__ Boost the development process with contextual snippets
+**Motivation:** Boost the development process with contextual snippets
 
-__When to use it:__ When changing model
+**When to use it:** When changing model
 
-__Run:__ ```make assist```
+**Run:** `make assist`
 
-__From package:__ [zsh](https://www.zsh.org/) of [brew](https://docs.brew.sh/) :  Shell designed for interactive use
+**From package:** [zsh](https://www.zsh.org/) of
+[brew](https://docs.brew.sh/) : Shell designed for interactive use
 
----
+***
 
 ### Normalize the project with baldrick-whisker
 
 > Generate some scaffolding using some handlebars templates
 
-__Motivation:__ Externalize scaffolding outside close source code
+**Motivation:** Externalize scaffolding outside close source code
 
-__When to use it:__ Before running normalization
+**When to use it:** Before running normalization
 
-__Run:__ ```make whisker-norm```
+**Run:** `make whisker-norm`
 
-__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+**From package:**
+[makefile](https://opensource.com/article/18/8/what-how-makefile) of
+[brew](https://docs.brew.sh/) : Build management
 
----
+***
 
 ### Normalize the code structure
 
 > Normalize the code structure using baldrick (global version)
 
-__Motivation:__ Create a consistent developer experience
+**Motivation:** Create a consistent developer experience
 
-__When to use it:__ When changing github actions
+**When to use it:** When changing github actions
 
-__Run:__ ```make norm```
+**Run:** `make norm`
 
-__From package:__ [baldrick-elm](https://github.com/flarebyte/baldrick-elm) of [npm](https://www.npmjs.com/) :  Elm scaffolding assistant
+**From package:** [baldrick-elm](https://github.com/flarebyte/baldrick-elm)
+of [npm](https://www.npmjs.com/) : Elm scaffolding assistant
 
----
+***

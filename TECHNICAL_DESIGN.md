@@ -1,33 +1,39 @@
 # Technical Design
 
-> Guide for the implementation, including detailed design, priorities, coding conventions, and testing
+> Guide for the implementation, including detailed design, priorities,
+> coding conventions, and testing
 
-The TextArea widget should eventually be part of a suite of widgets for the Bubblegum Document Suite.
+The TextArea widget should eventually be part of a suite of widgets for the
+Bubblegum Document Suite.
 
 ## Code structure
 
- - __src__: Elm source code
+-   **src**: Elm source code
 
- - __tests__: Unit and fuzz tests for Elm code
+-   **tests**: Unit and fuzz tests for Elm code
 
- - __script__: Folder for bash, python or ts-node scripts
+-   **script**: Folder for bash, python or ts-node scripts
 
- - __script/data__: Folder for data (YAML, JSON, ...) that should be manually edited
+-   **script/data**: Folder for data (YAML, JSON, ...) that should be
+    manually edited
 
- - __script/schema__: Folder for JSON Schemas that are used to validate data and often available in vscode
+-   **script/schema**: Folder for JSON Schemas that are used to validate
+    data and often available in vscode
 
- - __script/template__: Folder for handlebars templates used by the code generators
+-   **script/template**: Folder for handlebars templates used by the code
+    generators
 
- - __generated__: Folder for generated code or data (YAML, JSON, ...)
+-   **generated**: Folder for generated code or data (YAML, JSON, ...)
 
- - __elm-stuff__: Temporary folder for building distribution code
+-   **elm-stuff**: Temporary folder for building distribution code
 
- - __report__: Temporary folder for reporting; usually for continuous integration
+-   **report**: Temporary folder for reporting; usually for continuous
+    integration
 
- - __.github__: Folder for github pipeline
+-   **.github**: Folder for github pipeline
 
- - __.vscode__: Folder for visual code snippets
+-   **.vscode**: Folder for visual code snippets
 
 ## Useful links
 
- - Introduction to [Elm](https://guide.elm-lang.org/)
+-   Introduction to [Elm](https://guide.elm-lang.org/)
