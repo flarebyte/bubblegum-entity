@@ -306,6 +306,20 @@ __From package:__ [zsh](https://www.zsh.org/) of [brew](https://docs.brew.sh/) :
 
 ---
 
+### Normalize the project with baldrick-whisker
+
+> Generate some scaffolding using some handlebars templates
+
+__Motivation:__ Externalize scaffolding outside close source code
+
+__When to use it:__ Before running normalization
+
+__Run:__ ```make whisker-norm```
+
+__From package:__ [makefile](https://opensource.com/article/18/8/what-how-makefile) of [brew](https://docs.brew.sh/) :  Build management
+
+---
+
 ### Normalize the code structure
 
 > Normalize the code structure using baldrick (global version)

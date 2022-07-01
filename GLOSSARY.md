@@ -17,7 +17,6 @@ __Motivation:__
 - Encourage the single-responsibility principle
 
 More about [Higher-Order Function](https://en.wikipedia.org/wiki/Higher-order_function)
-
 ## Currying and closure
 
 These two related concepts in Typescript:
@@ -35,7 +34,6 @@ __Motivation:__
 - Make it easier to use Point-Free Style
 
 More about [Currying and closure](https://en.wikipedia.org/wiki/Currying)
-
 ## Purity
 
 A function is pure if the return value is only determined by its parameters
@@ -46,7 +44,6 @@ __Motivation:__
 - Easier to test
 
 More about [Purity](https://en.wikipedia.org/wiki/Pure_function)
-
 ## Side effects
 
 A function has side effects if the output cannot be predicted just by looking at its input parameters
@@ -58,7 +55,6 @@ __Motivation:__
 - Identify side effects to isolate them in a limited number of functions
 
 More about [Side effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
-
 ## Point-Free Style
 
 Point-Free Style allows to chain functions in a very linear way
@@ -69,7 +65,6 @@ __Motivation:__
 - In best cases increases the readability
 
 More about [Point-Free Style](https://en.wikipedia.org/wiki/Tacit_programming)
-
 ## Railway oriented programming
 
 Functional approach for composing functions
@@ -81,7 +76,6 @@ __Motivation:__
 - Failure path short-circuits and forwards any previous errors
 
 More about [Railway oriented programming](https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/posts/recipe-part2.html)
-
 ## Reactive programming
 
 Declarative programming paradigm concerned with data streams and the propagation of change
@@ -92,7 +86,6 @@ __Motivation:__
 - Easier to scale
 
 More about [Reactive programming](https://en.wikipedia.org/wiki/Reactive_programming)
-
 ## Functional reactive programming
 
 Programming paradigm for reactive programming using the building blocks of functional programming 

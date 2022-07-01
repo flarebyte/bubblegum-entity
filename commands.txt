@@ -21,3 +21,4 @@ make ready            Run a sequence of commands to check that the library is re
 make reset            Delete the dist and report folder
 make reset-generated  Delete the generated folder
 make test             Run the unit tests
+make whisker-norm     Generate some scaffolding using some handlebars templates
