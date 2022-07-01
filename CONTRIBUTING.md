@@ -18,27 +18,22 @@ in all your interactions with the project.
 The following commands should get you started:
 
 ```bash
-yarn install
+make install-global
+make install
 yarn test
 ```
 
 A list of [most used commands](MAINTENANCE.md) is available:
 
 ```bash
-yarn h
+make help
 ```
 
 Please keep an eye on test coverage, bundle size and documentation.
 When you are ready for a pull request:
 
 ```bash
-yarn ready
-```
-
-And please check that building is still working:
-
-```bash
-yarn build
+make ready
 ```
 
 You can also simulate [Github actions](https://docs.github.com/en/actions)
@@ -65,6 +60,5 @@ updates are pretty infrequent, and some of tests have to be done manually.
 Assuming you have zsh installed, you can just do:
 
 ```bash
-source .aliases.zsh
-bpub
+elm publish
 ```
