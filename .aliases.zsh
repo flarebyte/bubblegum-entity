@@ -1,0 +1,1 @@
+alias gcf='git add . && git commit -F .message && rm .message'

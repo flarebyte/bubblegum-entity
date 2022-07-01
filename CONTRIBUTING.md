@@ -2,17 +2,63 @@
 
 Welcome ! and many thanks for taking the time to contribute !
 
-First, you should have a look at the [Technical design documentation](TECHNICAL_DESIGN.md) to get an understanding of the design behind this project.
+First, you should have a look at the [Technical design
+documentation](TECHNICAL_DESIGN.md) to get an understanding of the design
+behind this project.
 
-From there, there are a few options dependending of which kind of contributions you have in mind: bug fix, documentation improvement, translation, testing, ... 
+From there, there are a few options depending of which kind of contributions
+you have in mind: bug fix, documentation improvement, translation, testing,
+...
 
-Please note we have a [code of conduct](CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
+Please note we have a [code of conduct](CODE_OF_CONDUCT.md), please follow it
+in all your interactions with the project.
+
+## Build the project locally
+
+The following commands should get you started:
+
+```bash
+make install-global
+make install
+yarn test
+```
+
+A list of [most used commands](MAINTENANCE.md) is available:
+
+```bash
+make help
+```
+
+Please keep an eye on test coverage, bundle size and documentation.
+When you are ready for a pull request:
+
+```bash
+make ready
+```
+
+You can also simulate [Github actions](https://docs.github.com/en/actions)
+locally with [act](https://github.com/nektos/act).
+You will need to setup `.actrc` with the node.js docker image `-P
+ubuntu-latest=node:14-buster`
+
+To run the pipeline:
+
+```bash
+act
+```
 
 ## Pull Request Process
 
-1. Make sure that an issue describing the intended code change exists and that this issue has been accepted.
-1. Run ```make build``` and ```elm-test``` to check the code is running fine.
-1. Check Elm [guideline](http://package.elm-lang.org/help/design-guidelines).
-1. If you add new code, please check if some additional unit-tests would be helpful.
-1. Please rebase before submitting changes.
+1.  Make sure that an issue describing the intended code change exists and
+    that this issue has been accepted.
 
+## Publishing the library
+
+This would be done by the main maintainers of the project. Locally for now as
+updates are pretty infrequent, and some of tests have to be done manually.
+
+Assuming you have zsh installed, you can just do:
+
+```bash
+elm publish
+```

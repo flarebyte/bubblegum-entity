@@ -1,15 +1,8 @@
-# elm-package generated files
 elm-stuff
-# elm-repl generated files
 repl-temp-*
-
 *.pyc
-.vscode/*.log
-
-.DS_Store
 *.log
-
-node_modules/
-dist/
+.vscode/*.log
+.DS_Store
 report/
 .message
