@@ -3,10 +3,10 @@ module ValidationTestData exposing (..)
 {-| Unit tests for testing the Bubblegum.Entity.Validation
 -}
 
-import Bubblegum.Entity.Outcome as Validation exposing (..)
-import Fuzz exposing (Fuzzer, constant, float, floatRange, int, intRange, list, oneOf, string, tuple)
+import Bubblegum.Entity.Outcome exposing (..)
+import Fuzz exposing (Fuzzer, constant, float, floatRange, int, intRange, oneOf, string, tuple)
 import OutcomeTestHelper exposing (..)
-
+import Tuple exposing(mapSecond)
 
 
 -- asIntRange
@@ -89,72 +89,42 @@ summarizeAsFloatRangeForInvalid result =
     [ expectWarning result
     ]
 
-
-
 -- withinIntRange
-
-
-fuzzyV1WithinIntRange : Fuzzer Int
-
-
-
--- should produce ( Int, Int )
-
-
+fuzzyV1WithinIntRange : Fuzzer (Int, Int) -- should produce ( Int, Int )
 fuzzyV1WithinIntRange =
-    intRange 100 10000
+    tuple(constant(-1000), constant(1000))
+fuzzyV2WithinIntRange : Fuzzer (Int, Int) -- should produce Outcome ( Int, Int )
+fuzzyV2WithinIntRange = oneOf
+ ([ tuple(constant(-500), constant(500))
+    ,tuple(constant(0), constant(500))
+    ,tuple(constant(-1000), constant(0))
+    ])
+validP1WithinIntRangeForValid: (Int, Int) -> ( Int, Int ) -- about range
+validP1WithinIntRangeForValid value =
+    value
 
-
-fuzzyV2WithinIntRange : Fuzzer Int
-
-
-
--- should produce Outcome ( Int, Int )
-
-
-fuzzyV2WithinIntRange =
-    intRange -80 80
-
-
-validP1WithinIntRangeForInsideRange :
-    Int
-    -> ( Int, Int ) -- about range
-validP1WithinIntRangeForInsideRange value =
-    ( -1 * value, value )
-
-
-validP2WithinIntRangeForInsideRange :
-    Int
-    -> Outcome ( Int, Int ) -- about outcome
-validP2WithinIntRangeForInsideRange value =
-    Valid ( value, value + 5 )
-
-
-summarizeWithinIntRangeForInsideRange : Outcome ( Int, Int ) -> List String
-summarizeWithinIntRangeForInsideRange result =
-    [ expectValid result
+validP2WithinIntRangeForValid: (Int, Int) -> Outcome ( Int, Int ) -- about outcome
+validP2WithinIntRangeForValid value =
+    Valid value
+    
+summarizeWithinIntRangeForValid: Outcome ( Int, Int ) -> List String
+summarizeWithinIntRangeForValid result =
+    [
+        expectValid result
     ]
+validP1WithinIntRangeForInvalid: (Int, Int) -> ( Int, Int ) -- about range
+validP1WithinIntRangeForInvalid value =
+     value
 
-
-validP1WithinIntRangeForOutsideRange :
-    Int
-    -> ( Int, Int ) -- about range
-validP1WithinIntRangeForOutsideRange value =
-    ( -1 * value, value )
-
-
-validP2WithinIntRangeForOutsideRange :
-    Int
-    -> Outcome ( Int, Int ) -- about outcome
-validP2WithinIntRangeForOutsideRange value =
-    Valid ( value + 20000, value + 30000 )
-
-
-summarizeWithinIntRangeForOutsideRange : Outcome ( Int, Int ) -> List String
-summarizeWithinIntRangeForOutsideRange result =
-    [ expectWarning result
+validP2WithinIntRangeForInvalid: (Int, Int)  -> Outcome ( Int, Int ) -- about outcome
+validP2WithinIntRangeForInvalid value =
+    mapSecond (\y -> y + 1000000) (value) |> Valid
+    
+summarizeWithinIntRangeForInvalid: Outcome ( Int, Int ) -> List String
+summarizeWithinIntRangeForInvalid result =
+    [
+       expectWarning result
     ]
-
 
 
 -- withinFloatRange
