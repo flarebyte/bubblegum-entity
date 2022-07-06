@@ -3,7 +3,7 @@
     "name": "flarebyte/bubblegum-entity",
     "summary": "Access to settings and states for widgets of the Bubblegum UI toolkit.",
     "license": "BSD-3-Clause",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "exposed-modules": [
         "Bubblegum.Entity.Attribute",
         "Bubblegum.Entity.Outcome",
