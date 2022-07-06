@@ -654,5 +654,5 @@ validP2WithinStringCharsRangeForInvalid value =
 
 summarizeWithinStringCharsRangeForInvalid : Outcome String -> List String
 summarizeWithinStringCharsRangeForInvalid result =
-    [ expectWarning result
+    [ expectWarningOutcomeRegex "within-string-chars-range:\\d+<->\\d+" result
     ]
