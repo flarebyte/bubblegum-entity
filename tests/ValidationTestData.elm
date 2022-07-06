@@ -7,6 +7,7 @@ import Bubblegum.Entity.Outcome exposing (..)
 import Fuzz exposing (Fuzzer, constant, float, floatRange, int, intRange, oneOf, string, tuple)
 import OutcomeTestHelper exposing (..)
 import Tuple exposing(mapSecond)
+import Debug exposing (log)
 
 
 -- asIntRange
@@ -123,7 +124,7 @@ validP2WithinIntRangeForInvalid value =
 summarizeWithinIntRangeForInvalid: Outcome ( Int, Int ) -> List String
 summarizeWithinIntRangeForInvalid result =
     [
-       expectWarning result
+       expectWarningOutcomeRegex "within-int-range:-\\d+<->\\d+" result
     ]
 
 

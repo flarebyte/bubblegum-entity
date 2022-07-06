@@ -69,11 +69,11 @@ expectValidOutcomeRegex term outcome =
             "should not be warning " ++ s
 
 
-expectWarningOutcomeRegex : String -> Outcome String -> String
+expectWarningOutcomeRegex : String -> Outcome a -> String
 expectWarningOutcomeRegex term outcome =
     case outcome of
-        Valid s ->
-            "should not be valid " ++ s
+        Valid _ ->
+            "should not be valid "
 
         None ->
             "should not be none"
