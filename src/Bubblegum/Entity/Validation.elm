@@ -47,6 +47,14 @@ import Regex
 import Set
 import Tuple exposing (first, second)
 
+intRangeToString : ( Int, Int ) -> String
+intRangeToString range =
+    String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)
+
+floatRangeToString : ( Float, Float ) -> String
+floatRangeToString range =
+    String.fromFloat (first range) ++ "<->" ++ String.fromFloat (second range)
+
 
 {-| Convert a list with only one string to a single string.
 
@@ -386,7 +394,7 @@ asFloatRange outcome =
 -}
 withinIntRange : ( Int, Int ) -> Outcome ( Int, Int ) -> Outcome ( Int, Int )
 withinIntRange range outcome =
-    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-int-range:" ++ String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)) outcome
+    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-int-range:" ++ (intRangeToString range)) outcome
 
 
 {-| Check a tuple of Float is within the range of a given range otherwise raise a warning
@@ -396,7 +404,7 @@ withinIntRange range outcome =
 -}
 withinFloatRange : ( Float, Float ) -> Outcome ( Float, Float ) -> Outcome ( Float, Float )
 withinFloatRange range outcome =
-    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-float-range:" ++ String.fromFloat (first range) ++ "<->" ++ String.fromFloat (second range)) outcome
+    Outcome.check (\t -> (first t >= first range) && (second t < second range)) ("unsatisfied-constraint:within-float-range:" ++ (floatRangeToString range)) outcome
 
 
 {-| Check that a string number of characters is within a range otherwise raise a warning
@@ -406,7 +414,7 @@ withinFloatRange range outcome =
 -}
 withinStringCharsRange : ( Int, Int ) -> Outcome String -> Outcome String
 withinStringCharsRange range outcome =
-    Outcome.check (helperCharsRange range) ("unsatisfied-constraint:within-string-chars-range:" ++ String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)) outcome
+    Outcome.check (helperCharsRange range) ("unsatisfied-constraint:within-string-chars-range:" ++ (intRangeToString range)) outcome
 
 
 {-| Check that all the strings' number of characters are within a range otherwise raise a warning
@@ -416,7 +424,7 @@ withinStringCharsRange range outcome =
 -}
 withinListStringCharsRange : ( Int, Int ) -> Outcome (List String) -> Outcome (List String)
 withinListStringCharsRange range outcome =
-    Outcome.check (\list -> List.all (helperCharsRange range) list) ("unsatisfied-constraint:within-list-string-chars-range:" ++ String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)) outcome
+    Outcome.check (\list -> List.all (helperCharsRange range) list) ("unsatisfied-constraint:within-list-string-chars-range:" ++ (intRangeToString range)) outcome
 
 
 
