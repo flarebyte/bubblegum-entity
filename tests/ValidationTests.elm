@@ -112,6 +112,30 @@ suite =
                         |> summarizeAsFloatRangeForInvalid
                         |> Expect.equal ok1
             ]
+        , describe "withinIntRange"
+            [ fuzz2 fuzzyV1WithinIntRange fuzzyV2WithinIntRange "withinIntRange should return valid" <|
+                \v1 v2 ->
+                    Validation.withinIntRange (validP1WithinIntRangeForValid v1) (validP2WithinIntRangeForValid v2)
+                        |> summarizeWithinIntRangeForValid
+                        |> Expect.equal ok1
+            , fuzz2 fuzzyV1WithinIntRange fuzzyV2WithinIntRange "withinIntRange should return invalid" <|
+                \v1 v2 ->
+                    Validation.withinIntRange (validP1WithinIntRangeForInvalid v1) (validP2WithinIntRangeForInvalid v2)
+                        |> summarizeWithinIntRangeForInvalid
+                        |> Expect.equal ok1
+            ]
+        , describe "withinFloatRange"
+            [ fuzz2 fuzzyV1WithinFloatRange fuzzyV2WithinFloatRange "withinFloatRange should return valid" <|
+                \v1 v2 ->
+                    Validation.withinFloatRange (validP1WithinFloatRangeForValid v1) (validP2WithinFloatRangeForValid v2)
+                        |> summarizeWithinFloatRangeForValid
+                        |> Expect.equal ok1
+            , fuzz2 fuzzyV1WithinFloatRange fuzzyV2WithinFloatRange "withinFloatRange should return invalid" <|
+                \v1 v2 ->
+                    Validation.withinFloatRange (validP1WithinFloatRangeForInvalid v1) (validP2WithinFloatRangeForInvalid v2)
+                        |> summarizeWithinFloatRangeForInvalid
+                        |> Expect.equal ok1
+            ]
         , describe "withinStringCharsRange"
             [ fuzz2 fuzzyV1WithinStringCharsRange fuzzyV2WithinStringCharsRange "withinStringCharsRange should return valid" <|
                 \v1 v2 ->

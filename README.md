@@ -79,10 +79,8 @@ For most validations:
 
 -   [Code Maintenance](MAINTENANCE.md)
 -   [Code Of Conduct](CODE_OF_CONDUCT.md)
--   [Api for bubblegum-entity](API.md)
 -   [Contributing](CONTRIBUTING.md)
 -   [Glossary](GLOSSARY.md)
--   [Diagram for the code base](INTERNAL.md)
 -   [Vocabulary used in the code base](CODE_VOCABULARY.md)
 -   [Architectural Decision Records](DECISIONS.md)
 -   [Contributors](https://github.com/flarebyte/bubblegum-entity/graphs/contributors)

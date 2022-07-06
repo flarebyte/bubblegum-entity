@@ -3,9 +3,11 @@ module ValidationTestData exposing (..)
 {-| Unit tests for testing the Bubblegum.Entity.Validation
 -}
 
-import Bubblegum.Entity.Outcome as Validation exposing (..)
-import Fuzz exposing (Fuzzer, constant, float, floatRange, int, intRange, list, oneOf, string, tuple)
+import Bubblegum.Entity.Outcome exposing (..)
+import Debug exposing (log)
+import Fuzz exposing (Fuzzer, constant, float, floatRange, int, intRange, oneOf, string, tuple)
 import OutcomeTestHelper exposing (..)
+import Tuple exposing (mapSecond)
 
 
 
@@ -94,7 +96,7 @@ summarizeAsFloatRangeForInvalid result =
 -- withinIntRange
 
 
-fuzzyV1WithinIntRange : Fuzzer Int
+fuzzyV1WithinIntRange : Fuzzer ( Int, Int )
 
 
 
@@ -102,10 +104,10 @@ fuzzyV1WithinIntRange : Fuzzer Int
 
 
 fuzzyV1WithinIntRange =
-    intRange 100 10000
+    tuple ( constant -1000, constant 1000 )
 
 
-fuzzyV2WithinIntRange : Fuzzer Int
+fuzzyV2WithinIntRange : Fuzzer ( Int, Int )
 
 
 
@@ -113,46 +115,50 @@ fuzzyV2WithinIntRange : Fuzzer Int
 
 
 fuzzyV2WithinIntRange =
-    intRange -80 80
+    oneOf
+        [ tuple ( constant -500, constant 500 )
+        , tuple ( constant 0, constant 500 )
+        , tuple ( constant -1000, constant 0 )
+        ]
 
 
-validP1WithinIntRangeForInsideRange :
-    Int
+validP1WithinIntRangeForValid :
+    ( Int, Int )
     -> ( Int, Int ) -- about range
-validP1WithinIntRangeForInsideRange value =
-    ( -1 * value, value )
+validP1WithinIntRangeForValid value =
+    value
 
 
-validP2WithinIntRangeForInsideRange :
-    Int
+validP2WithinIntRangeForValid :
+    ( Int, Int )
     -> Outcome ( Int, Int ) -- about outcome
-validP2WithinIntRangeForInsideRange value =
-    Valid ( value, value + 5 )
+validP2WithinIntRangeForValid value =
+    Valid value
 
 
-summarizeWithinIntRangeForInsideRange : Outcome ( Int, Int ) -> List String
-summarizeWithinIntRangeForInsideRange result =
+summarizeWithinIntRangeForValid : Outcome ( Int, Int ) -> List String
+summarizeWithinIntRangeForValid result =
     [ expectValid result
     ]
 
 
-validP1WithinIntRangeForOutsideRange :
-    Int
+validP1WithinIntRangeForInvalid :
+    ( Int, Int )
     -> ( Int, Int ) -- about range
-validP1WithinIntRangeForOutsideRange value =
-    ( -1 * value, value )
+validP1WithinIntRangeForInvalid value =
+    value
 
 
-validP2WithinIntRangeForOutsideRange :
-    Int
+validP2WithinIntRangeForInvalid :
+    ( Int, Int )
     -> Outcome ( Int, Int ) -- about outcome
-validP2WithinIntRangeForOutsideRange value =
-    Valid ( value + 20000, value + 30000 )
+validP2WithinIntRangeForInvalid value =
+    mapSecond (\y -> y + 1000000) value |> Valid
 
 
-summarizeWithinIntRangeForOutsideRange : Outcome ( Int, Int ) -> List String
-summarizeWithinIntRangeForOutsideRange result =
-    [ expectWarning result
+summarizeWithinIntRangeForInvalid : Outcome ( Int, Int ) -> List String
+summarizeWithinIntRangeForInvalid result =
+    [ expectWarningOutcomeRegex "within-int-range:\\(-\\d+,\\d+\\)" result
     ]
 
 
@@ -160,7 +166,7 @@ summarizeWithinIntRangeForOutsideRange result =
 -- withinFloatRange
 
 
-fuzzyV1WithinFloatRange : Fuzzer Float
+fuzzyV1WithinFloatRange : Fuzzer ( Float, Float )
 
 
 
@@ -168,10 +174,10 @@ fuzzyV1WithinFloatRange : Fuzzer Float
 
 
 fuzzyV1WithinFloatRange =
-    floatRange 100 10000
+    tuple ( constant -1000, constant 1000 )
 
 
-fuzzyV2WithinFloatRange : Fuzzer Float
+fuzzyV2WithinFloatRange : Fuzzer ( Float, Float )
 
 
 
@@ -179,46 +185,50 @@ fuzzyV2WithinFloatRange : Fuzzer Float
 
 
 fuzzyV2WithinFloatRange =
-    floatRange -80 80
+    oneOf
+        [ tuple ( constant -500, constant 500 )
+        , tuple ( constant 0, constant 500 )
+        , tuple ( constant -1000, constant 0 )
+        ]
 
 
-validP1WithinFloatRangeForInsideRange :
-    Float
+validP1WithinFloatRangeForValid :
+    ( Float, Float )
     -> ( Float, Float ) -- about range
-validP1WithinFloatRangeForInsideRange value =
-    ( -1 * value, value )
+validP1WithinFloatRangeForValid value =
+    value
 
 
-validP2WithinFloatRangeForInsideRange :
-    Float
+validP2WithinFloatRangeForValid :
+    ( Float, Float )
     -> Outcome ( Float, Float ) -- about outcome
-validP2WithinFloatRangeForInsideRange value =
-    Valid ( value, value + 5 )
+validP2WithinFloatRangeForValid value =
+    Valid value
 
 
-summarizeWithinFloatRangeForInsideRange : Outcome ( Float, Float ) -> List String
-summarizeWithinFloatRangeForInsideRange result =
+summarizeWithinFloatRangeForValid : Outcome ( Float, Float ) -> List String
+summarizeWithinFloatRangeForValid result =
     [ expectValid result
     ]
 
 
-validP1WithinFloatRangeForOutsideRange :
-    Float
+validP1WithinFloatRangeForInvalid :
+    ( Float, Float )
     -> ( Float, Float ) -- about range
-validP1WithinFloatRangeForOutsideRange value =
-    ( -1 * value, value )
+validP1WithinFloatRangeForInvalid value =
+    value
 
 
-validP2WithinFloatRangeForOutsideRange :
-    Float
+validP2WithinFloatRangeForInvalid :
+    ( Float, Float )
     -> Outcome ( Float, Float ) -- about outcome
-validP2WithinFloatRangeForOutsideRange value =
-    Valid ( value + 20000, value + 30000 )
+validP2WithinFloatRangeForInvalid value =
+    mapSecond (\y -> y + 1000000) value |> Valid
 
 
-summarizeWithinFloatRangeForOutsideRange : Outcome ( Float, Float ) -> List String
-summarizeWithinFloatRangeForOutsideRange result =
-    [ expectWarning result
+summarizeWithinFloatRangeForInvalid : Outcome ( Float, Float ) -> List String
+summarizeWithinFloatRangeForInvalid result =
+    [ expectWarningOutcomeRegex "within-float-range:\\(-\\d+,\\d+\\)" result
     ]
 
 
@@ -644,5 +654,5 @@ validP2WithinStringCharsRangeForInvalid value =
 
 summarizeWithinStringCharsRangeForInvalid : Outcome String -> List String
 summarizeWithinStringCharsRangeForInvalid result =
-    [ expectWarning result
+    [ expectWarningOutcomeRegex "within-string-chars-range:\\(\\d+,\\d+\\)" result
     ]

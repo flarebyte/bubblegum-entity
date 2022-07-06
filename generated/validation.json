@@ -466,7 +466,16 @@
           "paramType": "Outcome ( Int, Int )"
         }
       ],
-      "returned": "Outcome ( Int, Int )"
+      "returned": "Outcome ( Int, Int )",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
     },
     {
       "functionName": "withinFloatRange",
@@ -480,7 +489,16 @@
           "paramType": "Outcome ( Float, Float )"
         }
       ],
-      "returned": "Outcome ( Float, Float )"
+      "returned": "Outcome ( Float, Float )",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
     },
     {
       "functionName": "withinStringCharsRange",

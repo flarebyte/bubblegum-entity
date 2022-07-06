@@ -12,11 +12,11 @@
       "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
       "ok": "ok1"
     },
-    "_withinIntRange": {
+    "withinIntRange": {
       "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
       "ok": "ok1"
     },
-    "_withinFloatRange": {
+    "withinFloatRange": {
       "states": [{ "stateName": "valid" }, { "stateName": "invalid" }],
       "ok": "ok1"
     },
