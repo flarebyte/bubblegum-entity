@@ -489,7 +489,16 @@
           "paramType": "Outcome ( Float, Float )"
         }
       ],
-      "returned": "Outcome ( Float, Float )"
+      "returned": "Outcome ( Float, Float )",
+      "states": [
+        {
+          "stateName": "valid"
+        },
+        {
+          "stateName": "invalid"
+        }
+      ],
+      "ok": "ok1"
     },
     {
       "functionName": "withinStringCharsRange",

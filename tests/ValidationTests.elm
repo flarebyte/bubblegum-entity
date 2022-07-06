@@ -124,6 +124,18 @@ suite =
                         |> summarizeWithinIntRangeForInvalid
                         |> Expect.equal ok1
             ]
+        , describe "withinFloatRange"
+            [ fuzz2 fuzzyV1WithinFloatRange fuzzyV2WithinFloatRange "withinFloatRange should return valid" <|
+                \v1 v2 ->
+                    Validation.withinFloatRange (validP1WithinFloatRangeForValid v1) (validP2WithinFloatRangeForValid v2)
+                        |> summarizeWithinFloatRangeForValid
+                        |> Expect.equal ok1
+            , fuzz2 fuzzyV1WithinFloatRange fuzzyV2WithinFloatRange "withinFloatRange should return invalid" <|
+                \v1 v2 ->
+                    Validation.withinFloatRange (validP1WithinFloatRangeForInvalid v1) (validP2WithinFloatRangeForInvalid v2)
+                        |> summarizeWithinFloatRangeForInvalid
+                        |> Expect.equal ok1
+            ]
         , describe "withinStringCharsRange"
             [ fuzz2 fuzzyV1WithinStringCharsRange fuzzyV2WithinStringCharsRange "withinStringCharsRange should return valid" <|
                 \v1 v2 ->
