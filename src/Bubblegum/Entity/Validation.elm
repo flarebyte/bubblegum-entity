@@ -49,11 +49,11 @@ import Tuple exposing (first, second)
 
 intRangeToString : ( Int, Int ) -> String
 intRangeToString range =
-    String.fromInt (first range) ++ "<->" ++ String.fromInt (second range)
+    "(" ++ String.fromInt (first range) ++ "," ++ String.fromInt (second range) ++ ")"
 
 floatRangeToString : ( Float, Float ) -> String
 floatRangeToString range =
-    String.fromFloat (first range) ++ "<->" ++ String.fromFloat (second range)
+    "(" ++ String.fromFloat (first range) ++ "," ++ String.fromFloat (second range) ++ ")"
 
 
 {-| Convert a list with only one string to a single string.

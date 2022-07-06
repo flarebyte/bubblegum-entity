@@ -158,7 +158,7 @@ validP2WithinIntRangeForInvalid value =
 
 summarizeWithinIntRangeForInvalid : Outcome ( Int, Int ) -> List String
 summarizeWithinIntRangeForInvalid result =
-    [ expectWarningOutcomeRegex "within-int-range:-\\d+<->\\d+" result
+    [ expectWarningOutcomeRegex "within-int-range:\\(-\\d+,\\d+\\)" result
     ]
 
 
@@ -228,7 +228,7 @@ validP2WithinFloatRangeForInvalid value =
 
 summarizeWithinFloatRangeForInvalid : Outcome ( Float, Float ) -> List String
 summarizeWithinFloatRangeForInvalid result =
-    [ expectWarningOutcomeRegex "within-float-range:-\\d+<->\\d+" result
+    [ expectWarningOutcomeRegex "within-float-range:\\(-\\d+,\\d+\\)" result
     ]
 
 
@@ -654,5 +654,5 @@ validP2WithinStringCharsRangeForInvalid value =
 
 summarizeWithinStringCharsRangeForInvalid : Outcome String -> List String
 summarizeWithinStringCharsRangeForInvalid result =
-    [ expectWarningOutcomeRegex "within-string-chars-range:\\d+<->\\d+" result
+    [ expectWarningOutcomeRegex "within-string-chars-range:\\(\\d+,\\d+\\)" result
     ]
