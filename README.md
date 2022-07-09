@@ -5,7 +5,7 @@ dependencies](https://reiner-dolp.github.io/elm-badges/flarebyte/bubblegum-entit
 ![License of the
 package](https://reiner-dolp.github.io/elm-badges/flarebyte/bubblegum-entity/license.svg)
 ![Latest version of the
-package](https://reiner-dolp.github.io/elm-badges/flarebyte/bubblegum-entity/version.svg)
+package](https://img.shields.io/elm-package/v/flarebyte/bubblegum-entity)
 
 > Access to settings and states for widgets of the Bubblegum UI toolkit
 
